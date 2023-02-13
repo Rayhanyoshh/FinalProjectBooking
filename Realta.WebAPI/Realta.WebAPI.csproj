@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Realta.WebAPI</AssemblyName>
+    <RootNamespace>Realta.WebAPI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Realta.Contract\Realta.Contract.csproj" />
+    <ProjectReference Include="..\Realta.Domain\Realta.Domain.csproj" />
+    <ProjectReference Include="..\Realta.Persistence\Realta.Persistence.csproj" />
+    <ProjectReference Include="..\Realta.Services.Abstraction\Realta.Services.Abstraction.csproj" />
+    <ProjectReference Include="..\Realta.Services\Realta.Services.csproj" />
+  </ItemGroup>
+
+</Project>

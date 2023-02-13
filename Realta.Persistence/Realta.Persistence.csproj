@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Realta.Persistence</AssemblyName>
+    <RootNamespace>Realta.Persistence</RootNamespace>
+  </PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\Realta.Domain\Realta.Domain.csproj" />
+	</ItemGroup>
+</Project>
