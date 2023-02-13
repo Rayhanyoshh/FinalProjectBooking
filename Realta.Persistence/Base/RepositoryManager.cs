@@ -14,6 +14,7 @@ namespace Realta.Persistence.Base
     {
         private AdoDbContext _adoContext;
         private IBookingOrdersRepository _bookingOrdersRepository;
+        private IBordeRepository _bordeRepository;
 
         public RepositoryManager(AdoDbContext adoContext)
         {
@@ -30,6 +31,18 @@ namespace Realta.Persistence.Base
                     _bookingOrdersRepository = new BookingOrdersRepository(_adoContext);
                 }
                 return _bookingOrdersRepository;
+            }
+        }
+
+        public IBordeRepository bordeRepository
+        {
+            get
+            {
+                if (_bordeRepository == null)
+                {
+                    _bordeRepository = new (_adoContext);
+                }
+                return _bordeRepository;
             }
         }
     }

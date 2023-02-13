@@ -35,7 +35,7 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "UPDATE Booking_orders SET boor_order_number = @boorOrderNumber, boor_order_date = @boorOrderDate ,boor_arrival_date = @boorArrivalDate ,boor_total_room = @boorTotalRoom,boor_total_guest = @boorTotalGuest,boor_discount = @boorDiscount ,boor_total_tax = @boorTotalTax,boor_total_ammount = @boorTotalAmmount,boor_down_payment = @boorDownPayment,boor_pay_type = @boorPayType,boor_is_paid = @boorIsPaid,boor_type = @boorType,boor_cardnumber = @boorCardnumber,boor_member_type = @boorMemberType,boor_status = @boorStatus,boor_user_id = @boorUserId, boor_hotel_id = @boorHotelId WHERE boor_id = @boorId;",
+                CommandText = "UPDATE Booking.Booking_orders SET boor_order_number = @boorOrderNumber,boor_order_date = @boorOrderDate,boor_arrival_date = @boorArrivalDate,boor_total_room = @boorTotalRoom,boor_total_guest = @boorTotalGuest,boor_discount = @boorDiscount,boor_total_tax = @boorTotalTax,boor_total_ammount = @boorTotalAmmount,boor_down_payment = @boorDownPayment,boor_pay_type = @boorPayType,boor_is_paid = @boorIsPaid,boor_type = @boorType,boor_cardnumber = @boorCardnumber,boor_member_type = @boorMemberType,boor_status = @boorStatus,boor_user_id = @boorUserId,boor_hotel_id = @boorHotelId WHERE boor_id = @boorId",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
@@ -69,11 +69,6 @@ namespace Realta.Persistence.Repositories
                         Value = booking_Orders.boor_total_guest
                     },
                     new SqlCommandParameterModel() {
-                        ParameterName = "@boorTotalRoom",
-                        DataType = DbType.Int16,
-                        Value = booking_Orders.boor_total_room
-                    },
-                    new SqlCommandParameterModel() {
                         ParameterName = "@boorDiscount",
                         DataType = DbType.Decimal,
                         Value = booking_Orders.boor_discount
@@ -96,7 +91,7 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorPayType",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_order_number
+                        Value = booking_Orders.boor_pay_type
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorIsPaid",
@@ -198,7 +193,8 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "INSERT INTO Booking_orders (boor_order_number, boor_order_date, boor_arrival_date, boor_total_room, boor_total_guest, boor_discount, boor_total_tax, boor_total_ammount, boor_down_payment, boor_pay_type, boor_is_paid, boor_type, boor_cardnumber, boor_member_type, boor_status, boor_user_id, boor_hotel_id) VALUES(@boorId,@boorOrderNumber,@boorOrderDate,@boorOrderDate,@boorArrivalDate,@boorTotalRoom,@boorTotalGuest,@boorTotalRoom,@boorDiscount,@boorTotalTax,@boorTotalAmmount,@boorDownPayment,@boorPayType,@boorIsPaid,@boorType,@boorCardnumber,@boorMemberType,@boorStatus,@boorUserId,@boorHotelId); ",
+                CommandText = "INSERT INTO Booking.booking_orders (boor_order_number,boor_order_date, boor_arrival_date,boor_total_room , boor_total_guest,boor_discount,boor_total_tax,boor_total_ammount,boor_down_payment,boor_pay_type, boor_is_paid, boor_type, boor_cardnumber, boor_member_type, boor_status,boor_user_id, boor_hotel_id) " +
+                "VALUES(@boorOrderNumber, @boorOrderDate, @boorArrivalDate, @boorTotalRoom, @boorTotalGuest, @boorDiscount, @boorTotalTax, @boorTotalAmmount, @boorDownPayment, @boorPayType, @boorIsPaid, @boorType, @boorCardnumber, @boorMemberType, @boorStatus, @boorUserId, @boorHotelId)",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
@@ -232,11 +228,6 @@ namespace Realta.Persistence.Repositories
                         Value = booking_Orders.boor_total_guest
                     },
                     new SqlCommandParameterModel() {
-                        ParameterName = "@boorTotalRoom",
-                        DataType = DbType.Int16,
-                        Value = booking_Orders.boor_total_room
-                    },
-                    new SqlCommandParameterModel() {
                         ParameterName = "@boorDiscount",
                         DataType = DbType.Decimal,
                         Value = booking_Orders.boor_discount
@@ -259,7 +250,7 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorPayType",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_order_number
+                        Value = booking_Orders.boor_pay_type
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorIsPaid",
@@ -307,7 +298,7 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "DELETE FROM Booking_orders WHERE boor_id = @boorId;",
+                CommandText = "DELETE FROM Booking.Booking_orders WHERE boor_id = @boorId;",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
@@ -320,6 +311,16 @@ namespace Realta.Persistence.Repositories
 
             _adoContext.ExecuteNonQuery(model);
             _adoContext.Dispose();
+        }
+
+        public IEnumerable<Booking_orders> FindLastBoorID()
+        {
+            IEnumerator<Booking_orders> dataset = FindAll<Booking_orders>("SELECT * FROM Booking.Booking_orders where boor_id =(SELECT IDENT_CURRENT('Booking.booking_orders'));");
+            while (dataset.MoveNext())
+            {
+                var data = dataset.Current;
+                yield return data;
+            }
         }
     }
 }

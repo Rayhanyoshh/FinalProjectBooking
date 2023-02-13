@@ -15,5 +15,6 @@ namespace Realta.Domain.Repositories
         void Insert(Booking_orders booking_Orders);
         void Edit(Booking_orders booking_Orders);
         void Remove(Booking_orders booking_Orders);
+        IEnumerable<Booking_orders> FindLastBoorID();
     }
 }

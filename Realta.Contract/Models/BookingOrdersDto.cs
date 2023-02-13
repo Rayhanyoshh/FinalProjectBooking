@@ -7,17 +7,40 @@ using System.Threading.Tasks;
 
 namespace Realta.Contract.Models
 {
-    internal class BookingOrdersDto
+    public class BookingOrdersDto
     {
-        [Required(ErrorMessage = "BoorID is Required")]
-        public int BoorId { get; set; }
+        [Required(ErrorMessage = "Boor ID is Required")]
+        public int boor_id { get; set; }
 
 
-        [Required]
-        [MinLength(5, ErrorMessage = "Region Description must longer than 5 Character")]
-        [MaxLength(50, ErrorMessage = "Region Description cannot no longer than 50 character")]
+        [Required(ErrorMessage = "Boor Order Date is Required")]
+        public string boor_order_number { get; set; }
 
-        public string? RegionDescription { get; set; }
+        [Required(ErrorMessage = "Boor Order Number is Required")]
+        public DateTime boor_order_date { get; set; }
+        public DateTime boor_arrival_date { get; set; }
+        public short? boor_total_room { get; set; }
+        public short? boor_total_guest { get; set; }
+        public decimal? boor_discount { get; set; }
+        public decimal? boor_total_tax { get; set; }
+        public decimal? boor_total_ammount { get; set; }
+        public decimal? boor_down_payment { get; set; }
+
+        [Required(ErrorMessage = "Boor Payment type is Required")]
+        public string? boor_pay_type { get; set; }
+
+        [Required(ErrorMessage = "Boor Is Paid is Required")]
+        public string boor_is_paid { get; set; }
+
+        [Required(ErrorMessage = "Boor Type is Required")]
+        public string boor_type { get; set; }
+
+        [CreditCard(ErrorMessage = "Type your creditcard number correctly")]
+        public string? boor_cardnumber { get; set; }
+        public string? boor_member_type { get; set; }
+        public string? boor_status { get; set; }
+        public int boor_user_id { get; set; }
+        public int boor_hotel_id { get; set; }
     }
 }
 

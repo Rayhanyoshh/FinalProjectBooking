@@ -12,18 +12,18 @@ namespace Realta.Domain.Entities
     public class Booking_orders
     {
         [Key]
-<<<<<<< Updated upstream
+
         public int boor_id { get; set; }
         public string boor_order_number { get; set; }
         public DateTime boor_order_date { get; set; }
-        public DateTime? boor_arrival_date { get; set; }
+        public DateTime boor_arrival_date { get; set; }
         public short? boor_total_room { get; set; }
         public short? boor_total_guest { get; set; }
         public decimal? boor_discount { get; set; }
         public decimal? boor_total_tax { get; set; }
         public decimal? boor_total_ammount { get; set; }
         public decimal? boor_down_payment { get; set; }
-        public string boor_pay_type { get; set; }
+        public string? boor_pay_type { get; set; }
         public string boor_is_paid { get; set; }
         public string boor_type { get; set; }
         public string? boor_cardnumber { get; set; }
@@ -31,26 +31,7 @@ namespace Realta.Domain.Entities
         public string? boor_status { get; set; }
         public int  boor_user_id { get; set; }
         public int boor_hotel_id { get; set; }
-=======
-        public int Boor_id { get; set; }
-        public string Boor_order_number { get; set; }
-        public DateTime Boor_order_date { get; set; }
-        public DateTime? Boor_arrival_date { get; set; }
-        public short? Boor_total_room { get; set; }
-        public short? Boor_total_guest { get; set; }
-        public decimal? Boor_discount { get; set; }
-        public decimal? Boor_total_tax { get; set; }
-        public decimal? Boor_total_ammount { get; set; }
-        public decimal? Boor_down_payment { get; set; }
-        public string Boor_pay_type { get; set; }
-        public string Boor_is_paid { get; set; }
-        public string Boor_type { get; set; }
-        public string? Boor_cardnumber { get; set; }
-        public string? Boor_member_type { get; set; }
-        public string? Boor_status { get; set; }
-        public int Boor_user_id { get; set; }
-        public int Boor_hotel_id { get; set; }
->>>>>>> Stashed changes
+
 
     }
 }
