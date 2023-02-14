@@ -17,6 +17,9 @@ namespace Realta.Persistence.Base
         private IBordeRepository _bordeRepository;
         private IBoexRepository _boexRepository;
         private ISocoRepository _socoRepository;
+        private ISpofRepository _spofRepository;
+        private IUsbrRepository _usbrRepository;
+
 
         public RepositoryManager(AdoDbContext adoContext)
         {
@@ -70,6 +73,31 @@ namespace Realta.Persistence.Base
                 }
                 return _socoRepository;
             }
+        }
+
+        public ISpofRepository spofRepository
+        {
+            get
+            {
+                if (_spofRepository == null)
+                {
+                    _spofRepository = new SpofRepository(_adoContext);
+                }
+                return _spofRepository;
+            }
+        }
+
+        public IUsbrRepository usbrRepository 
+        {
+            get
+            {
+                if(_usbrRepository==null)
+                {
+                    _usbrRepository = new UsbrRepository(_adoContext);
+                }
+                return _usbrRepository; 
+            }
+        
         }
     }
 }

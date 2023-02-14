@@ -16,5 +16,7 @@ namespace Realta.Domain.Base
         IBoexRepository boexRepository { get; }
 
         ISocoRepository socoRepository { get; }
+        ISpofRepository spofRepository { get; }
+        IUsbrRepository usbrRepository { get; }
     }
 }
