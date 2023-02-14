@@ -19,15 +19,9 @@ namespace Realta.Persistence.Repositories
         public BordeRepository(AdoDbContext adoContext) : base(adoContext)
         {
         }
-
-        public void Edit(Booking_order_detail borde)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Booking_order_detail> FindAllBorde()
         {
-            IEnumerator<Booking_order_detail> dataSet = FindAll<Booking_order_detail>("SELECT * From Booking.booking_order_detail");
+            IEnumerator<Booking_order_detail> dataSet = FindAll<Booking_order_detail>("select * from Booking.booking_order_detail");
 
             while (dataSet.MoveNext())
             {
@@ -35,6 +29,80 @@ namespace Realta.Persistence.Repositories
                 yield return data;
             }
         }
+        public void Edit(Booking_order_detail borde)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = "UPDATE Booking.Booking_order_detail SET borde_boor_id = @bordeBoorId, borde_checkin = @bordeCheckin, borde_checkout = @bordeCheckout, borde_adults = @bordeAdult, borde_kids = @bordeKids, borde_price = @bordePrice, borde_extra = @bordeExtra, borde_discount = @bordeDiscount, borde_tax = @bordeTax, borde_subtotal = @bordeSubtotal, borde_faci_id = @bordeFaciId WHERE borde_id = @bordeId;",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeId",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_id
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeBoorId",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_boor_id
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeCheckin",
+                        DataType = DbType.DateTime,
+                        Value = borde.borde_checkin
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeCheckout",
+                        DataType = DbType.DateTime,
+                        Value = borde.borde_checkout
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeAdult",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_adults
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeKids",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_kids
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordePrice",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_price
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeExtra",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_extra
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeDiscount",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_discount
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeTax",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_tax
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeSubtotal",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_subtotal
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeFaciId",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_faci_id
+                    }
+                }
+            };
+
+            _adoContext.ExecuteNonQuery(model);
+            _adoContext.Dispose();
+        }
+
 
         public async Task<IEnumerable<Booking_order_detail>> FindAllBordeAsync()
         {
@@ -90,7 +158,77 @@ namespace Realta.Persistence.Repositories
 
         public void Insert(Booking_order_detail borde)
         {
-            throw new NotImplementedException();
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = "INSERT INTO Booking.booking_order_detail (Borde_boor_id, Borde_checkin, Borde_checkout, Borde_adults, Borde_kids, Borde_price, Borde_extra, Borde_discount, Borde_tax, Borde_subtotal, Borde_faci_id) " +
+                              "VALUES(@bordeBoorId, @bordeCheckin, @bordeCheckout, @bordeAdult, @bordeKids, @bordePrice, @bordeExtra, @bordeDiscount, @bordeTax, @bordeSubtotal, @bordeFaciId);",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeId",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_id
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeBoorId",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_boor_id
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeCheckin",
+                        DataType = DbType.DateTime,
+                        Value = borde.borde_checkin
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeCheckout",
+                        DataType = DbType.DateTime,
+                        Value = borde.borde_checkout
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeAdult",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_adults
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeKids",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_kids
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordePrice",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_price
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeExtra",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_extra
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeDiscount",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_discount
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeTax",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_tax
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeSubtotal",
+                        DataType = DbType.Decimal,
+                        Value = borde.borde_subtotal
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@bordeFaciId",
+                        DataType = DbType.Int32,
+                        Value = borde.borde_faci_id
+                    }
+                }
+            };
+
+            _adoContext.ExecuteNonQuery(model);
+            _adoContext.Dispose();
         }
 
         public void Remove(Booking_order_detail borde)
@@ -103,7 +241,7 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@bordeId",
                         DataType = DbType.Int32,
-                        Value = borde.Borde_id
+                        Value = borde.borde_id
                     }
                 }
             };

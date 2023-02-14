@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Realta.Domain.Entities
+namespace Realta.Contract.Models
 {
-    [Table("Booking_order_detail_extra")]
-    public class Booking_order_detail_extra
+    public class BoexDto
     {
-        [Key]
+        [Required(ErrorMessage = "Boex ID is Required")]
         public int boex_id { get; set; }
+
         public decimal? boex_price { get; set; }
         public Int16? boex_qty { get; set; }
         public decimal? boex_subtotal { get; set; }
         public string? boex_measure_unit { get; set; }
         public int? boex_borde_id { get; set; }
         public int? boex_prit_id { get; set; }
-
-
     }
 }

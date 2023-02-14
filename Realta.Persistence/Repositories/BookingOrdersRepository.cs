@@ -21,7 +21,7 @@ namespace Realta.Persistence.Repositories
         }
         public IEnumerable<Booking_orders> FindAllBookingOrders()
         {
-            IEnumerator<Booking_orders> dataSet = FindAll<Booking_orders>("SELECT  * From Booking.booking_orders");
+            IEnumerator<Booking_orders> dataSet = FindAll<Booking_orders>("SELECT * From Booking.booking_orders");
 
             while (dataSet.MoveNext())
             {

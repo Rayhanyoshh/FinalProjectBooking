@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-//using Realta.Contract.Model;
 using Realta.Domain.Base;
 using Realta.Domain.Entities;
 using Realta.Services.Abstraction;
 using Realta.Contract.Models;
-
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Realta.WebAPI.Controllers
