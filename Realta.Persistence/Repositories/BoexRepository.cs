@@ -136,14 +136,10 @@ namespace Realta.Persistence.Repositories
             SqlCommandModel model = new SqlCommandModel()
             {
                 CommandText = "INSERT INTO Booking.Booking_order_detail_extra (boex_price, boex_qty, boex_subtotal, boex_measure_unit, boex_borde_id, boex_prit_id) " +
-                              "VALUES (@boexPrice, @boexQty, @boexSubtotal, @boexMeasureUnit, @boexBordeId, @boexPritId)",
+                              "VALUES (@boexPrice, @boexQty, @boexSubtotal, @boexMeasureUnit, @boexBordeId, @boexPritId);" +
+                              " SELECT CAST(scope_identity() as int);",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
-                    new SqlCommandParameterModel() {
-                        ParameterName = "@boexId",
-                        DataType = DbType.Int32,
-                        Value = boex.boex_id
-                    },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexPrice",
                         DataType = DbType.Decimal,
@@ -177,7 +173,8 @@ namespace Realta.Persistence.Repositories
                 }
             };
 
-            _adoContext.ExecuteNonQuery(model);
+            boex.boex_id = _adoContext.ExecuteScalar<int>(model);
+
             _adoContext.Dispose();
         }
 

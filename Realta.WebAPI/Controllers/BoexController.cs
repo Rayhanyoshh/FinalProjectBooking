@@ -78,7 +78,6 @@ namespace Realta.WebAPI.Controllers
 
             var boex = new Booking_order_detail_extra
             {
-                boex_id = boexDto.boex_id,
                 boex_price = boexDto.boex_price,
                 boex_qty = boexDto.boex_qty,
                 boex_subtotal = boexDto.boex_subtotal,
@@ -92,9 +91,9 @@ namespace Realta.WebAPI.Controllers
 
 
             //forward to show result
-            //var res = _repositoryManager.bookingOrdersRepository.FindLastBoorID().ToList();
-            //return Ok(res);
-            return CreatedAtRoute("GetBoexByID", new { id = boexDto.boex_id }, boexDto);
+            var res = _repositoryManager.boexRepository.FindBoexById(boex.boex_id);
+            
+            return CreatedAtRoute("GetBoexID", new { id = boex.boex_id }, res);
 
         }
 
@@ -122,7 +121,7 @@ namespace Realta.WebAPI.Controllers
             _repositoryManager.boexRepository.Edit(boex);
 
             // Forward to show result
-            return CreatedAtRoute("GetBoexByID", new { id = boexDto.boex_id }, new BoexDto
+            return CreatedAtRoute("GetBoexID", new { id = boexDto.boex_id }, new BoexDto
             {
                 boex_id = boex.boex_id,
                 boex_price = boex.boex_price,

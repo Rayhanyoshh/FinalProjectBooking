@@ -27,7 +27,7 @@ namespace Realta.WebAPI.Controllers
 
             var bordeDto = borde.Select(r => new BordeDto
             {
-                borde_id = r.borde_id,
+                borde_id = r.borde_id,  
                 borde_boor_id = r.borde_boor_id,
                 borde_checkin = r.borde_checkin,
                 borde_checkout = r.borde_checkout,
