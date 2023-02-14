@@ -66,7 +66,7 @@ namespace Realta.Persistence.Base
             {
                 if (_socoRepository == null)
                 {
-                    _socoRepository = new (_adoContext);
+                    _socoRepository = new SocoRepository(_adoContext);
                 }
                 return _socoRepository;
             }
