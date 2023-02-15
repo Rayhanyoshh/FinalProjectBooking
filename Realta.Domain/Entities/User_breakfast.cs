@@ -13,7 +13,9 @@ namespace Realta.Domain.Entities
     public  class User_breakfast
     {
         [Key]
-        public int Usbr_borde_id { get; set; }
-        public int Usbr_modified_date { get; set; }
+        public int usbr_borde_id { get; set; }
+        public int usbr_modified_date { get; set; }
+        public int usbr_total_vacant { get; set; }
+
     }
 }

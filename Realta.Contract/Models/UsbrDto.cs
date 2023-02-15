@@ -10,8 +10,10 @@ namespace Realta.Contract.Models
     public class UsbrDto
     {
         [Required(ErrorMessage = "Usbr_borde_id is Required")]
-        public int Usbr_borde_id { get; set; }
+        public int usbr_borde_id { get; set; }
         [Required(ErrorMessage = "Usbr_modified_date is Required")]
-        public int Usbr_modified_date { get; set; }
+        public int usbr_modified_date { get; set; }
+        [Required(ErrorMessage = "usbr_total_vacant is Required")]
+        public int usbr_total_vacant { get; set; }
     }
 }

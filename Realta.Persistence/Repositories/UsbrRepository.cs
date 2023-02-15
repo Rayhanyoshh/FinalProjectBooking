@@ -23,13 +23,27 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "UPDATE Booking.User_breakfast SET usbr_borde_id = @usbrBordeId,usbr_spof_id = @usbrSpofId WHERE usbr_id = @usbrId;",
+                CommandText = "UPDATE Booking.user_breakfast " +
+                " SET " +
+                " usbr_modified_date = @usbr_modified_date,"+
+                " usbr_total_vacant = @usbr_total_vacant" +
+                " WHERE usbr_borde_id = @usbr_borde_id",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
-                        ParameterName = "@usbrBorde_id",
+                        ParameterName = "@usbr_borde_id",
                         DataType = DbType.Int32,
-                        Value = usbr.Usbr_borde_id
+                        Value = usbr.usbr_borde_id
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@usbr_modified_date",
+                        DataType = DbType.DateTime,
+                        Value = usbr.usbr_modified_date
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@usbr_total_vacant",
+                        DataType = DbType.Int16,
+                        Value = usbr.usbr_total_vacant
                     }
                 }
             };
@@ -77,11 +91,11 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "select * from Booking.User_breakfast where usbr_id=@usbrId order by usbr_id asc;",
+                CommandText = "select * from Booking.User_breakfast where usbr_borde_id=@usbr_borde_id;",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
-                        ParameterName = "@usbrId",
+                        ParameterName = "@usbr_borde_id",
                         DataType = DbType.Int32,
                         Value = id
                     }
@@ -105,20 +119,29 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "INSERT INTO Booking.User_breakfast (usbr_borde_id, usbr_spof_id) VALUES(@usbrBordeId, @usbrSpofId);" +
-                " SELECT CAST(scope_identity() as int);",
+                CommandText = "INSERT INTO Booking.user_breakfast (usbr_borde_id, usbr_modified_date, usbr_total_vacant) " +
+                " VALUES (@usbr_borde_id, @usbr_modified_date, @usbr_total_vacant);",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
-                        ParameterName = "@usbrBordeId",
+                        ParameterName = "@usbr_borde_id",
                         DataType = DbType.Int32,
-                        Value = usbr.Usbr_borde_id
+                        Value = usbr.usbr_borde_id
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@usbr_modified_date",
+                        DataType = DbType.DateTime,
+                        Value = usbr.usbr_modified_date
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@usbr_total_vacant",
+                        DataType = DbType.Int16,
+                        Value = usbr.usbr_total_vacant
                     }
                 }
             };
 
-            usbr.Usbr_borde_id = _adoContext.ExecuteScalar<int>(model);
-
+            _adoContext.ExecuteNonQuery(model);
             _adoContext.Dispose();
         }
 
@@ -126,13 +149,19 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "DELETE FROM Booking.User_breakfast WHERE usbr_id = @usbrId;",
+                CommandText = "DELETE FROM Booking.user_breakfast" +
+                "WHERE usbr_modified_date=@usbr_modified_date AND usbr_borde_id=@usbr_borde_id",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
-                        ParameterName = "@usbrId",
+                        ParameterName = "@usbr_borde_id",
                         DataType = DbType.Int32,
-                        Value = usbr.Usbr_borde_id
+                        Value = usbr.usbr_borde_id
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@usbr_modified_date",
+                        DataType = DbType.DateTime,
+                        Value = usbr.usbr_modified_date
                     }
                 }
             };

@@ -226,7 +226,6 @@ namespace Realta.Persistence.Repositories
                     }
                 }
             };
-
             _adoContext.ExecuteNonQuery(model);
             _adoContext.Dispose();
         }

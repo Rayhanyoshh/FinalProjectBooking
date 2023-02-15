@@ -27,7 +27,7 @@ namespace Realta.WebAPI.Controllers
             var soco = _repositoryManager.socoRepository.FindAllSoco().ToList();
 
             var socoDto = soco.Select(r => new SocoDto
-            {
+            {                                       
                 soco_id = r.soco_id,
                 soco_borde_id = r.soco_borde_id,
                 soco_spof_id = r.soco_spof_id
