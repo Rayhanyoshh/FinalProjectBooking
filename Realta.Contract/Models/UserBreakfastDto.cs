@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Realta.Contract.Models
 {
-    public class UsbrDto
+    public class UserBreakfastDto
     {
         [Required(ErrorMessage = "Usbr_borde_id is Required")]
         public int usbr_borde_id { get; set; }

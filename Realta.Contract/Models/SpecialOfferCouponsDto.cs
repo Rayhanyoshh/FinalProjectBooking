@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Realta.Contract.Models
 {
-    public class SocoDto
+    public class SpecialOfferCouponsDto
     {
         public int soco_id { get; set; }
         public int soco_borde_id { get; set; }

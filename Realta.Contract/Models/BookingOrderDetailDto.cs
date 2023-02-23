@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Realta.Contract.Models
 {
-    public class BordeDto
+    public class BookingOrderDetailDto
     {
         [Required(ErrorMessage = "Borde ID is Required")]
         public int borde_id { get; set; }

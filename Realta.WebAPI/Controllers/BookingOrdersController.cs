@@ -99,7 +99,7 @@ namespace Realta.WebAPI.Controllers
                 return BadRequest("Region object is null");
             }
 
-            var boor = new Booking_orders
+            var boor = new BookingOrders
             {
                 boor_id = bookingOrdersDto.boor_id,
                 boor_order_number = bookingOrdersDto.boor_order_number,
@@ -142,7 +142,7 @@ namespace Realta.WebAPI.Controllers
                 _logger.LogError("RegionDto object sent from client is null");
                 return BadRequest("RegionDto object is null");
             }
-            var boor = new Booking_orders
+            var boor = new BookingOrders
             {
                 boor_id = id,
                 boor_order_number = bookingOrdersDto.boor_order_number,

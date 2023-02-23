@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Realta.Contract.Models
 {
-    public class BoexDto
+    public class BookingOrderDetailExtraDtoDto
     {
         [Required(ErrorMessage = "Boex ID is Required")]
         public int boex_id { get; set; }

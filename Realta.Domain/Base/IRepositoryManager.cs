@@ -11,12 +11,12 @@ namespace Realta.Domain.Base
     {
         IBookingOrdersRepository bookingOrdersRepository { get; }
 
-        IBordeRepository bordeRepository { get; }
+        IBookingOrderDetailRepo bordeRepository { get; }
 
-        IBoexRepository boexRepository { get; }
+        IBookingOrderDetailExtraRepo boexRepository { get; }
 
-        ISocoRepository socoRepository { get; }
-        ISpofRepository spofRepository { get; }
-        IUsbrRepository usbrRepository { get; }
+        ISpecialOfferCouponsRepo socoRepository { get; }
+        ISpecialOffersRepo spofRepository { get; }
+        IUserBreakfastRepo usbrRepository { get; }
     }
 }

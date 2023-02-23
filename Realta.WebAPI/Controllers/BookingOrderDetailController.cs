@@ -9,12 +9,12 @@ namespace Realta.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BordeController : ControllerBase
+    public class BookingOrderDetailController : ControllerBase
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _logger;
 
-        public BordeController(IRepositoryManager repositoryManager, ILoggerManager logger)
+        public BookingOrderDetailController(IRepositoryManager repositoryManager, ILoggerManager logger)
         {
             _repositoryManager = repositoryManager;
             _logger = logger;
@@ -25,7 +25,7 @@ namespace Realta.WebAPI.Controllers
         {
             var borde = _repositoryManager.bordeRepository.FindAllBorde().ToList();
 
-            var bordeDto = borde.Select(r => new BordeDto
+            var bordeDto = borde.Select(r => new BookingOrderDetailDto
             {
                 borde_id = r.borde_id,  
                 borde_boor_id = r.borde_boor_id,
@@ -56,7 +56,7 @@ namespace Realta.WebAPI.Controllers
             }
 
 
-            var bordeDto = new BordeDto
+            var bordeDto = new BookingOrderDetailDto
             {
                 borde_id = borde.borde_id,
                 borde_boor_id = borde.borde_boor_id,
@@ -77,7 +77,7 @@ namespace Realta.WebAPI.Controllers
 
         // POST api/<BordeController>
         [HttpPost]
-            public IActionResult CreateBorde([FromBody] BordeDto bordeDto)
+            public IActionResult CreateBorde([FromBody] BookingOrderDetailDto bordeDto)
             {
                 // Prevent RegionDto from null
                 if (bordeDto == null)
@@ -86,7 +86,7 @@ namespace Realta.WebAPI.Controllers
                     return BadRequest("Borde object is null");
                 }
 
-                var borde = new Booking_order_detail
+                var borde = new BookingOrderDetail
                 {
                     borde_id = bordeDto.borde_id,
                     borde_boor_id = bordeDto.borde_boor_id,
@@ -115,7 +115,7 @@ namespace Realta.WebAPI.Controllers
 
         // PUT api/<BordeController>/5
         [HttpPut("{id}")]
-        public IActionResult UpdateBorde(int id, [FromBody] BordeDto bordeDto)
+        public IActionResult UpdateBorde(int id, [FromBody] BookingOrderDetailDto bordeDto)
         {
             //  Prevent regionDto from null
             if (bordeDto == null)
@@ -123,7 +123,7 @@ namespace Realta.WebAPI.Controllers
                 _logger.LogError("BordeDto object sent from client is null");
                 return BadRequest("Borde object is null");
             }
-            var borde = new Booking_order_detail
+            var borde = new BookingOrderDetail
             {
                 borde_id = id,
                 borde_boor_id = bordeDto.borde_boor_id,
@@ -142,7 +142,7 @@ namespace Realta.WebAPI.Controllers
             _repositoryManager.bordeRepository.Edit(borde);
 
             // Forward to show result
-            return CreatedAtRoute("GetBoorByID", new { id = bordeDto.borde_id }, new BordeDto
+            return CreatedAtRoute("GetBoorByID", new { id = bordeDto.borde_id }, new BookingOrderDetailDto
             {
                 borde_id = borde.borde_id,
                 borde_boor_id = borde.borde_boor_id,

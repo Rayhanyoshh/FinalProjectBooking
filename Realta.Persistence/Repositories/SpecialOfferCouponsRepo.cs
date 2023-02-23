@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace Realta.Persistence.Repositories
 {
-    internal class SocoRepository : RepositoryBase<Special_offer_coupons>, ISocoRepository
+    internal class SpecialOfferCouponsRepo : RepositoryBase<SpecialOfferCoupons>, ISpecialOfferCouponsRepo
 
     {
-        public SocoRepository(AdoDbContext AdoContext) : base(AdoContext)
+        public SpecialOfferCouponsRepo(AdoDbContext AdoContext) : base(AdoContext)
         {
         }
 
-        public void Edit(Special_offer_coupons soco)
+        public void Edit(SpecialOfferCoupons soco)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -48,9 +48,9 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public IEnumerable<Special_offer_coupons> FindAllSoco()
+        public IEnumerable<SpecialOfferCoupons> FindAllSoco()
         {
-            IEnumerator<Special_offer_coupons> dataSet = FindAll<Special_offer_coupons>("select * from Booking.Special_offer_coupons");
+            IEnumerator<SpecialOfferCoupons> dataSet = FindAll<SpecialOfferCoupons>("select * from Booking.Special_offer_coupons");
 
             while (dataSet.MoveNext())
             {
@@ -59,7 +59,7 @@ namespace Realta.Persistence.Repositories
             }
         }
 
-        public async Task<IEnumerable<Special_offer_coupons>> FindAllSocoAsync()
+        public async Task<IEnumerable<SpecialOfferCoupons>> FindAllSocoAsync()
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -69,9 +69,9 @@ namespace Realta.Persistence.Repositories
 
             };
 
-            IAsyncEnumerator<Special_offer_coupons> dataSet = FindAllAsync<Special_offer_coupons>(model);
+            IAsyncEnumerator<SpecialOfferCoupons> dataSet = FindAllAsync<SpecialOfferCoupons>(model);
 
-            var item = new List<Special_offer_coupons>();
+            var item = new List<SpecialOfferCoupons>();
 
 
             while (await dataSet.MoveNextAsync())
@@ -83,7 +83,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public Special_offer_coupons FindSocoById(int id)
+        public SpecialOfferCoupons FindSocoById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -98,9 +98,9 @@ namespace Realta.Persistence.Repositories
                 }
             };
 
-            var dataSet = FindByCondition<Special_offer_coupons>(model);
+            var dataSet = FindByCondition<SpecialOfferCoupons>(model);
 
-            Special_offer_coupons? item = dataSet.Current;
+            SpecialOfferCoupons? item = dataSet.Current;
 
             while (dataSet.MoveNext())
             {
@@ -111,7 +111,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public void Insert(Special_offer_coupons soco)
+        public void Insert(SpecialOfferCoupons soco)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -137,7 +137,7 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public void Remove(Special_offer_coupons soco)
+        public void Remove(SpecialOfferCoupons soco)
         {
             SqlCommandModel model = new SqlCommandModel()
             {

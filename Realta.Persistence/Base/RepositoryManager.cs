@@ -14,11 +14,11 @@ namespace Realta.Persistence.Base
     {
         private AdoDbContext _adoContext;
         private IBookingOrdersRepository _bookingOrdersRepository;
-        private IBordeRepository _bordeRepository;
-        private IBoexRepository _boexRepository;
-        private ISocoRepository _socoRepository;
-        private ISpofRepository _spofRepository;
-        private IUsbrRepository _usbrRepository;
+        private IBookingOrderDetailRepo _bordeRepository;
+        private IBookingOrderDetailExtraRepo _boexRepository;
+        private ISpecialOfferCouponsRepo _socoRepository;
+        private ISpecialOffersRepo _spofRepository;
+        private IUserBreakfastRepo _usbrRepository;
 
 
         public RepositoryManager(AdoDbContext adoContext)
@@ -33,67 +33,67 @@ namespace Realta.Persistence.Base
             {
                 if (_bookingOrdersRepository == null)
                 {
-                    _bookingOrdersRepository = new BookingOrdersRepository(_adoContext);
+                    _bookingOrdersRepository = new BookingOrdersRepo(_adoContext);
                 }
                 return _bookingOrdersRepository;
             }
         }
 
-        public IBordeRepository bordeRepository
+        public IBookingOrderDetailRepo bordeRepository
         {
             get
             {
                 if (_bordeRepository == null)
                 {
-                    _bordeRepository = new BordeRepository (_adoContext);
+                    _bordeRepository = new BookingOrderDetailrepo (_adoContext);
                 }
                 return _bordeRepository;
             }
         }
 
-        public IBoexRepository boexRepository
+        public IBookingOrderDetailExtraRepo boexRepository
         {
             get
             {
                 if (_boexRepository == null)
                 {
-                    _boexRepository = new BoexRepository (_adoContext);
+                    _boexRepository = new BookingOrderDetailExtraRepo (_adoContext);
                 }
                 return _boexRepository;
             }
         }
 
-        public ISocoRepository socoRepository
+        public ISpecialOfferCouponsRepo socoRepository
         {
             get
             {
                 if (_socoRepository == null)
                 {
-                    _socoRepository = new SocoRepository(_adoContext);
+                    _socoRepository = new SpecialOfferCouponsRepo(_adoContext);
                 }
                 return _socoRepository;
             }
         }
 
-        public ISpofRepository spofRepository
+        public ISpecialOffersRepo spofRepository
         {
             get
             {
                 if (_spofRepository == null)
                 {
-                    _spofRepository = new SpofRepository(_adoContext);
+                    _spofRepository = new SpecialOffersRepo(_adoContext);
                 }
                 return _spofRepository;
             }
         }
 
-        public IUsbrRepository usbrRepository 
+        public IUserBreakfastRepo usbrRepository 
         {
             get
             {
                 if(_usbrRepository==null)
                 {
-                    _usbrRepository = new UsbrRepository(_adoContext);
+                    _usbrRepository = new UserBreakfastRepo(_adoContext);
                 }
                 return _usbrRepository; 
             }

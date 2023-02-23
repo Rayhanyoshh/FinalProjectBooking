@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Realta.Domain.Entities
 {
     [Table("Booking_orders")]
-    public class Booking_orders
+    public class BookingOrders
     {
         [Key]
 

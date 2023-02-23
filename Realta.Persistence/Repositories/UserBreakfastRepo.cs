@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace Realta.Persistence.Repositories
 {
-    internal class UsbrRepository : RepositoryBase<User_breakfast>, IUsbrRepository
+    internal class UserBreakfastRepo : RepositoryBase<UserBreakfast>, IUserBreakfastRepo
 
     {
-        public UsbrRepository(AdoDbContext AdoContext) : base(AdoContext)
+        public UserBreakfastRepo(AdoDbContext AdoContext) : base(AdoContext)
         {
         }
 
-        public void Edit(User_breakfast usbr)
+        public void Edit(UserBreakfast usbr)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -52,9 +52,9 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public IEnumerable<User_breakfast> FindAllUsbr()
+        public IEnumerable<UserBreakfast> FindAllUsbr()
         {
-            IEnumerator<User_breakfast> dataSet = FindAll<User_breakfast>("select * from Booking.User_breakfast");
+            IEnumerator<UserBreakfast> dataSet = FindAll<UserBreakfast>("select * from Booking.User_breakfast");
 
             while (dataSet.MoveNext())
             {
@@ -63,7 +63,7 @@ namespace Realta.Persistence.Repositories
             }
         }
 
-        public async Task<IEnumerable<User_breakfast>> FindAllUsbrAsync()
+        public async Task<IEnumerable<UserBreakfast>> FindAllUsbrAsync()
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -73,9 +73,9 @@ namespace Realta.Persistence.Repositories
 
             };
 
-            IAsyncEnumerator<User_breakfast> dataSet = FindAllAsync<User_breakfast>(model);
+            IAsyncEnumerator<UserBreakfast> dataSet = FindAllAsync<UserBreakfast>(model);
 
-            var item = new List<User_breakfast>();
+            var item = new List<UserBreakfast>();
 
 
             while (await dataSet.MoveNextAsync())
@@ -87,7 +87,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public User_breakfast FindUsbrById(int id)
+        public UserBreakfast FindUsbrById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -102,9 +102,9 @@ namespace Realta.Persistence.Repositories
                 }
             };
 
-            var dataSet = FindByCondition<User_breakfast>(model);
+            var dataSet = FindByCondition<UserBreakfast>(model);
 
-            User_breakfast? item = dataSet.Current;
+            UserBreakfast? item = dataSet.Current;
 
             while (dataSet.MoveNext())
             {
@@ -115,7 +115,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public void Insert(User_breakfast usbr)
+        public void Insert(UserBreakfast usbr)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -145,7 +145,7 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public void Remove(User_breakfast usbr)
+        public void Remove(UserBreakfast usbr)
         {
             SqlCommandModel model = new SqlCommandModel()
             {

@@ -13,12 +13,12 @@ namespace Realta.WebAPI.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class SpofController : ControllerBase
+    public class SpecialoffersController : ControllerBase
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _loggerManager;
 
-        public SpofController(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
+        public SpecialoffersController(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager;
@@ -30,7 +30,7 @@ namespace Realta.WebAPI.Controllers
         {
             var spof = _repositoryManager.spofRepository.FindAllSpof().ToList();
 
-            var spofDto = spof.Select(r => new SpofDto
+            var spofDto = spof.Select(r => new SpecialOffersDto
             {
                 spof_id=r.spof_id,
                 spof_name=r.spof_name,
@@ -58,7 +58,7 @@ namespace Realta.WebAPI.Controllers
                 return BadRequest("Spof object is not found");
             }
 
-            var spofDto = new SpofDto
+            var spofDto = new SpecialOffersDto
             {
                 spof_id=spof.spof_id,
                 spof_name=spof.spof_name,
@@ -76,7 +76,7 @@ namespace Realta.WebAPI.Controllers
 
         // POST api/<SpofController>
         [HttpPost]
-        public IActionResult CreateSpof([FromBody] SpofDto spofDto)
+        public IActionResult CreateSpof([FromBody] SpecialOffersDto spofDto)
         {
 
             if (spofDto == null)
@@ -85,7 +85,7 @@ namespace Realta.WebAPI.Controllers
                 return BadRequest("Soco object is not found");
             }
 
-            var spof = new Special_offers
+            var spof = new SpecialOffers
             {
                 spof_id = spofDto.spof_id,
                 spof_name = spofDto.spof_name,
@@ -112,7 +112,7 @@ namespace Realta.WebAPI.Controllers
 
         // PUT api/<SpofController>/5
         [HttpPut("{id}")]
-        public IActionResult UpdateSpof(int id, [FromBody] SpofDto spofDto)
+        public IActionResult UpdateSpof(int id, [FromBody] SpecialOffersDto spofDto)
         {
 
 
@@ -133,7 +133,7 @@ namespace Realta.WebAPI.Controllers
             }
 
 
-            var spof = new Special_offers
+            var spof = new SpecialOffers
             {
                 spof_id = id,
                 spof_name = spofDto.spof_name,
@@ -150,7 +150,7 @@ namespace Realta.WebAPI.Controllers
             _repositoryManager.spofRepository.Edit(spof);
 
             // Forward to show result
-            return CreatedAtRoute("GetSpofID", new { id = spof.spof_id}, new SpofDto
+            return CreatedAtRoute("GetSpofID", new { id = spof.spof_id}, new SpecialOffersDto
             {
                 spof_id = spof.spof_id,
                 spof_name = spof.spof_name,

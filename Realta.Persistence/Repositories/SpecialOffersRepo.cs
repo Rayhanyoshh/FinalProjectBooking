@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace Realta.Persistence.Repositories
 {
-    internal class SpofRepository : RepositoryBase<Special_offers>,ISpofRepository
+    internal class SpecialOffersRepo : RepositoryBase<SpecialOffers>,ISpecialOffersRepo
     {
-        public SpofRepository(AdoDbContext adoContext) : base(adoContext)
+        public SpecialOffersRepo(AdoDbContext adoContext) : base(adoContext)
         {
         }
 
-        public void Edit(Special_offers spof)
+        public void Edit(SpecialOffers spof)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -102,9 +102,9 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public IEnumerable<Special_offers> FindAllSpof()
+        public IEnumerable<SpecialOffers> FindAllSpof()
         {
-            IEnumerator<Special_offers> enumerator = FindAll<Special_offers>("select * from Booking.Special_offers");
+            IEnumerator<SpecialOffers> enumerator = FindAll<SpecialOffers>("select * from Booking.Special_offers");
             while (enumerator.MoveNext())
             {
                 var data = enumerator.Current;
@@ -112,7 +112,7 @@ namespace Realta.Persistence.Repositories
             }
         }
 
-        public async Task<IEnumerable<Special_offers>> FindAllSpofAsync()
+        public async Task<IEnumerable<SpecialOffers>> FindAllSpofAsync()
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -120,8 +120,8 @@ namespace Realta.Persistence.Repositories
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] { }
             };
-            IAsyncEnumerator<Special_offers> dataSet = FindAllAsync<Special_offers>(model);
-            var item = new List<Special_offers>();
+            IAsyncEnumerator<SpecialOffers> dataSet = FindAllAsync<SpecialOffers>(model);
+            var item = new List<SpecialOffers>();
             while (await dataSet.MoveNextAsync())
             {
                 item.Add(dataSet.Current);
@@ -129,7 +129,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public Special_offers FindSpofById(int id)
+        public SpecialOffers FindSpofById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -143,9 +143,9 @@ namespace Realta.Persistence.Repositories
                       Value=id
                   }}
             };
-            var dataSet = FindByCondition<Special_offers>(model);
+            var dataSet = FindByCondition<SpecialOffers>(model);
 
-            Special_offers? item = dataSet.Current;
+            SpecialOffers? item = dataSet.Current;
 
             while (dataSet.MoveNext())
             {
@@ -155,7 +155,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public void Insert(Special_offers spof)
+        public void Insert(SpecialOffers spof)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -253,7 +253,7 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public void Remove(Special_offers spof)
+        public void Remove(SpecialOffers spof)
         {
             SqlCommandModel model = new SqlCommandModel()
             {

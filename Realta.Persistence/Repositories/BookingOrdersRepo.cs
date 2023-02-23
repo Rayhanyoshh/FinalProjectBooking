@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 
 namespace Realta.Persistence.Repositories
 {
-    internal class BookingOrdersRepository : RepositoryBase<Booking_orders>, IBookingOrdersRepository
+    internal class BookingOrdersRepo : RepositoryBase<BookingOrders>, IBookingOrdersRepository
 
 
     {
-        public BookingOrdersRepository (AdoDbContext AdoContext) : base(AdoContext)
+        public BookingOrdersRepo (AdoDbContext AdoContext) : base(AdoContext)
         {
         }
-        public IEnumerable<Booking_orders> FindAllBookingOrders()
+        public IEnumerable<BookingOrders> FindAllBookingOrders()
         {
-            IEnumerator<Booking_orders> dataSet = FindAll<Booking_orders>("SELECT * From Booking.booking_orders");
+            IEnumerator<BookingOrders> dataSet = FindAll<BookingOrders>("SELECT * From Booking.booking_orders");
 
             while (dataSet.MoveNext())
             {
@@ -31,7 +31,7 @@ namespace Realta.Persistence.Repositories
         }
 
 
-        public void Edit(Booking_orders booking_Orders)
+        public void Edit(BookingOrders booking_Orders)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -135,7 +135,7 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public async Task<IEnumerable<Booking_orders>> FindAllBookingOrdersAsync()
+        public async Task<IEnumerable<BookingOrders>> FindAllBookingOrdersAsync()
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -145,9 +145,9 @@ namespace Realta.Persistence.Repositories
 
             };
 
-            IAsyncEnumerator<Booking_orders> dataSet = FindAllAsync<Booking_orders>(model);
+            IAsyncEnumerator<BookingOrders> dataSet = FindAllAsync<BookingOrders>(model);
 
-            var item = new List<Booking_orders>();
+            var item = new List<BookingOrders>();
 
 
             while (await dataSet.MoveNextAsync())
@@ -160,7 +160,7 @@ namespace Realta.Persistence.Repositories
         }
 
 
-        public Booking_orders FindBookingOrdersById(int id)
+        public BookingOrders FindBookingOrdersById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -175,9 +175,9 @@ namespace Realta.Persistence.Repositories
                 }
             };
 
-            var dataSet = FindByCondition<Booking_orders>(model);
+            var dataSet = FindByCondition<BookingOrders>(model);
 
-            Booking_orders? item = dataSet.Current;
+            BookingOrders? item = dataSet.Current;
 
             while (dataSet.MoveNext())
             {
@@ -189,7 +189,7 @@ namespace Realta.Persistence.Repositories
         }
 
 
-        public void Insert(Booking_orders booking_Orders)
+        public void Insert(BookingOrders booking_Orders)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -294,7 +294,7 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public void Remove(Booking_orders booking_Orders)
+        public void Remove(BookingOrders booking_Orders)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -313,9 +313,9 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public IEnumerable<Booking_orders> FindLastBoorID()
+        public IEnumerable<BookingOrders> FindLastBoorID()
         {
-            IEnumerator<Booking_orders> dataset = FindAll<Booking_orders>("SELECT * FROM Booking.Booking_orders where boor_id =(SELECT IDENT_CURRENT('Booking.booking_orders'));");
+            IEnumerator<BookingOrders> dataset = FindAll<BookingOrders>("SELECT * FROM Booking.Booking_orders where boor_id =(SELECT IDENT_CURRENT('Booking.booking_orders'));");
             while (dataset.MoveNext())
             {
                 var data = dataset.Current;

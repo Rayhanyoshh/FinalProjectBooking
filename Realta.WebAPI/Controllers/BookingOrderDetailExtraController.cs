@@ -9,12 +9,12 @@ namespace Realta.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BoexController : ControllerBase
+    public class BookingOrderDetailExtraController : ControllerBase
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _loggerManager;
 
-        public BoexController(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
+        public BookingOrderDetailExtraController(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager;
@@ -25,7 +25,7 @@ namespace Realta.WebAPI.Controllers
         {
             var boex = _repositoryManager.boexRepository.FindAllBoex().ToList();
 
-            var boexDto = boex.Select(r => new BoexDto
+            var boexDto = boex.Select(r => new BookingOrderDetailExtraDtoDto
             {
                 boex_id = r.boex_id,
                 boex_price = r.boex_price,
@@ -51,7 +51,7 @@ namespace Realta.WebAPI.Controllers
             }
 
 
-            var boexDto = new BoexDto
+            var boexDto = new BookingOrderDetailExtraDtoDto
             {
                 boex_id = boex.boex_id,
                 boex_price = boex.boex_price,
@@ -67,7 +67,7 @@ namespace Realta.WebAPI.Controllers
 
         // POST api/<BoexController>
         [HttpPost]
-        public IActionResult CreateBoex([FromBody] BoexDto boexDto)
+        public IActionResult CreateBoex([FromBody] BookingOrderDetailExtraDtoDto boexDto)
         {
 
             if (boexDto == null)
@@ -76,7 +76,7 @@ namespace Realta.WebAPI.Controllers
                 return BadRequest("Boex object is null");
             }
 
-            var boex = new Booking_order_detail_extra
+            var boex = new BookingOrderDetailExtra
             {
                 boex_price = boexDto.boex_price,
                 boex_qty = boexDto.boex_qty,
@@ -99,7 +99,7 @@ namespace Realta.WebAPI.Controllers
 
         // PUT api/<BoexController>/5
         [HttpPut("{id}")]
-        public IActionResult UpdateBoex(int id, [FromBody] BoexDto boexDto)
+        public IActionResult UpdateBoex(int id, [FromBody] BookingOrderDetailExtraDtoDto boexDto)
         {
             //  Prevent regionDto from null
             if (boexDto == null)
@@ -107,7 +107,7 @@ namespace Realta.WebAPI.Controllers
                 _loggerManager.LogError("BoexDto object sent from client is null");
                 return BadRequest("Boex object is null");
             }
-            var boex = new Booking_order_detail_extra
+            var boex = new BookingOrderDetailExtra
             {
                 boex_id = id,
                 boex_price = boexDto.boex_price,
@@ -121,7 +121,7 @@ namespace Realta.WebAPI.Controllers
             _repositoryManager.boexRepository.Edit(boex);
 
             // Forward to show result
-            return CreatedAtRoute("GetBoexID", new { id = boexDto.boex_id }, new BoexDto
+            return CreatedAtRoute("GetBoexID", new { id = boexDto.boex_id }, new BookingOrderDetailExtraDtoDto
             {
                 boex_id = boex.boex_id,
                 boex_price = boex.boex_price,

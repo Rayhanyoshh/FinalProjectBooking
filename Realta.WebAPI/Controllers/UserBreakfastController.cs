@@ -10,12 +10,12 @@ namespace Realta.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsbrController : ControllerBase
+    public class UserBreakfastController : ControllerBase
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _loggerManager;
 
-        public UsbrController(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
+        public UserBreakfastController(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager;
@@ -27,7 +27,7 @@ namespace Realta.WebAPI.Controllers
         public IActionResult Get()
         {
             var usbr = _repositoryManager.usbrRepository.FindAllUsbr();
-            var usbrDto = usbr.Select(x => new UsbrDto
+            var usbrDto = usbr.Select(x => new UserBreakfastDto
             {
                 usbr_borde_id=x.usbr_borde_id,
                 usbr_modified_date=x.usbr_modified_date,
@@ -46,7 +46,7 @@ namespace Realta.WebAPI.Controllers
                 _loggerManager.LogError("soco object sent from client is null");
                 return BadRequest("object is null");
             }
-            var usbrDto = new UsbrDto
+            var usbrDto = new UserBreakfastDto
             {
                 usbr_borde_id = usbr.usbr_borde_id,
                 usbr_modified_date = usbr.usbr_modified_date,
@@ -57,14 +57,14 @@ namespace Realta.WebAPI.Controllers
 
         // POST api/<UsbrController>
         [HttpPost]
-        public IActionResult CreateUsbr([FromBody] UsbrDto usbrDto)
+        public IActionResult CreateUsbr([FromBody] UserBreakfastDto usbrDto)
         {
             if (usbrDto == null)
             {
                 _loggerManager.LogError("soco object sent from client is null");
                 return BadRequest("object is null");
             }
-            var usbr = new User_breakfast
+            var usbr = new UserBreakfast
             {
                 usbr_borde_id = usbrDto.usbr_borde_id,
                 usbr_modified_date = usbrDto.usbr_modified_date,

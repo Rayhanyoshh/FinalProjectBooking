@@ -9,12 +9,12 @@ namespace Realta.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SocoController : ControllerBase
+    public class SpecialOfferCouponsController : ControllerBase
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _loggerManager;
 
-        public SocoController(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
+        public SpecialOfferCouponsController(IRepositoryManager repositoryManager, ILoggerManager loggerManager)
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager;
@@ -26,7 +26,7 @@ namespace Realta.WebAPI.Controllers
         {
             var soco = _repositoryManager.socoRepository.FindAllSoco().ToList();
 
-            var socoDto = soco.Select(r => new SocoDto
+            var socoDto = soco.Select(r => new SpecialOfferCoupons
             {                                       
                 soco_id = r.soco_id,
                 soco_borde_id = r.soco_borde_id,
@@ -48,7 +48,7 @@ namespace Realta.WebAPI.Controllers
                 return BadRequest("Soco object is null");
             }
 
-            var socoDto = new SocoDto
+            var socoDto = new Contract.Models.SpecialOfferCouponsDto
             {
                 soco_id = soco.soco_id,
                 soco_borde_id = soco.soco_borde_id,
@@ -60,7 +60,7 @@ namespace Realta.WebAPI.Controllers
 
         // POST api/<SocoController>
         [HttpPost]
-        public IActionResult CreateSoco([FromBody] SocoDto socoDto)
+        public IActionResult CreateSoco([FromBody] Contract.Models.SpecialOfferCouponsDto socoDto)
         {
 
             if (socoDto == null)
@@ -69,7 +69,7 @@ namespace Realta.WebAPI.Controllers
                 return BadRequest("Soco object is null");
             }
 
-            var soco = new Special_offer_coupons
+            var soco = new Domain.Entities.SpecialOfferCoupons
             {
                 soco_borde_id = socoDto.soco_borde_id,
                 soco_spof_id = socoDto.soco_spof_id
@@ -88,7 +88,7 @@ namespace Realta.WebAPI.Controllers
 
         // PUT api/<SocoController>/5
         [HttpPut("{id}")]
-        public IActionResult UpdateSoco(int id, [FromBody] SocoDto socoDto)
+        public IActionResult UpdateSoco(int id, [FromBody] Contract.Models.SpecialOfferCouponsDto socoDto)
         {
             //  Prevent regionDto from null
             if (socoDto == null)
@@ -96,7 +96,7 @@ namespace Realta.WebAPI.Controllers
                 _loggerManager.LogError("SocoDto object sent from client is null");
                 return BadRequest("Soco object is null");
             }
-            var soco = new Special_offer_coupons
+            var soco = new Domain.Entities.SpecialOfferCoupons
             {
                 soco_id = id,
                 soco_borde_id = socoDto.soco_borde_id,
@@ -106,7 +106,7 @@ namespace Realta.WebAPI.Controllers
             _repositoryManager.socoRepository.Edit(soco);
 
             // Forward to show result
-            return CreatedAtRoute("GetSocoID", new { id = soco.soco_id }, new SocoDto
+            return base.CreatedAtRoute("GetSocoID", new { id = soco.soco_id }, new Contract.Models.SpecialOfferCouponsDto
             {
                 soco_id = soco.soco_id,
                 soco_borde_id = soco.soco_borde_id,

@@ -9,12 +9,12 @@ namespace Realta.Domain.Repositories
 {
     public interface IBookingOrdersRepository
     {
-        IEnumerable<Booking_orders> FindAllBookingOrders();
-        Task<IEnumerable<Booking_orders>> FindAllBookingOrdersAsync();
-        Booking_orders FindBookingOrdersById(int id);
-        void Insert(Booking_orders booking_Orders);
-        void Edit(Booking_orders booking_Orders);
-        void Remove(Booking_orders booking_Orders);
-        IEnumerable<Booking_orders> FindLastBoorID();
+        IEnumerable<BookingOrders> FindAllBookingOrders();
+        Task<IEnumerable<BookingOrders>> FindAllBookingOrdersAsync();
+        BookingOrders FindBookingOrdersById(int id);
+        void Insert(BookingOrders booking_Orders);
+        void Edit(BookingOrders booking_Orders);
+        void Remove(BookingOrders booking_Orders);
+        IEnumerable<BookingOrders> FindLastBoorID();
     }
 }

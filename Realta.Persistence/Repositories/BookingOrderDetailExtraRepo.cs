@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace Realta.Persistence.Repositories
 {
-    internal class BoexRepository : RepositoryBase<Booking_order_detail_extra>, IBoexRepository
+    internal class BookingOrderDetailExtraRepo : RepositoryBase<BookingOrderDetailExtra>, IBookingOrderDetailExtraRepo
 
     {
-        public BoexRepository(AdoDbContext AdoContext) : base(AdoContext)
+        public BookingOrderDetailExtraRepo(AdoDbContext AdoContext) : base(AdoContext)
         {
         }
 
-        public void Edit(Booking_order_detail_extra boex)
+        public void Edit(BookingOrderDetailExtra boex)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -68,9 +68,9 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public IEnumerable<Booking_order_detail_extra> FindAllBoex()
+        public IEnumerable<BookingOrderDetailExtra> FindAllBoex()
         {
-            IEnumerator<Booking_order_detail_extra> dataSet = FindAll<Booking_order_detail_extra>("SELECT * From Booking.booking_order_detail_extra");
+            IEnumerator<BookingOrderDetailExtra> dataSet = FindAll<BookingOrderDetailExtra>("SELECT * From Booking.booking_order_detail_extra");
 
             while (dataSet.MoveNext())
             {
@@ -79,7 +79,7 @@ namespace Realta.Persistence.Repositories
             }
         }
 
-        public async Task<IEnumerable<Booking_order_detail_extra>> FindAllBoexAsync()
+        public async Task<IEnumerable<BookingOrderDetailExtra>> FindAllBoexAsync()
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -89,9 +89,9 @@ namespace Realta.Persistence.Repositories
 
             };
 
-            IAsyncEnumerator<Booking_order_detail_extra> dataSet = FindAllAsync<Booking_order_detail_extra>(model);
+            IAsyncEnumerator<BookingOrderDetailExtra> dataSet = FindAllAsync<BookingOrderDetailExtra>(model);
 
-            var item = new List<Booking_order_detail_extra>();
+            var item = new List<BookingOrderDetailExtra>();
 
 
             while (await dataSet.MoveNextAsync())
@@ -103,7 +103,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public Booking_order_detail_extra FindBoexById(int id)
+        public BookingOrderDetailExtra FindBoexById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -118,9 +118,9 @@ namespace Realta.Persistence.Repositories
                 }
             };
 
-            var dataSet = FindByCondition<Booking_order_detail_extra>(model);
+            var dataSet = FindByCondition<BookingOrderDetailExtra>(model);
 
-            Booking_order_detail_extra? item = dataSet.Current;
+            BookingOrderDetailExtra? item = dataSet.Current;
 
             while (dataSet.MoveNext())
             {
@@ -131,7 +131,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public void Insert(Booking_order_detail_extra boex)
+        public void Insert(BookingOrderDetailExtra boex)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -178,7 +178,7 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
         }
 
-        public void Remove(Booking_order_detail_extra boex)
+        public void Remove(BookingOrderDetailExtra boex)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -191,7 +191,10 @@ namespace Realta.Persistence.Repositories
                         Value = boex.boex_id
                     }
                 }
+               
             };
+            _adoContext.ExecuteNonQuery(model);
+            _adoContext.Dispose();
         }
     }
 }
