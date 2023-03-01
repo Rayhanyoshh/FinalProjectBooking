@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace Realta.Domain.Entities
 {
-    [Table("user_berakfast")]
+    [Table("user_breakfast")]
     public  class UserBreakfast
     {
         [Key]
-        public int usbr_borde_id { get; set; }
-        public int usbr_modified_date { get; set; }
-        public int usbr_total_vacant { get; set; }
+        public int UsbrBordeId { get; set; }        // UsbrBorde
+        [Key]
+        public DateTime UsbrModifiedDate { get; set; }
+        public short UsbrTotalVacant { get; set; }
 
     }
 }

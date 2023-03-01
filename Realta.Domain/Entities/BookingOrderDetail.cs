@@ -12,7 +12,7 @@ namespace Realta.Domain.Entities
     public class BookingOrderDetail
     {
         [Key]
-        public int borde_id { get; set; }
+        public int borde_id { get; set; } 
         public int borde_boor_id { get; set; }
         public DateTime borde_checkin { get; set; }
         public DateTime borde_checkout { get; set; }

@@ -39,9 +39,9 @@ namespace Realta.Persistence.Base
 
         public IAsyncEnumerator<T> FindAllAsync<T>(SqlCommandModel model)
         {
-            var dataT = _adoContext.ExecuteReaderAsync<T>(model);
+            var listOfData = _adoContext.ExecuteReaderAsync<T>(model);
             _adoContext.DisposeAsync();
-            return dataT;
+            return listOfData;
         }
 
         public IEnumerator<T> FindByCondition<T>(SqlCommandModel model)

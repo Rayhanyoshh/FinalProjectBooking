@@ -11,7 +11,7 @@ namespace Realta.Domain.Repositories
     {
         IEnumerable<UserBreakfast> FindAllUsbr();
         Task<IEnumerable<UserBreakfast>> FindAllUsbrAsync();
-        UserBreakfast FindUsbrById(int id);
+        UserBreakfast FindUsbrByIdDate(int usbr_borde_id, DateTime date);
         void Insert(UserBreakfast usbr);
         void Edit(UserBreakfast usbr);
         void Remove(UserBreakfast usbr);

@@ -25,37 +25,42 @@ namespace Realta.Persistence.Repositories
             {
                 CommandText = "UPDATE Booking.user_breakfast " +
                 " SET " +
-                " usbr_modified_date = @usbr_modified_date,"+
                 " usbr_total_vacant = @usbr_total_vacant" +
-                " WHERE usbr_borde_id = @usbr_borde_id",
+                " WHERE " +
+                " usbr_borde_id = @usbr_borde_id " +
+                " AND " +
+                " usbr_modified_date = @usbr_modified_date; ",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_borde_id",
                         DataType = DbType.Int32,
-                        Value = usbr.usbr_borde_id
+                        Value = usbr.UsbrBordeId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_modified_date",
-                        DataType = DbType.DateTime,
-                        Value = usbr.usbr_modified_date
+                        DataType = DbType.Date,
+                        Value = usbr.UsbrModifiedDate
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_total_vacant",
                         DataType = DbType.Int16,
-                        Value = usbr.usbr_total_vacant
+                        Value = usbr.UsbrTotalVacant
                     }
                 }
             };
-
             _adoContext.ExecuteNonQuery(model);
             _adoContext.Dispose();
         }
 
         public IEnumerable<UserBreakfast> FindAllUsbr()
-        {
-            IEnumerator<UserBreakfast> dataSet = FindAll<UserBreakfast>("select * from Booking.User_breakfast");
-
+        {                                                                                                                                       
+            IEnumerator<UserBreakfast> dataSet = FindAll<UserBreakfast>
+                ("SELECT" +
+                " usbr_borde_id AS UsbrBordeId," +
+                " usbr_modified_date AS UsbrModifiedDate, " +
+                " usbr_total_vacant AS UsbrTotalVacant " +
+                " FROM Booking.User_breakfast ");
             while (dataSet.MoveNext())
             {
                 var data = dataSet.Current;
@@ -67,51 +72,50 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "select * from Booking.User_breakfast;",
+                CommandText = "SELECT" +
+                " usbr_borde_id AS UsbrBordeID," +
+                " usbr_modified_date AS UsbrModifiedDate, " +
+                " usbr_total_vacant AS UsbrTotalVacant " +
+                " FROM Booking.User_breakfast ",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] { }
 
             };
-
             IAsyncEnumerator<UserBreakfast> dataSet = FindAllAsync<UserBreakfast>(model);
-
             var item = new List<UserBreakfast>();
-
-
             while (await dataSet.MoveNextAsync())
             {
                 item.Add(dataSet.Current);
             }
-
-
             return item;
         }
 
-        public UserBreakfast FindUsbrById(int id)
+        public UserBreakfast FindUsbrByIdDate(int id,DateTime date)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "select * from Booking.User_breakfast where usbr_borde_id=@usbr_borde_id;",
+                CommandText = "SELECT usbr_total_vacant AS UsbrTotalVacant" +
+                " FROM Booking.User_breakfast where usbr_borde_id=@usbr_borde_id and usbr_modified_date=@usbr_modified_date",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_borde_id",
                         DataType = DbType.Int32,
                         Value = id
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@usbr_modified_date",
+                        DataType = DbType.Date,
+                        Value = date
                     }
                 }
             };
-
             var dataSet = FindByCondition<UserBreakfast>(model);
-
             UserBreakfast? item = dataSet.Current;
-
             while (dataSet.MoveNext())
             {
                 item = dataSet.Current;
             }
-
-
             return item;
         }
 
@@ -126,21 +130,20 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_borde_id",
                         DataType = DbType.Int32,
-                        Value = usbr.usbr_borde_id
+                        Value = usbr.UsbrBordeId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_modified_date",
-                        DataType = DbType.DateTime,
-                        Value = usbr.usbr_modified_date
+                        DataType = DbType.Date,
+                        Value = usbr.UsbrModifiedDate
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_total_vacant",
                         DataType = DbType.Int16,
-                        Value = usbr.usbr_total_vacant
+                        Value = usbr.UsbrTotalVacant
                     }
                 }
             };
-
             _adoContext.ExecuteNonQuery(model);
             _adoContext.Dispose();
         }
@@ -156,15 +159,17 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_borde_id",
                         DataType = DbType.Int32,
-                        Value = usbr.usbr_borde_id
+                        Value = usbr.UsbrBordeId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@usbr_modified_date",
-                        DataType = DbType.DateTime,
-                        Value = usbr.usbr_modified_date
+                        DataType = DbType.Date,
+                        Value = usbr.UsbrModifiedDate
                     }
                 }
             };
+            _adoContext.ExecuteNonQuery(model);
+            _adoContext.Dispose();
         }
     }
 }
