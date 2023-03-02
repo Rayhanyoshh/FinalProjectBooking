@@ -21,7 +21,26 @@ namespace Realta.Persistence.Repositories
         }
         public IEnumerable<BookingOrders> FindAllBookingOrders()
         {
-            IEnumerator<BookingOrders> dataSet = FindAll<BookingOrders>("SELECT * From Booking.booking_orders");
+            IEnumerator<BookingOrders> dataSet = FindAll<BookingOrders>("SELECT " +
+                "boor_id AS BoorId, " +
+                "boor_order_number AS BoorOrderNumber, " +
+                "boor_order_date AS BoorOrderDate, " +
+                "boor_arrival_date AS BoorArrivalDate, " +
+                "boor_total_room AS BoorTotalRoom, " +
+                "boor_total_guest AS BoorTotalGuest, " +
+                "boor_discount AS BoorDiscount, " +
+                "boor_total_tax AS BoorTotalTax, " +
+                "boor_total_ammount AS BoorTotalAmmount, " +
+                "boor_down_payment AS BoorDownPayment, " +
+                "boor_pay_type AS BoorPayType, " +
+                "boor_is_paid AS BoorIsPaid, " +
+                "boor_type AS BoorType, " +
+                "boor_cardnumber AS BoorCardnumber, " +
+                "boor_member_type AS BoorMemberType, " +
+                "boor_status AS BoorStatus, " +
+                "boor_user_id AS BoorUserId, " +
+                "boor_hotel_id AS BoorHotelId" +
+                " FROM Booking.booking_orders;");
 
             while (dataSet.MoveNext())
             {
@@ -41,92 +60,92 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorId",
                         DataType = DbType.Int32,
-                        Value = booking_Orders.boor_id
+                        Value = booking_Orders.BoorId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorOrderNumber",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_order_number
+                        Value = booking_Orders.BoorOrderNumber
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorOrderDate",
                         DataType = DbType.DateTime,
-                        Value = booking_Orders.boor_order_date
+                        Value = booking_Orders.BoorOrderDate
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorArrivalDate",
                         DataType = DbType.DateTime,
-                        Value = booking_Orders.boor_arrival_date
+                        Value = booking_Orders.BoorArrivalDate
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorTotalRoom",
                         DataType = DbType.Int16,
-                        Value = booking_Orders.boor_total_room
+                        Value = booking_Orders.BoorTotalRoom
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorTotalGuest",
                         DataType = DbType.Int16,
-                        Value = booking_Orders.boor_total_guest
+                        Value = booking_Orders.BoorTotalGuest
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorDiscount",
                         DataType = DbType.Decimal,
-                        Value = booking_Orders.boor_discount
+                        Value = booking_Orders.BoorDiscount
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorTotalTax",
                         DataType = DbType.Decimal,
-                        Value = booking_Orders.boor_total_tax
+                        Value = booking_Orders.BoorTotalTax
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorTotalAmmount",
                         DataType = DbType.Decimal,
-                        Value = booking_Orders.boor_total_ammount
+                        Value = booking_Orders.BoorTotalAmmount
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorDownPayment",
                         DataType = DbType.Decimal,
-                        Value = booking_Orders.boor_down_payment
+                        Value = booking_Orders.BoorDownPayment
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorPayType",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_pay_type
+                        Value = booking_Orders.BoorPayType
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorIsPaid",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_is_paid
+                        Value = booking_Orders.BoorIsPaid
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorType",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_type
+                        Value = booking_Orders.BoorType
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorCardnumber",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_cardnumber
+                        Value = booking_Orders.BoorCardnumber
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorMemberType",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_member_type
+                        Value = booking_Orders.BoorMemberType
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorStatus",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_status
+                        Value = booking_Orders.BoorStatus
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorUserId",
                         DataType = DbType.Int32,
-                        Value = booking_Orders.boor_user_id
+                        Value = booking_Orders.BoorUserId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorHotelId",
                         DataType = DbType.Int32,
-                        Value = booking_Orders.boor_hotel_id
+                        Value = booking_Orders.BoorHotelId
                     }
                 }
             };
@@ -139,7 +158,26 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "SELECT * FROM Booking.booking_orders;",
+                CommandText = "SELECT " +
+                "boor_id AS BoorId, " +
+                "boor_order_number AS BoorOrderNumber, " +
+                "boor_order_date AS BoorOrderDate, " +
+                "boor_arrival_date AS BoorArrivalDate, " +
+                "boor_total_room AS BoorTotalRoom, " +
+                "boor_total_guest AS BoorTotalGuest, " +
+                "boor_discount AS BoorDiscount, " +
+                "boor_total_tax AS BoorTotalTax, " +
+                "boor_total_ammount AS BoorTotalAmmount, " +
+                "boor_down_payment AS BoorDownPayment, " +
+                "boor_pay_type AS BoorPayType, " +
+                "boor_is_paid AS BoorIsPaid, " +
+                "boor_type AS BoorType, " +
+                "boor_cardnumber AS BoorCardnumber, " +
+                "boor_member_type AS BoorMemberType, " +
+                "boor_status AS BoorStatus, " +
+                "boor_user_id AS BoorUserId, " +
+                "boor_hotel_id AS BoorHotelId" +
+                " FROM Booking.booking_orders;",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] { }
 
@@ -164,7 +202,26 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "SELECT * FROM Booking.booking_orders where boor_id=@boorId order by boor_id asc;",
+                CommandText = "SELECT " +
+                "boor_id AS BoorId, " +
+                "boor_order_number AS BoorOrderNumber, " +
+                "boor_order_date AS BoorOrderDate, " +
+                "boor_arrival_date AS BoorArrivalDate, " +
+                "boor_total_room AS BoorTotalRoom, " +
+                "boor_total_guest AS BoorTotalGuest, " +
+                "boor_discount AS BoorDiscount, " +
+                "boor_total_tax AS BoorTotalTax, " +
+                "boor_total_ammount AS BoorTotalAmmount, " +
+                "boor_down_payment AS BoorDownPayment, " +
+                "boor_pay_type AS BoorPayType, " +
+                "boor_is_paid AS BoorIsPaid, " +
+                "boor_type AS BoorType, " +
+                "boor_cardnumber AS BoorCardnumber, " +
+                "boor_member_type AS BoorMemberType, " +
+                "boor_status AS BoorStatus, " +
+                "boor_user_id AS BoorUserId, " +
+                "boor_hotel_id AS BoorHotelId" +
+                " FROM Booking.booking_orders where boor_id=@boorId order by boor_id asc;",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
@@ -200,92 +257,92 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorId",
                         DataType = DbType.Int32,
-                        Value = booking_Orders.boor_id
+                        Value = booking_Orders.BoorId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorOrderNumber",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_order_number
+                        Value = booking_Orders.BoorOrderNumber
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorOrderDate",
                         DataType = DbType.DateTime,
-                        Value = booking_Orders.boor_order_date
+                        Value = booking_Orders.BoorOrderDate
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorArrivalDate",
                         DataType = DbType.DateTime,
-                        Value = booking_Orders.boor_arrival_date
+                        Value = booking_Orders.BoorArrivalDate
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorTotalRoom",
                         DataType = DbType.Int16,
-                        Value = booking_Orders.boor_total_room
+                        Value = booking_Orders.BoorTotalRoom
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorTotalGuest",
                         DataType = DbType.Int16,
-                        Value = booking_Orders.boor_total_guest
+                        Value = booking_Orders.BoorTotalGuest
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorDiscount",
                         DataType = DbType.Decimal,
-                        Value = booking_Orders.boor_discount
+                        Value = booking_Orders.BoorDiscount
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorTotalTax",
                         DataType = DbType.Decimal,
-                        Value = booking_Orders.boor_total_tax
+                        Value = booking_Orders.BoorTotalTax
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorTotalAmmount",
                         DataType = DbType.Decimal,
-                        Value = booking_Orders.boor_total_ammount
+                        Value = booking_Orders.BoorTotalAmmount
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorDownPayment",
                         DataType = DbType.Decimal,
-                        Value = booking_Orders.boor_down_payment
+                        Value = booking_Orders.BoorDownPayment
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorPayType",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_pay_type
+                        Value = booking_Orders.BoorPayType
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorIsPaid",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_is_paid
+                        Value = booking_Orders.BoorIsPaid
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorType",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_type
+                        Value = booking_Orders.BoorType
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorCardnumber",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_cardnumber
+                        Value = booking_Orders.BoorCardnumber
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorMemberType",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_member_type
+                        Value = booking_Orders.BoorMemberType
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorStatus",
                         DataType = DbType.String,
-                        Value = booking_Orders.boor_status
+                        Value = booking_Orders.BoorStatus
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorUserId",
                         DataType = DbType.Int32,
-                        Value = booking_Orders.boor_user_id
+                        Value = booking_Orders.BoorUserId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorHotelId",
                         DataType = DbType.Int32,
-                        Value = booking_Orders.boor_hotel_id
+                        Value = booking_Orders.BoorHotelId
                     }
                 }
             };
@@ -304,7 +361,7 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@boorId",
                         DataType = DbType.Int32,
-                        Value = booking_Orders.boor_id
+                        Value = booking_Orders.BoorId
                     }
                 }
             };
@@ -315,7 +372,26 @@ namespace Realta.Persistence.Repositories
 
         public IEnumerable<BookingOrders> FindLastBoorID()
         {
-            IEnumerator<BookingOrders> dataset = FindAll<BookingOrders>("SELECT * FROM Booking.Booking_orders where boor_id =(SELECT IDENT_CURRENT('Booking.booking_orders'));");
+            IEnumerator<BookingOrders> dataset = FindAll<BookingOrders>("SELECT " +
+                "boor_id AS BoorId, " +
+                "boor_order_number AS BoorOrderNumber, " +
+                "boor_order_date AS BoorOrderDate, " +
+                "boor_arrival_date AS BoorArrivalDate, " +
+                "boor_total_room AS BoorTotalRoom, " +
+                "boor_total_guest AS BoorTotalGuest, " +
+                "boor_discount AS BoorDiscount, " +
+                "boor_total_tax AS BoorTotalTax, " +
+                "boor_total_ammount AS BoorTotalAmmount, " +
+                "boor_down_payment AS BoorDownPayment, " +
+                "boor_pay_type AS BoorPayType, " +
+                "boor_is_paid AS BoorIsPaid, " +
+                "boor_type AS BoorType, " +
+                "boor_cardnumber AS BoorCardnumber, " +
+                "boor_member_type AS BoorMemberType, " +
+                "boor_status AS BoorStatus, " +
+                "boor_user_id AS BoorUserId, " +
+                "boor_hotel_id AS BoorHotelId" +
+                " FROM Booking.booking_orders where boor_id =(SELECT IDENT_CURRENT('Booking.booking_orders'));");
             while (dataset.MoveNext())
             {
                 var data = dataset.Current;

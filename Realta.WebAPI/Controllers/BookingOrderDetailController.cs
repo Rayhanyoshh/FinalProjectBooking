@@ -27,18 +27,18 @@ namespace Realta.WebAPI.Controllers
 
             var bordeDto = borde.Select(r => new BookingOrderDetailDto
             {
-                borde_id = r.borde_id,  
-                borde_boor_id = r.borde_boor_id,
-                borde_checkin = r.borde_checkin,
-                borde_checkout = r.borde_checkout,
-                borde_adults = r.borde_adults,
-                borde_kids = r.borde_kids,
-                borde_price = r.borde_price,
-                borde_extra = r.borde_extra,
-                borde_discount = r.borde_discount,
-                borde_tax = r.borde_tax,
-                borde_subtotal = r.borde_subtotal,
-                borde_faci_id = r.borde_faci_id
+                BordeId = r.BordeId,  
+                BordeBoorId = r.BordeBoorId,
+                BordeCheckin = r.BordeCheckin,
+                BordeCheckout = r.BordeCheckout,
+                BordeAdults = r.BordeAdults,
+                BordeKids = r.BordeKids,
+                BordePrice = r.BordePrice,
+                BordeExtra = r.BordeExtra,
+                BordeDiscount = r.BordeDiscount,
+                BordeTax = r.BordeTax,
+                BordeSubtotal = r.BordeSubtotal,
+                BordeFaciId = r.BordeFaciId
             });
 
             return Ok(bordeDto);
@@ -58,18 +58,18 @@ namespace Realta.WebAPI.Controllers
 
             var bordeDto = new BookingOrderDetailDto
             {
-                borde_id = borde.borde_id,
-                borde_boor_id = borde.borde_boor_id,
-                borde_checkin = borde.borde_checkin,
-                borde_checkout = borde.borde_checkout,
-                borde_adults = borde.borde_adults,
-                borde_kids = borde.borde_kids,
-                borde_price = borde.borde_price,
-                borde_extra = borde.borde_extra,
-                borde_discount = borde.borde_discount,
-                borde_tax = borde.borde_tax,
-                borde_subtotal = borde.borde_subtotal,
-                borde_faci_id = borde.borde_faci_id
+                BordeId = borde.BordeId,
+                BordeBoorId = borde.BordeBoorId,
+                BordeCheckin = borde.BordeCheckin,
+                BordeCheckout = borde.BordeCheckout,
+                BordeAdults = borde.BordeAdults,
+                BordeKids = borde.BordeKids,
+                BordePrice = borde.BordePrice,
+                BordeExtra = borde.BordeExtra,
+                BordeDiscount = borde.BordeDiscount,
+                BordeTax = borde.BordeTax,
+                BordeSubtotal = borde.BordeSubtotal,
+                BordeFaciId = borde.BordeFaciId
 
             };
             return Ok(bordeDto);
@@ -88,18 +88,18 @@ namespace Realta.WebAPI.Controllers
 
                 var borde = new BookingOrderDetail
                 {
-                    borde_id = bordeDto.borde_id,
-                    borde_boor_id = bordeDto.borde_boor_id,
-                    borde_checkin = bordeDto.borde_checkin,
-                    borde_checkout = bordeDto.borde_checkout,
-                    borde_adults = bordeDto.borde_adults,
-                    borde_kids = bordeDto.borde_kids,
-                    borde_price = bordeDto.borde_price,
-                    borde_extra = bordeDto.borde_extra,
-                    borde_discount = bordeDto.borde_discount,
-                    borde_tax = bordeDto.borde_tax,
-                    borde_subtotal = bordeDto.borde_subtotal,
-                    borde_faci_id = bordeDto.borde_faci_id
+                    BordeId = bordeDto.BordeId,
+                    BordeBoorId = bordeDto.BordeBoorId,
+                    BordeCheckin = bordeDto.BordeCheckin,
+                    BordeCheckout = bordeDto.BordeCheckout,
+                    BordeAdults = bordeDto.BordeAdults,
+                    BordeKids = bordeDto.BordeKids,
+                    BordePrice = bordeDto.BordePrice,
+                    BordeExtra = bordeDto.BordeExtra,
+                    BordeDiscount = bordeDto.BordeDiscount,
+                    BordeTax = bordeDto.BordeTax,
+                    BordeSubtotal = bordeDto.BordeSubtotal,
+                    BordeFaciId = bordeDto.BordeFaciId
                 };
 
                 // post to db
@@ -109,7 +109,7 @@ namespace Realta.WebAPI.Controllers
                 //forward to show result
                 //var res = _repositoryManager.bookingOrdersRepository.FindLastBoorID().ToList();
                 //return Ok(res);
-                return CreatedAtRoute("GetBordeByID", new { id = bordeDto.borde_id }, bordeDto);
+                return CreatedAtRoute("GetBordeByID", new { id = bordeDto.BordeId }, bordeDto);
 
             }
 
@@ -125,37 +125,37 @@ namespace Realta.WebAPI.Controllers
             }
             var borde = new BookingOrderDetail
             {
-                borde_id = id,
-                borde_boor_id = bordeDto.borde_boor_id,
-                borde_checkin = bordeDto.borde_checkin,
-                borde_checkout = bordeDto.borde_checkout,
-                borde_adults = bordeDto.borde_adults,
-                borde_kids = bordeDto.borde_kids,
-                borde_price = bordeDto.borde_price,
-                borde_extra = bordeDto.borde_extra,
-                borde_discount = bordeDto.borde_discount,
-                borde_tax = bordeDto.borde_tax,
-                borde_subtotal = bordeDto.borde_subtotal,
-                borde_faci_id = bordeDto.borde_faci_id
+                BordeId = id,
+                BordeBoorId = bordeDto.BordeBoorId,
+                BordeCheckin = bordeDto.BordeCheckin,
+                BordeCheckout = bordeDto.BordeCheckout,
+                BordeAdults = bordeDto.BordeAdults,
+                BordeKids = bordeDto.BordeKids,
+                BordePrice = bordeDto.BordePrice,
+                BordeExtra = bordeDto.BordeExtra,
+                BordeDiscount = bordeDto.BordeDiscount,
+                BordeTax = bordeDto.BordeTax,
+                BordeSubtotal = bordeDto.BordeSubtotal,
+                BordeFaciId = bordeDto.BordeFaciId
             };
 
             _repositoryManager.bordeRepository.Edit(borde);
 
             // Forward to show result
-            return CreatedAtRoute("GetBoorByID", new { id = bordeDto.borde_id }, new BookingOrderDetailDto
+            return CreatedAtRoute("GetBoorByID", new { id = bordeDto.BordeId }, new BookingOrderDetailDto
             {
-                borde_id = borde.borde_id,
-                borde_boor_id = borde.borde_boor_id,
-                borde_checkin = borde.borde_checkin,
-                borde_checkout = borde.borde_checkout,
-                borde_adults = borde.borde_adults,
-                borde_kids = borde.borde_kids,
-                borde_price = borde.borde_price,
-                borde_extra = borde.borde_extra,
-                borde_discount = borde.borde_discount,
-                borde_tax = borde.borde_tax,
-                borde_subtotal = borde.borde_subtotal,
-                borde_faci_id = borde.borde_faci_id
+                BordeId = borde.BordeId,
+                BordeBoorId = borde.BordeBoorId,
+                BordeCheckin = borde.BordeCheckin,
+                BordeCheckout = borde.BordeCheckout,
+                BordeAdults = borde.BordeAdults,
+                BordeKids = borde.BordeKids,
+                BordePrice = borde.BordePrice,
+                BordeExtra = borde.BordeExtra,
+                BordeDiscount = borde.BordeDiscount,
+                BordeTax = borde.BordeTax,
+                BordeSubtotal = borde.BordeSubtotal,
+                BordeFaciId = borde.BordeFaciId
             });
         }
 

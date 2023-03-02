@@ -10,13 +10,13 @@ namespace Realta.Contract.Models
     public class BookingOrderDetailExtraDtoDto
     {
         [Required(ErrorMessage = "Boex ID is Required")]
-        public int boex_id { get; set; }
+        public int BoexId { get; set; }
 
-        public decimal? boex_price { get; set; }
-        public Int16? boex_qty { get; set; }
-        public decimal? boex_subtotal { get; set; }
-        public string? boex_measure_unit { get; set; }
-        public int? boex_borde_id { get; set; }
-        public int? boex_prit_id { get; set; }
+        public decimal? BoexPrice { get; set; }
+        public Int16? BoexQty { get; set; }
+        public decimal? BoexSubtotal { get; set; }
+        public string? BoexMeasureUnit { get; set; }
+        public int? BoexBordeId { get; set; }
+        public int? BoexPritId { get; set; }
     }
 }

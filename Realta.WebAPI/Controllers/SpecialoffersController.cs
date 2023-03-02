@@ -32,16 +32,16 @@ namespace Realta.WebAPI.Controllers
 
             var spofDto = spof.Select(r => new SpecialOffersDto
             {
-                spof_id=r.spof_id,
-                spof_name=r.spof_name,
-                spof_description=r.spof_description,
-                spof_type=r.spof_type,
-                spof_discount=r.spof_discount,
-                spof_start_date=r.spof_start_date,
-                spof_end_date=r.spof_end_date,
-                spof_min_qty=r.spof_min_qty,
-                spof_max_qty=r.spof_max_qty,
-                spof_modified_date=r.spof_modified_date
+                SpofId=r.SpofId,
+                SpofName=r.SpofName,
+                SpofDescription=r.SpofDescription,
+                SpofType=r.SpofType,
+                SpofDiscount=r.SpofDiscount,
+                SpofStartDate=r.SpofStartDate,
+                SpofEndDate=r.SpofEndDate,
+                SpofMinQty=r.SpofMinQty,
+                SpofMaxQty=r.SpofMaxQty,
+                SpofModifiedDate=r.SpofModifiedDate
             });
 
             return Ok(spofDto);
@@ -60,16 +60,16 @@ namespace Realta.WebAPI.Controllers
 
             var spofDto = new SpecialOffersDto
             {
-                spof_id=spof.spof_id,
-                spof_name=spof.spof_name,
-                spof_description= spof.spof_description,
-                spof_type= spof.spof_type,
-                spof_discount= spof.spof_discount,
-                spof_start_date= spof.spof_start_date,
-                spof_end_date= spof.spof_end_date,
-                spof_min_qty= spof.spof_min_qty,
-                spof_max_qty= spof.spof_max_qty,
-                spof_modified_date= spof.spof_modified_date
+                SpofId=spof.SpofId,
+                SpofName=spof.SpofName,
+                SpofDescription= spof.SpofDescription,
+                SpofType= spof.SpofType,
+                SpofDiscount= spof.SpofDiscount,
+                SpofStartDate= spof.SpofStartDate,
+                SpofEndDate= spof.SpofEndDate,
+                SpofMinQty= spof.SpofMinQty,
+                SpofMaxQty= spof.SpofMaxQty,
+                SpofModifiedDate= spof.SpofModifiedDate
             };
             return Ok(spofDto);
         }
@@ -87,16 +87,16 @@ namespace Realta.WebAPI.Controllers
 
             var spof = new SpecialOffers
             {
-                spof_id = spofDto.spof_id,
-                spof_name = spofDto.spof_name,
-                spof_description = spofDto.spof_description,
-                spof_type = spofDto.spof_type,
-                spof_discount = spofDto.spof_discount,
-                spof_start_date = spofDto.spof_start_date,
-                spof_end_date = spofDto.spof_end_date,
-                spof_min_qty = spofDto.spof_min_qty,
-                spof_max_qty = spofDto.spof_max_qty,
-                spof_modified_date = spofDto.spof_modified_date
+                SpofId = spofDto.SpofId,
+                SpofName = spofDto.SpofName,
+                SpofDescription = spofDto.SpofDescription,
+                SpofType = spofDto.SpofType,
+                SpofDiscount = spofDto.SpofDiscount,
+                SpofStartDate = spofDto.SpofStartDate,
+                SpofEndDate = spofDto.SpofEndDate,
+                SpofMinQty = spofDto.SpofMinQty,
+                SpofMaxQty = spofDto.SpofMaxQty,
+                SpofModifiedDate = spofDto.SpofModifiedDate
             };
 
             // post to db
@@ -104,9 +104,9 @@ namespace Realta.WebAPI.Controllers
 
 
             //forward to show result
-            var res = _repositoryManager.spofRepository.FindSpofById(spof.spof_id);
+            var res = _repositoryManager.spofRepository.FindSpofById(spof.SpofId);
 
-            return CreatedAtRoute("GetSpofID", new { id = spof.spof_id }, res);
+            return CreatedAtRoute("GetSpofID", new { id = spof.SpofId }, res);
 
         }
 
@@ -135,33 +135,33 @@ namespace Realta.WebAPI.Controllers
 
             var spof = new SpecialOffers
             {
-                spof_id = id,
-                spof_name = spofDto.spof_name,
-                spof_description = spofDto.spof_description,
-                spof_type = spofDto.spof_type,
-                spof_discount = spofDto.spof_discount,
-                spof_start_date = spofDto.spof_start_date,
-                spof_end_date = spofDto.spof_end_date,
-                spof_min_qty = spofDto.spof_min_qty,
-                spof_max_qty = spofDto.spof_max_qty,
-                spof_modified_date = spofDto.spof_modified_date
+                SpofId = id,
+                SpofName = spofDto.SpofName,
+                SpofDescription = spofDto.SpofDescription,
+                SpofType = spofDto.SpofType,
+                SpofDiscount = spofDto.SpofDiscount,
+                SpofStartDate = spofDto.SpofStartDate,
+                SpofEndDate = spofDto.SpofEndDate,
+                SpofMinQty = spofDto.SpofMinQty,
+                SpofMaxQty = spofDto.SpofMaxQty,
+                SpofModifiedDate = spofDto.SpofModifiedDate
             };
 
             _repositoryManager.spofRepository.Edit(spof);
 
             // Forward to show result
-            return CreatedAtRoute("GetSpofID", new { id = spof.spof_id}, new SpecialOffersDto
+            return CreatedAtRoute("GetSpofID", new { id = spof.SpofId}, new SpecialOffersDto
             {
-                spof_id = spof.spof_id,
-                spof_name = spof.spof_name,
-                spof_description = spof.spof_description,
-                spof_type = spof.spof_type,
-                spof_discount = spof.spof_discount,
-                spof_start_date = spof.spof_start_date,
-                spof_end_date = spof.spof_end_date,
-                spof_min_qty = spof.spof_min_qty,
-                spof_max_qty = spof.spof_max_qty,
-                spof_modified_date = spof.spof_modified_date
+                SpofId = spof.SpofId,
+                SpofName = spof.SpofName,
+                SpofDescription = spof.SpofDescription,
+                SpofType = spof.SpofType,
+                SpofDiscount = spof.SpofDiscount,
+                SpofStartDate = spof.SpofStartDate,
+                SpofEndDate = spof.SpofEndDate,
+                SpofMinQty = spof.SpofMinQty,
+                SpofMaxQty = spof.SpofMaxQty,
+                SpofModifiedDate = spof.SpofModifiedDate
             });
         }
 

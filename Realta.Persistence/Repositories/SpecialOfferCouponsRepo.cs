@@ -29,17 +29,17 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@socoId",
                         DataType = DbType.Int32,
-                        Value = soco.soco_id
+                        Value = soco.SocoId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@socoBordeId",
                         DataType = DbType.Int32,
-                        Value = soco.soco_borde_id
+                        Value = soco.SocoBordeId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@socoSpofId",
                         DataType = DbType.Int32,
-                        Value = soco.soco_spof_id
+                        Value = soco.SocoSpofId
                     }
                 }
             };
@@ -50,7 +50,11 @@ namespace Realta.Persistence.Repositories
 
         public IEnumerable<SpecialOfferCoupons> FindAllSoco()
         {
-            IEnumerator<SpecialOfferCoupons> dataSet = FindAll<SpecialOfferCoupons>("select * from Booking.Special_offer_coupons");
+            IEnumerator<SpecialOfferCoupons> dataSet = FindAll<SpecialOfferCoupons>("SELECT " +
+               "soco_id AS SocoId, " +
+               "soco_borde_id AS SocoBordeId, " +
+               "soco_spof_id AS SocoSpofId" +
+               " from Booking.Special_offer_coupons");
 
             while (dataSet.MoveNext())
             {
@@ -63,7 +67,11 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "select * from Booking.Special_offer_coupons;",
+                CommandText = "SELECT " +
+               "soco_id AS SocoId, " +
+               "soco_borde_id AS SocoBordeId, " +
+               "soco_spof_id AS SocoSpofId" +
+               " from Booking.Special_offer_coupons",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] { }
 
@@ -87,7 +95,11 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "select * from Booking.Special_offer_coupons where soco_id=@socoId order by soco_id asc;",
+                CommandText = "SELECT " +
+               "soco_id AS SocoId, " +
+               "soco_borde_id AS SocoBordeId, " +
+               "soco_spof_id AS SocoSpofId " +
+               "from Booking.Special_offer_coupons where soco_id=@socoId order by soco_id asc;",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
@@ -122,17 +134,17 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@socoBordeId",
                         DataType = DbType.Int32,
-                        Value = soco.soco_borde_id
+                        Value = soco.SocoBordeId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@socoSpofId",
                         DataType = DbType.Int32,
-                        Value = soco.soco_spof_id
+                        Value = soco.SocoSpofId
                     }
                 }
             };
 
-            soco.soco_id = _adoContext.ExecuteScalar<int>(model);
+            soco.SocoId = _adoContext.ExecuteScalar<int>(model);
 
             _adoContext.Dispose();
         }
@@ -147,7 +159,7 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@socoId",
                         DataType = DbType.Int32,
-                        Value = soco.soco_id
+                        Value = soco.SocoId
                     }
                 }
             };

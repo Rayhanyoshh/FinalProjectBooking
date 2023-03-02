@@ -40,61 +40,61 @@ namespace Realta.Persistence.Repositories
                   {
                       ParameterName="@spofName",
                       DataType=DbType.String,
-                      Value=spof.spof_name
+                      Value=spof.SpofName
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofDesc",
                       DataType=DbType.String,
-                      Value=spof.spof_description
+                      Value=spof.SpofDescription
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofType",
                       DataType=DbType.String,
-                      Value=spof.spof_type
+                      Value=spof.SpofType
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofDiscount",
                       DataType=DbType.Decimal,
-                      Value=spof.spof_discount
+                      Value=spof.SpofDiscount
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofStartDate",
                       DataType=DbType.DateTime,
-                      Value=spof.spof_start_date
+                      Value=spof.SpofStartDate
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofEndDate",
                       DataType=DbType.DateTime,
-                      Value=spof.spof_end_date
+                      Value=spof.SpofEndDate
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofMinQty",
                       DataType=DbType.Int32,
-                      Value=spof.spof_min_qty
+                      Value=spof.SpofMinQty
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofMaxQty",
                       DataType=DbType.Int32,
-                      Value=spof.spof_max_qty
+                      Value=spof.SpofMaxQty
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofModDate",
                       DataType=DbType.DateTime,
-                      Value=spof.spof_modified_date
+                      Value=spof.SpofModifiedDate
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofId",
                       DataType=DbType.Int32,
-                      Value=spof.spof_id
+                      Value=spof.SpofId
                   }
               }
             };
@@ -104,7 +104,19 @@ namespace Realta.Persistence.Repositories
 
         public IEnumerable<SpecialOffers> FindAllSpof()
         {
-            IEnumerator<SpecialOffers> enumerator = FindAll<SpecialOffers>("select * from Booking.Special_offers");
+            IEnumerator<SpecialOffers> enumerator = FindAll<SpecialOffers>
+                ("select " +
+                "spof_id AS SpofId, " +
+                "spof_name AS SpofName, " +
+                "spof_description AS SpofDescription, " +
+                "spof_type AS SpofType, " +
+                "spof_discount AS SpofDiscount, " +
+                "spof_start_date AS SpofStartDate, " +
+                "spof_end_date AS SpofEndDate, " +
+                "spof_min_qty AS SpofMinQty, " +
+                "spof_max_qty AS SpofMaxQty, " +
+                "spof_modified_date AS SpofModifiedDate" +
+                " FROM Booking.Special_offers");
             while (enumerator.MoveNext())
             {
                 var data = enumerator.Current;
@@ -116,7 +128,18 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "select * from Booking.Special_offers;",
+                CommandText = "SELECT " +
+                "spof_id AS SpofId " +
+                "spof_name AS SpofName " +
+                "spof_description AS SpofDescription " +
+                "spof_type AS SpofType " +
+                "spof_discount AS SpofDiscount " +
+                "spof_start_date AS SpofStartDate " +
+                "spof_end_date AS SpofEndDate " +
+                "spof_min_qty AS SpofMinQty " +
+                "spof_max_qty AS SpofMaxQty " +
+                "spof_modified_date AS SpofModifiedDate" +
+                " FROM Booking.Special_offers",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] { }
             };
@@ -133,7 +156,18 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "SELECT * FROM Booking.special_offers WHERE spof_id = @spofId",
+                CommandText = "SELECT " +
+                "spof_id AS SpofId " +
+                "spof_name AS SpofName " +
+                "spof_description AS SpofDescription " +
+                "spof_type AS SpofType " +
+                "spof_discount AS SpofDiscount " +
+                "spof_start_date AS SpofStartDate " +
+                "spof_end_date AS SpofEndDate " +
+                "spof_min_qty AS SpofMinQty " +
+                "spof_max_qty AS SpofMaxQty " +
+                "spof_modified_date AS SpofModifiedDate" +
+                " FROM Booking.Special_offers WHERE spof_id = @spofId",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                 new SqlCommandParameterModel()
@@ -191,65 +225,65 @@ namespace Realta.Persistence.Repositories
                   {
                       ParameterName="@spofName",
                       DataType=DbType.String,
-                      Value=spof.spof_name
+                      Value=spof.SpofName
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofDesc",
                       DataType=DbType.String,
-                      Value=spof.spof_description
+                      Value=spof.SpofDescription
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofType",
                       DataType=DbType.String,
-                      Value=spof.spof_type
+                      Value=spof.SpofType
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofDiscount",
                       DataType=DbType.Decimal,
-                      Value=spof.spof_discount
+                      Value=spof.SpofDiscount
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofStartDate",
                       DataType=DbType.DateTime,
-                      Value=spof.spof_start_date
+                      Value=spof.SpofStartDate
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofEndDate",
                       DataType=DbType.DateTime,
-                      Value=spof.spof_end_date
+                      Value=spof.SpofEndDate
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofMinQty",
                       DataType=DbType.Int32,
-                      Value=spof.spof_min_qty
+                      Value=spof.SpofMinQty
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofMaxQty",
                       DataType=DbType.Int32,
-                      Value=spof.spof_max_qty
+                      Value=spof.SpofMaxQty
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofModDate",
                       DataType=DbType.DateTime,
-                      Value=spof.spof_modified_date
+                      Value=spof.SpofModifiedDate
                   },
                   new SqlCommandParameterModel()
                   {
                       ParameterName="@spofId",
                       DataType=DbType.Int32,
-                      Value=spof.spof_id
+                      Value=spof.SpofId
                   }
                 }
             };
-            spof.spof_id= _adoContext.ExecuteScalar<int>(model);
+            spof.SpofId= _adoContext.ExecuteScalar<int>(model);
             _adoContext.Dispose();
         }
 
@@ -263,7 +297,7 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@spofId",
                         DataType = DbType.Int32,
-                        Value = spof.spof_id
+                        Value = spof.SpofId
                     }
                 }
             };

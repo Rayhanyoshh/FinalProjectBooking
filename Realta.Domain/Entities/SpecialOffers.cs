@@ -12,16 +12,16 @@ namespace Realta.Domain.Entities
     public class SpecialOffers
     {
         [Key]
-        public int spof_id { get; set; }
-        public string spof_name { get; set; }
-        public string spof_description { get; set; }
-        public string  spof_type { get; set; }
-        public decimal spof_discount { get; set; }
-        public DateTime spof_start_date { get; set; }
-        public DateTime spof_end_date { get; set; }
-        public int? spof_min_qty { get; set; }
-        public int? spof_max_qty { get; set; }
-        public DateTime? spof_modified_date { get; set; }
+        public int SpofId { get; set; }
+        public string? SpofName { get; set; }
+        public string? SpofDescription { get; set; }
+        public string? SpofType { get; set; }
+        public decimal SpofDiscount { get; set; }
+        public DateTime SpofStartDate { get; set; }
+        public DateTime SpofEndDate { get; set; }
+        public int? SpofMinQty { get; set; }
+        public int? SpofMaxQty { get; set; }
+        public DateTime? SpofModifiedDate { get; set; }
 
 
     }

@@ -11,22 +11,22 @@ namespace Realta.Contract.Models
     {
         [Required(ErrorMessage = "spof_id is Required")]
 
-        public int spof_id { get; set; }
+        public int SpofId { get; set; }
         [Required(ErrorMessage = "spof_name is Required")]
 
-        public string spof_name { get; set; }
+        public string SpofName { get; set; }
         [Required(ErrorMessage = "spof_description is Required")]
-        public string spof_description { get; set; }
+        public string SpofDescription { get; set; }
         [Required(ErrorMessage = "spof_type is Required")]
-        public string spof_type { get; set; }
+        public string SpofType { get; set; }
         [Required(ErrorMessage = "spof_discount is Required")]
-        public decimal spof_discount { get; set; }
+        public decimal SpofDiscount { get; set; }
         [Required(ErrorMessage = "spof_start_date is Required")]
-        public DateTime spof_start_date { get; set; }
+        public DateTime SpofStartDate { get; set; }
         [Required(ErrorMessage = "spof_end_date is Required")]
-        public DateTime spof_end_date { get; set; }
-        public int? spof_min_qty { get; set; }
-        public int? spof_max_qty { get; set; }
-        public DateTime? spof_modified_date { get; set; }
+        public DateTime SpofEndDate { get; set; }
+        public int? SpofMinQty { get; set; }
+        public int? SpofMaxQty { get; set; }
+        public DateTime? SpofModifiedDate { get; set; }
     }
 }

@@ -28,24 +28,24 @@ namespace Realta.WebAPI.Controllers
 
             var BoorDto = bookingOrders.Select(r => new BookingOrdersDto
             {
-                boor_id = r.boor_id,
-                boor_order_number = r.boor_order_number,
-                boor_order_date = r.boor_order_date,
-                boor_arrival_date = r.boor_arrival_date,
-                boor_total_room = r.boor_total_room,
-                boor_total_guest = r.boor_total_guest,
-                boor_discount = r.boor_discount,
-                boor_total_tax = r.boor_total_tax,
-                boor_total_ammount = r.boor_total_ammount,
-                boor_down_payment = r.boor_down_payment,
-                boor_pay_type = r.boor_pay_type,
-                boor_is_paid = r.boor_is_paid,
-                boor_type = r.boor_type,
-                boor_cardnumber = r.boor_cardnumber,
-                boor_member_type = r.boor_member_type,
-                boor_status = r.boor_status,
-                boor_user_id = r.boor_user_id,
-                boor_hotel_id = r.boor_hotel_id
+                BoorId = r.BoorId,
+                BoorOrderNumber = r.BoorOrderNumber,
+                BoorOrderDate = r.BoorOrderDate,
+                BoorArrivalDate = r.BoorArrivalDate,
+                BoorTotalRoom = r.BoorTotalRoom,
+                BoorTotalGuest = r.BoorTotalGuest,
+                BoorDiscount = r.BoorDiscount,
+                BoorTotalTax = r.BoorTotalTax,
+                BoorTotalAmmount = r.BoorTotalAmmount,
+                BoorDownPayment = r.BoorDownPayment,
+                BoorPayType = r.BoorPayType,
+                BoorIsPaid = r.BoorIsPaid,
+                BoorType = r.BoorType,
+                BoorCardnumber = r.BoorCardnumber,
+                BoorMemberType = r.BoorMemberType,
+                BoorStatus = r.BoorStatus,
+                BoorUserId = r.BoorUserId,
+                BoorHotelId = r.BoorHotelId
             });
 
 
@@ -66,24 +66,24 @@ namespace Realta.WebAPI.Controllers
 
             var boorDto = new BookingOrdersDto
             {
-                boor_id = boor.boor_id,
-                boor_order_number = boor.boor_order_number,
-                boor_order_date = boor.boor_order_date,
-                boor_arrival_date = boor.boor_arrival_date,
-                boor_total_room = boor.boor_total_room,
-                boor_total_guest = boor.boor_total_guest,
-                boor_discount = boor.boor_discount,
-                boor_total_tax = boor.boor_total_tax,
-                boor_total_ammount = boor.boor_total_ammount,
-                boor_down_payment = boor.boor_down_payment,
-                boor_pay_type = boor.boor_pay_type,
-                boor_is_paid = boor.boor_is_paid,
-                boor_type = boor.boor_type,
-                boor_cardnumber = boor.boor_cardnumber,
-                boor_member_type = boor.boor_member_type,
-                boor_status = boor.boor_status,
-                boor_user_id = boor.boor_user_id,
-                boor_hotel_id = boor.boor_hotel_id
+                BoorId = boor.BoorId,
+                BoorOrderNumber = boor.BoorOrderNumber,
+                BoorOrderDate = boor.BoorOrderDate,
+                BoorArrivalDate = boor.BoorArrivalDate,
+                BoorTotalRoom = boor.BoorTotalRoom,
+                BoorTotalGuest = boor.BoorTotalGuest,
+                BoorDiscount = boor.BoorDiscount,
+                BoorTotalTax = boor.BoorTotalTax,
+                BoorTotalAmmount = boor.BoorTotalAmmount,
+                BoorDownPayment = boor.BoorDownPayment,
+                BoorPayType = boor.BoorPayType,
+                BoorIsPaid = boor.BoorIsPaid,
+                BoorType = boor.BoorType,
+                BoorCardnumber = boor.BoorCardnumber,
+                BoorMemberType = boor.BoorMemberType,
+                BoorStatus = boor.BoorStatus,
+                BoorUserId = boor.BoorUserId,
+                BoorHotelId = boor.BoorHotelId
             };
             return Ok(boorDto);
         }
@@ -101,24 +101,24 @@ namespace Realta.WebAPI.Controllers
 
             var boor = new BookingOrders
             {
-                boor_id = bookingOrdersDto.boor_id,
-                boor_order_number = bookingOrdersDto.boor_order_number,
-                boor_order_date = bookingOrdersDto.boor_order_date,
-                boor_arrival_date = bookingOrdersDto.boor_arrival_date,
-                boor_total_room = bookingOrdersDto.boor_total_room,
-                boor_total_guest = bookingOrdersDto.boor_total_guest,
-                boor_discount = bookingOrdersDto.boor_discount,
-                boor_total_tax = bookingOrdersDto.boor_total_tax,
-                boor_total_ammount = bookingOrdersDto.boor_total_ammount,
-                boor_down_payment = bookingOrdersDto.boor_down_payment,
-                boor_pay_type = bookingOrdersDto.boor_pay_type,
-                boor_is_paid = bookingOrdersDto.boor_is_paid,
-                boor_type = bookingOrdersDto.boor_type,
-                boor_cardnumber = bookingOrdersDto.boor_cardnumber,
-                boor_member_type = bookingOrdersDto.boor_member_type,
-                boor_status = bookingOrdersDto.boor_status,
-                boor_user_id = bookingOrdersDto.boor_user_id,
-                boor_hotel_id = bookingOrdersDto.boor_hotel_id
+                BoorId = bookingOrdersDto.BoorId,
+                BoorOrderNumber = bookingOrdersDto.BoorOrderNumber,
+                BoorOrderDate = bookingOrdersDto.BoorOrderDate,
+                BoorArrivalDate = bookingOrdersDto.BoorArrivalDate,
+                BoorTotalRoom = bookingOrdersDto.BoorTotalRoom,
+                BoorTotalGuest = bookingOrdersDto.BoorTotalGuest,
+                BoorDiscount = bookingOrdersDto.BoorDiscount,
+                BoorTotalTax = bookingOrdersDto.BoorTotalTax,
+                BoorTotalAmmount = bookingOrdersDto.BoorTotalAmmount,
+                BoorDownPayment = bookingOrdersDto.BoorDownPayment,
+                BoorPayType = bookingOrdersDto.BoorPayType,
+                BoorIsPaid = bookingOrdersDto.BoorIsPaid,
+                BoorType = bookingOrdersDto.BoorType,
+                BoorCardnumber = bookingOrdersDto.BoorCardnumber,
+                BoorMemberType = bookingOrdersDto.BoorMemberType,
+                BoorStatus = bookingOrdersDto.BoorStatus,
+                BoorUserId = bookingOrdersDto.BoorUserId,
+                BoorHotelId = bookingOrdersDto.BoorHotelId
             };
 
             // post to db
@@ -144,49 +144,49 @@ namespace Realta.WebAPI.Controllers
             }
             var boor = new BookingOrders
             {
-                boor_id = id,
-                boor_order_number = bookingOrdersDto.boor_order_number,
-                boor_order_date = bookingOrdersDto.boor_order_date,
-                boor_arrival_date = bookingOrdersDto.boor_arrival_date,
-                boor_total_room = bookingOrdersDto.boor_total_room,
-                boor_total_guest = bookingOrdersDto.boor_total_guest,
-                boor_discount = bookingOrdersDto.boor_discount,
-                boor_total_tax = bookingOrdersDto.boor_total_tax,
-                boor_total_ammount = bookingOrdersDto.boor_total_ammount,
-                boor_down_payment = bookingOrdersDto.boor_down_payment,
-                boor_pay_type = bookingOrdersDto.boor_pay_type,
-                boor_is_paid = bookingOrdersDto.boor_is_paid,
-                boor_type = bookingOrdersDto.boor_type,
-                boor_cardnumber = bookingOrdersDto.boor_cardnumber,
-                boor_member_type = bookingOrdersDto.boor_member_type,
-                boor_status = bookingOrdersDto.boor_status,
-                boor_user_id = bookingOrdersDto.boor_user_id,
-                boor_hotel_id = bookingOrdersDto.boor_hotel_id
+                BoorId = id,
+                BoorOrderNumber = bookingOrdersDto.BoorOrderNumber,
+                BoorOrderDate = bookingOrdersDto.BoorOrderDate,
+                BoorArrivalDate = bookingOrdersDto.BoorArrivalDate,
+                BoorTotalRoom = bookingOrdersDto.BoorTotalRoom,
+                BoorTotalGuest = bookingOrdersDto.BoorTotalGuest,
+                BoorDiscount = bookingOrdersDto.BoorDiscount,
+                BoorTotalTax = bookingOrdersDto.BoorTotalTax,
+                BoorTotalAmmount = bookingOrdersDto.BoorTotalAmmount,
+                BoorDownPayment = bookingOrdersDto.BoorDownPayment,
+                BoorPayType = bookingOrdersDto.BoorPayType,
+                BoorIsPaid = bookingOrdersDto.BoorIsPaid,
+                BoorType = bookingOrdersDto.BoorType,
+                BoorCardnumber = bookingOrdersDto.BoorCardnumber,
+                BoorMemberType = bookingOrdersDto.BoorMemberType,
+                BoorStatus = bookingOrdersDto.BoorStatus,
+                BoorUserId = bookingOrdersDto.BoorUserId,
+                BoorHotelId = bookingOrdersDto.BoorHotelId
             };
 
             _repositoryManager.bookingOrdersRepository.Edit(boor);
 
             // Forward to show result
-            return CreatedAtRoute("GetBoorByID", new { id = bookingOrdersDto.boor_id }, new BookingOrdersDto 
+            return CreatedAtRoute("GetBoorByID", new { id = bookingOrdersDto.BoorId }, new BookingOrdersDto 
             {   
-                boor_id = id, 
-                boor_order_number = boor.boor_order_number,
-                boor_order_date = boor.boor_order_date,
-                boor_arrival_date = boor.boor_arrival_date,
-                boor_total_room = boor.boor_total_room,
-                boor_total_guest = boor.boor_total_guest,
-                boor_discount = boor.boor_discount,
-                boor_total_tax = boor.boor_total_tax,
-                boor_total_ammount = boor.boor_total_ammount,
-                boor_down_payment = boor.boor_down_payment,
-                boor_pay_type = boor.boor_pay_type,
-                boor_is_paid = boor.boor_is_paid,
-                boor_type = boor.boor_type,
-                boor_cardnumber = boor.boor_cardnumber,
-                boor_member_type = boor.boor_member_type,
-                boor_status = boor.boor_status,
-                boor_user_id = boor.boor_user_id,
-                boor_hotel_id = boor.boor_hotel_id
+                BoorId = id, 
+                BoorOrderNumber = boor.BoorOrderNumber,
+                BoorOrderDate = boor.BoorOrderDate,
+                BoorArrivalDate = boor.BoorArrivalDate,
+                BoorTotalRoom = boor.BoorTotalRoom,
+                BoorTotalGuest = boor.BoorTotalGuest,
+                BoorDiscount = boor.BoorDiscount,
+                BoorTotalTax = boor.BoorTotalTax,
+                BoorTotalAmmount = boor.BoorTotalAmmount,
+                BoorDownPayment = boor.BoorDownPayment,
+                BoorPayType = boor.BoorPayType,
+                BoorIsPaid = boor.BoorIsPaid,
+                BoorType = boor.BoorType,
+                BoorCardnumber = boor.BoorCardnumber,
+                BoorMemberType = boor.BoorMemberType,
+                BoorStatus = boor.BoorStatus,
+                BoorUserId = boor.BoorUserId,
+                BoorHotelId = boor.BoorHotelId
             });
         }
 

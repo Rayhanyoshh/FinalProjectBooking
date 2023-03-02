@@ -9,8 +9,8 @@ namespace Realta.Contract.Models
 {
     public class SpecialOfferCouponsDto
     {
-        public int soco_id { get; set; }
-        public int soco_borde_id { get; set; }
-        public int soco_spof_id { get; set; }  
+        public int Socoid { get; set; }
+        public int SocoBordeId { get; set; }
+        public int SocoSpofId { get; set; }
     }
 }

@@ -29,37 +29,37 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexId",
                         DataType = DbType.Int32,
-                        Value = boex.boex_id
+                        Value = boex.BoexId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexPrice",
                         DataType = DbType.Decimal,
-                        Value = boex.boex_price
+                        Value = boex.BoexPrice
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexQty",
                         DataType = DbType.Int16,
-                        Value = boex.boex_qty
+                        Value = boex.BoexQty
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexSubtotal",
                         DataType = DbType.Decimal,
-                        Value = boex.boex_subtotal
+                        Value = boex.BoexSubtotal
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexMeasureUnit",
                         DataType = DbType.String,
-                        Value = boex.boex_measure_unit
+                        Value = boex.BoexMeasureUnit
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexBordeId",
                         DataType = DbType.Int32,
-                        Value = boex.boex_borde_id
+                        Value = boex.BoexBordeId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexPritId",
                         DataType = DbType.Int32,
-                        Value = boex.boex_prit_id
+                        Value = boex.BoexPritId
                     }
                 }
             };
@@ -70,7 +70,15 @@ namespace Realta.Persistence.Repositories
 
         public IEnumerable<BookingOrderDetailExtra> FindAllBoex()
         {
-            IEnumerator<BookingOrderDetailExtra> dataSet = FindAll<BookingOrderDetailExtra>("SELECT * From Booking.booking_order_detail_extra");
+            IEnumerator<BookingOrderDetailExtra> dataSet = FindAll<BookingOrderDetailExtra>
+                ("SELECT boex_id AS BoexId, " +
+                "boex_price AS BoexPrice, " +
+                "boex_qty AS BoexQty, " +
+                "boex_subtotal AS BoexSubtotal, " +
+                "boex_measure_unit AS BoexMeasureUnit, " +
+                "boex_borde_id AS BoexBordeId, " +
+                "boex_prit_id AS BoexPritId " +
+                "From Booking.booking_order_detail_extra;");
 
             while (dataSet.MoveNext())
             {
@@ -83,7 +91,14 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "SELECT * From Booking.booking_order_detail_extra;",
+                CommandText = "SELECT boex_id AS BoexId, " +
+                "boex_price AS BoexPrice, " +
+                "boex_qty AS BoexQty, " +
+                "boex_subtotal AS BoexSubtotal, " +
+                "boex_measure_unit AS BoexMeasureUnit, " +
+                "boex_borde_id AS BoexBordeId, " +
+                "boex_prit_id AS BoexPritId " +
+                "From Booking.booking_order_detail_extra;",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] { }
 
@@ -107,7 +122,14 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "SELECT * FROM Booking.booking_order_detail_extra where boex_id=@boexId order by boex_id asc;",
+                CommandText = "SELECT boex_id AS BoexId, " +
+                "boex_price AS BoexPrice, " +
+                "boex_qty AS BoexQty, " +
+                "boex_subtotal AS BoexSubtotal, " +
+                "boex_measure_unit AS BoexMeasureUnit, " +
+                "boex_borde_id AS BoexBordeId, " +
+                "boex_prit_id AS BoexPritId " +
+                "From Booking.booking_order_detail_extra where boex_id=@boexId order by boex_id asc;",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
@@ -143,37 +165,37 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexPrice",
                         DataType = DbType.Decimal,
-                        Value = boex.boex_price
+                        Value = boex.BoexPrice
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexQty",
                         DataType = DbType.Int16,
-                        Value = boex.boex_qty
+                        Value = boex.BoexQty
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexSubtotal",
                         DataType = DbType.Decimal,
-                        Value = boex.boex_subtotal
+                        Value = boex.BoexSubtotal
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexMeasureUnit",
                         DataType = DbType.String,
-                        Value = boex.boex_measure_unit
+                        Value = boex.BoexMeasureUnit
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexBordeId",
                         DataType = DbType.Int32,
-                        Value = boex.boex_borde_id
+                        Value = boex.BoexBordeId
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexPritId",
                         DataType = DbType.Int32,
-                        Value = boex.boex_prit_id
+                        Value = boex.BoexPritId
                     }
                 }
             };
 
-            boex.boex_id = _adoContext.ExecuteScalar<int>(model);
+            boex.BoexId = _adoContext.ExecuteScalar<int>(model);
 
             _adoContext.Dispose();
         }
@@ -188,7 +210,7 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@boexId",
                         DataType = DbType.Int32,
-                        Value = boex.boex_id
+                        Value = boex.BoexId
                     }
                 }
                

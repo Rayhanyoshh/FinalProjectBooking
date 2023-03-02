@@ -28,9 +28,9 @@ namespace Realta.WebAPI.Controllers
 
             var socoDto = soco.Select(r => new SpecialOfferCoupons
             {                                       
-                soco_id = r.soco_id,
-                soco_borde_id = r.soco_borde_id,
-                soco_spof_id = r.soco_spof_id
+                SocoId = r.SocoId,
+                SocoBordeId = r.SocoBordeId,
+                SocoSpofId = r.SocoSpofId
 
             });
 
@@ -50,9 +50,9 @@ namespace Realta.WebAPI.Controllers
 
             var socoDto = new Contract.Models.SpecialOfferCouponsDto
             {
-                soco_id = soco.soco_id,
-                soco_borde_id = soco.soco_borde_id,
-                soco_spof_id = soco.soco_spof_id
+                Socoid = soco.SocoId,
+                SocoBordeId = soco.SocoBordeId,
+                SocoSpofId = soco.SocoSpofId
 
             };
             return Ok(socoDto);
@@ -71,8 +71,8 @@ namespace Realta.WebAPI.Controllers
 
             var soco = new Domain.Entities.SpecialOfferCoupons
             {
-                soco_borde_id = socoDto.soco_borde_id,
-                soco_spof_id = socoDto.soco_spof_id
+                SocoBordeId = socoDto.SocoBordeId,
+                SocoSpofId = socoDto.SocoSpofId
             };
 
             // post to db
@@ -80,9 +80,9 @@ namespace Realta.WebAPI.Controllers
 
 
             //forward to show result
-            var res = _repositoryManager.socoRepository.FindSocoById(soco.soco_id);
+            var res = _repositoryManager.socoRepository.FindSocoById(soco.SocoId);
 
-            return CreatedAtRoute("GetSocoID", new { id = soco.soco_id }, res);
+            return CreatedAtRoute("GetSocoID", new { id = soco.SocoId }, res);
 
         }
 
@@ -98,19 +98,19 @@ namespace Realta.WebAPI.Controllers
             }
             var soco = new Domain.Entities.SpecialOfferCoupons
             {
-                soco_id = id,
-                soco_borde_id = socoDto.soco_borde_id,
-                soco_spof_id = socoDto.soco_spof_id
+                SocoId = id,
+                SocoBordeId = socoDto.SocoBordeId,
+                SocoSpofId = socoDto.SocoSpofId
             };
 
             _repositoryManager.socoRepository.Edit(soco);
 
             // Forward to show result
-            return base.CreatedAtRoute("GetSocoID", new { id = soco.soco_id }, new Contract.Models.SpecialOfferCouponsDto
+            return base.CreatedAtRoute("GetSocoID", new { id = soco.SocoId }, new Contract.Models.SpecialOfferCouponsDto
             {
-                soco_id = soco.soco_id,
-                soco_borde_id = soco.soco_borde_id,
-                soco_spof_id = soco.soco_spof_id
+                Socoid = soco.SocoId,
+                SocoBordeId = soco.SocoBordeId,
+                SocoSpofId = soco.SocoSpofId
             });
         }
 

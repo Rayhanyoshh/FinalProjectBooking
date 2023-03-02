@@ -13,24 +13,24 @@ namespace Realta.Domain.Entities
     {
         [Key]
 
-        public int boor_id { get; set; }
-        public string boor_order_number { get; set; }
-        public DateTime boor_order_date { get; set; }
-        public DateTime boor_arrival_date { get; set; }
-        public short? boor_total_room { get; set; }
-        public short? boor_total_guest { get; set; }
-        public decimal? boor_discount { get; set; }
-        public decimal? boor_total_tax { get; set; }
-        public decimal? boor_total_ammount { get; set; }
-        public decimal? boor_down_payment { get; set; }
-        public string? boor_pay_type { get; set; }
-        public string boor_is_paid { get; set; }
-        public string boor_type { get; set; }
-        public string? boor_cardnumber { get; set; }
-        public string? boor_member_type { get; set; }
-        public string? boor_status { get; set; }
-        public int  boor_user_id { get; set; }
-        public int boor_hotel_id { get; set; }
+        public int BoorId { get; set; }
+        public string? BoorOrderNumber { get; set; }
+        public DateTime BoorOrderDate { get; set; }
+        public DateTime BoorArrivalDate { get; set; }
+        public short? BoorTotalRoom { get; set; }
+        public short? BoorTotalGuest { get; set; }
+        public decimal? BoorDiscount { get; set; }
+        public decimal? BoorTotalTax { get; set; }
+        public decimal? BoorTotalAmmount { get; set; }
+        public decimal? BoorDownPayment { get; set; }
+        public string? BoorPayType { get; set; }
+        public string BoorIsPaid { get; set; }
+        public string BoorType { get; set; }
+        public string? BoorCardnumber { get; set; }
+        public string? BoorMemberType { get; set; }
+        public string? BoorStatus { get; set; }
+        public int  BoorUserId { get; set; }
+        public int BoorHotelId { get; set; }
 
 
     }

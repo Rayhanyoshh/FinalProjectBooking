@@ -10,24 +10,24 @@ namespace Realta.Contract.Models
     public class BookingOrderDetailDto
     {
         [Required(ErrorMessage = "Borde ID is Required")]
-        public int borde_id { get; set; }
+        public int BordeId { get; set; }
 
         [Required(ErrorMessage = "Borde Boor ID is Required")]
-        public int borde_boor_id { get; set; }
+        public int BordeBoorId { get; set; }
 
         [Required(ErrorMessage = "Borde Checkin is Required")]
-        public DateTime borde_checkin { get; set; }
+        public DateTime BordeCheckin { get; set; }
 
         [Required(ErrorMessage = "Borde Checkout is Required")]
-        public DateTime borde_checkout { get; set; }
+        public DateTime BordeCheckout { get; set; }
 
-        public int? borde_adults { get; set; }
-        public int? borde_kids { get; set; }
-        public decimal? borde_price { get; set; }
-        public decimal? borde_extra { get; set; }
-        public decimal? borde_discount { get; set; }
-        public decimal? borde_tax { get; set; }
-        public decimal? borde_subtotal { get; set; }
-        public int? borde_faci_id { get; set; }
+        public int? BordeAdults { get; set; }
+        public int? BordeKids { get; set; }
+        public decimal? BordePrice { get; set; }
+        public decimal? BordeExtra { get; set; }
+        public decimal? BordeDiscount { get; set; }
+        public decimal? BordeTax { get; set; }
+        public decimal? BordeSubtotal { get; set; }
+        public int? BordeFaciId { get; set; }
     }
 }

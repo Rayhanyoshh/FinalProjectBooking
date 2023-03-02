@@ -27,13 +27,13 @@ namespace Realta.WebAPI.Controllers
 
             var boexDto = boex.Select(r => new BookingOrderDetailExtraDtoDto
             {
-                boex_id = r.boex_id,
-                boex_price = r.boex_price,
-                boex_qty = r.boex_qty,
-                boex_subtotal = r.boex_subtotal,
-                boex_measure_unit = r.boex_measure_unit,
-                boex_borde_id = r.boex_borde_id,
-                boex_prit_id = r.boex_prit_id
+                BoexId = r.BoexId,
+                BoexPrice = r.BoexPrice,
+                BoexQty = r.BoexQty,
+                BoexSubtotal = r.BoexSubtotal,
+                BoexMeasureUnit = r.BoexMeasureUnit,
+                BoexBordeId = r.BoexBordeId,
+                BoexPritId = r.BoexPritId
             });
 
             return Ok(boexDto);
@@ -53,13 +53,13 @@ namespace Realta.WebAPI.Controllers
 
             var boexDto = new BookingOrderDetailExtraDtoDto
             {
-                boex_id = boex.boex_id,
-                boex_price = boex.boex_price,
-                boex_qty = boex.boex_qty,
-                boex_subtotal = boex.boex_subtotal,
-                boex_measure_unit = boex.boex_measure_unit,
-                boex_borde_id = boex.boex_borde_id,
-                boex_prit_id = boex.boex_prit_id
+                BoexId = boex.BoexId,
+                BoexPrice = boex.BoexPrice,
+                BoexQty = boex.BoexQty,
+                BoexSubtotal = boex.BoexSubtotal,
+                BoexMeasureUnit = boex.BoexMeasureUnit,
+                BoexBordeId = boex.BoexBordeId,
+                BoexPritId = boex.BoexPritId
 
             };
             return Ok(boexDto);
@@ -78,12 +78,12 @@ namespace Realta.WebAPI.Controllers
 
             var boex = new BookingOrderDetailExtra
             {
-                boex_price = boexDto.boex_price,
-                boex_qty = boexDto.boex_qty,
-                boex_subtotal = boexDto.boex_subtotal,
-                boex_measure_unit = boexDto.boex_measure_unit,
-                boex_borde_id = boexDto.boex_borde_id,
-                boex_prit_id = boexDto.boex_prit_id
+                BoexPrice = boexDto.BoexPrice,
+                BoexQty = boexDto.BoexQty,
+                BoexSubtotal = boexDto.BoexSubtotal,
+                BoexMeasureUnit = boexDto.BoexMeasureUnit,
+                BoexBordeId = boexDto.BoexBordeId,
+                BoexPritId = boexDto.BoexPritId
             };
 
             // post to db
@@ -91,9 +91,9 @@ namespace Realta.WebAPI.Controllers
 
 
             //forward to show result
-            var res = _repositoryManager.boexRepository.FindBoexById(boex.boex_id);
+            var res = _repositoryManager.boexRepository.FindBoexById(boex.BoexId);
             
-            return CreatedAtRoute("GetBoexID", new { id = boex.boex_id }, res);
+            return CreatedAtRoute("GetBoexID", new { id = boex.BoexId }, res);
 
         }
 
@@ -109,27 +109,27 @@ namespace Realta.WebAPI.Controllers
             }
             var boex = new BookingOrderDetailExtra
             {
-                boex_id = id,
-                boex_price = boexDto.boex_price,
-                boex_qty = boexDto.boex_qty,
-                boex_subtotal = boexDto.boex_subtotal,
-                boex_measure_unit = boexDto.boex_measure_unit,
-                boex_borde_id = boexDto.boex_borde_id,
-                boex_prit_id = boexDto.boex_prit_id
+                BoexId = id,
+                BoexPrice = boexDto.BoexPrice,
+                BoexQty = boexDto.BoexQty,
+                BoexSubtotal = boexDto.BoexSubtotal,
+                BoexMeasureUnit = boexDto.BoexMeasureUnit,
+                BoexBordeId = boexDto.BoexBordeId,
+                BoexPritId = boexDto.BoexPritId
             };
 
             _repositoryManager.boexRepository.Edit(boex);
 
             // Forward to show result
-            return CreatedAtRoute("GetBoexID", new { id = boexDto.boex_id }, new BookingOrderDetailExtraDtoDto
+            return CreatedAtRoute("GetBoexID", new { id = boexDto.BoexId }, new BookingOrderDetailExtraDtoDto
             {
-                boex_id = boex.boex_id,
-                boex_price = boex.boex_price,
-                boex_qty = boex.boex_qty,
-                boex_subtotal = boex.boex_subtotal,
-                boex_measure_unit = boex.boex_measure_unit,
-                boex_borde_id = boex.boex_borde_id,
-                boex_prit_id = boex.boex_prit_id
+                BoexId = boex.BoexId,
+                BoexPrice = boex.BoexPrice,
+                BoexQty = boex.BoexQty,
+                BoexSubtotal = boex.BoexSubtotal,
+                BoexMeasureUnit = boex.BoexMeasureUnit,
+                BoexBordeId = boex.BoexBordeId,
+                BoexPritId = boex.BoexPritId
             });
         }
 
