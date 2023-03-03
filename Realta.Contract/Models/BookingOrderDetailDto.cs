@@ -29,5 +29,6 @@ namespace Realta.Contract.Models
         public decimal? BordeTax { get; set; }
         public decimal? BordeSubtotal { get; set; }
         public int? BordeFaciId { get; set; }
+
     }
 }

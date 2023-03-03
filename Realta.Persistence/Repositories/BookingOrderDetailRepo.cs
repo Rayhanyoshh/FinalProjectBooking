@@ -27,7 +27,7 @@ namespace Realta.Persistence.Repositories
                 "borde_boor_id AS BordeBoorId, " +
                 "borde_checkin AS BordeCheckin, " +
                 "borde_checkout AS BordeCheckout, " +
-                "borde_adult AS BordeAdult, " +
+                "borde_adults AS BordeAdults, " +
                 "borde_kids AS BordeKids, " +
                 "borde_price AS BordePrice, " +
                 "borde_extra AS BordeExtra, " +
@@ -127,7 +127,7 @@ namespace Realta.Persistence.Repositories
                 "borde_boor_id AS BordeBoorId, " +
                 "borde_checkin AS BordeCheckin, " +
                 "borde_checkout AS BordeCheckout, " +
-                "borde_adult AS BordeAdult, " +
+                "borde_adults AS BordeAdults, " +
                 "borde_kids AS BordeKids, " +
                 "borde_price AS BordePrice, " +
                 "borde_extra AS BordeExtra, " +
@@ -164,7 +164,7 @@ namespace Realta.Persistence.Repositories
                 "borde_boor_id AS BordeBoorId, " +
                 "borde_checkin AS BordeCheckin, " +
                 "borde_checkout AS BordeCheckout, " +
-                "borde_adult AS BordeAdult, " +
+                "borde_adults AS BordeAdults, " +
                 "borde_kids AS BordeKids, " +
                 "borde_price AS BordePrice, " +
                 "borde_extra AS BordeExtra, " +
@@ -204,11 +204,6 @@ namespace Realta.Persistence.Repositories
                               "VALUES(@bordeBoorId, @bordeCheckin, @bordeCheckout, @bordeAdult, @bordeKids, @bordePrice, @bordeExtra, @bordeDiscount, @bordeTax, @bordeSubtotal, @bordeFaciId);",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
-                    new SqlCommandParameterModel() {
-                        ParameterName = "@bordeId",
-                        DataType = DbType.Int32,
-                        Value = borde.BordeId
-                    },
                     new SqlCommandParameterModel() {
                         ParameterName = "@bordeBoorId",
                         DataType = DbType.Int32,
@@ -287,6 +282,22 @@ namespace Realta.Persistence.Repositories
 
             _adoContext.ExecuteNonQuery(model);
             _adoContext.Dispose();
+        }
+
+
+        public int GetBordeDetailSequenceId()
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = "SELECT IDENT_CURRENT('Booking.booking_order_detail');",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] { }
+            };
+
+            var id = _adoContext.ExecuteScalar<decimal>(model);
+            _adoContext.Dispose();
+
+            return (int)id;
         }
     }
 }

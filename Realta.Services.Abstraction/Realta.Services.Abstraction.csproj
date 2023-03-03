@@ -8,4 +8,8 @@
     <AssemblyName>Realta.Services.Abstraction</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Realta.Contract\Realta.Contract.csproj" />
+  </ItemGroup>
+
 </Project>

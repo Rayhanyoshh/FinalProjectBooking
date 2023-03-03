@@ -33,5 +33,8 @@ namespace Realta.WebAPI.Extensions
         public static void ConfigureDbContext(this IServiceCollection services, IConfiguration configuration) =>
            services.AddSingleton(new AdoDbContext(configuration.GetConnectionString("development")));
 
+        public static void ConfigureServiceManager(this IServiceCollection services) =>
+            services.AddScoped<IServiceManager, ServiceManager>();
+
     }
 }

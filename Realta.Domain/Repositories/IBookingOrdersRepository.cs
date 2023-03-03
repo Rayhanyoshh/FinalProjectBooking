@@ -12,6 +12,7 @@ namespace Realta.Domain.Repositories
         IEnumerable<BookingOrders> FindAllBookingOrders();
         Task<IEnumerable<BookingOrders>> FindAllBookingOrdersAsync();
         BookingOrders FindBookingOrdersById(int id);
+        BookingOrdersNestedBookingOrderDetail GetBookingDetail(int id);
         void Insert(BookingOrders booking_Orders);
         void Edit(BookingOrders booking_Orders);
         void Remove(BookingOrders booking_Orders);

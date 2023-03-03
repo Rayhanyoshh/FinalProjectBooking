@@ -104,11 +104,8 @@ namespace Realta.WebAPI.Controllers
 
                 // post to db
                 _repositoryManager.bordeRepository.Insert(borde);
-
-
-                //forward to show result
-                //var res = _repositoryManager.bookingOrdersRepository.FindLastBoorID().ToList();
-                //return Ok(res);
+            // getin latest inserted id
+                bordeDto.BordeId = _repositoryManager.bordeRepository.GetBordeDetailSequenceId();
                 return CreatedAtRoute("GetBordeByID", new { id = bordeDto.BordeId }, bordeDto);
 
             }

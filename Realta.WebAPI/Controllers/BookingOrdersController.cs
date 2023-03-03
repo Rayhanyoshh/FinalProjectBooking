@@ -56,36 +56,38 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("{id}", Name = "GetBoorByID")]
         public IActionResult FindBoorById(int id)
         {
-            var boor = _repositoryManager.bookingOrdersRepository.FindBookingOrdersById(id);
-            if (boor == null)
+            var boorBorde = _repositoryManager.bookingOrdersRepository.GetBookingDetail(id);
+            //var boor = _repositoryManager.bookingOrdersRepository.FindBookingOrdersById(id);
+
+            if (boorBorde != null)
             {
-                _logger.LogError("Boor object sent from client is null");
-                return BadRequest("Boor object is null");
+                return Ok(boorBorde);
             }
+            _logger.LogError("Boor object sent from client is null");
+            return BadRequest("Boor object is null");
 
-
-            var boorDto = new BookingOrdersDto
-            {
-                BoorId = boor.BoorId,
-                BoorOrderNumber = boor.BoorOrderNumber,
-                BoorOrderDate = boor.BoorOrderDate,
-                BoorArrivalDate = boor.BoorArrivalDate,
-                BoorTotalRoom = boor.BoorTotalRoom,
-                BoorTotalGuest = boor.BoorTotalGuest,
-                BoorDiscount = boor.BoorDiscount,
-                BoorTotalTax = boor.BoorTotalTax,
-                BoorTotalAmmount = boor.BoorTotalAmmount,
-                BoorDownPayment = boor.BoorDownPayment,
-                BoorPayType = boor.BoorPayType,
-                BoorIsPaid = boor.BoorIsPaid,
-                BoorType = boor.BoorType,
-                BoorCardnumber = boor.BoorCardnumber,
-                BoorMemberType = boor.BoorMemberType,
-                BoorStatus = boor.BoorStatus,
-                BoorUserId = boor.BoorUserId,
-                BoorHotelId = boor.BoorHotelId
-            };
-            return Ok(boorDto);
+            //var boorDto = new BookingOrdersDto
+            //{
+            //    BoorId = boor.BoorId,
+            //    BoorOrderNumber = boor.BoorOrderNumber,
+            //    BoorOrderDate = boor.BoorOrderDate,
+            //    BoorArrivalDate = boor.BoorArrivalDate,
+            //    BoorTotalRoom = boor.BoorTotalRoom,
+            //    BoorTotalGuest = boor.BoorTotalGuest,
+            //    BoorDiscount = boor.BoorDiscount,
+            //    BoorTotalTax = boor.BoorTotalTax,
+            //    BoorTotalAmmount = boor.BoorTotalAmmount,
+            //    BoorDownPayment = boor.BoorDownPayment,
+            //    BoorPayType = boor.BoorPayType,
+            //    BoorIsPaid = boor.BoorIsPaid,
+            //    BoorType = boor.BoorType,
+            //    BoorCardnumber = boor.BoorCardnumber,
+            //    BoorMemberType = boor.BoorMemberType,
+            //    BoorStatus = boor.BoorStatus,
+            //    BoorUserId = boor.BoorUserId,
+            //    BoorHotelId = boor.BoorHotelId
+            //};
+            //return Ok(boorDto);
         }
 
         // POST api/<BookingOrdersController>

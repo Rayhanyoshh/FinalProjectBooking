@@ -14,6 +14,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
+	  <ProjectReference Include="..\Realta.Domain\Realta.Domain.csproj" />
 	  <ProjectReference Include="..\Realta.Services.Abstraction\Realta.Services.Abstraction.csproj" />
 	</ItemGroup>
 

@@ -12,6 +12,7 @@ namespace Realta.Domain.Repositories
         IEnumerable<BookingOrderDetail> FindAllBorde();
         Task<IEnumerable<BookingOrderDetail>> FindAllBordeAsync();
         BookingOrderDetail FindBordeById(int id);
+        int GetBordeDetailSequenceId();
         void Insert(BookingOrderDetail borde);
         void Edit(BookingOrderDetail borde);
         void Remove(BookingOrderDetail borde);
