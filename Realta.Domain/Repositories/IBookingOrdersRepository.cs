@@ -1,4 +1,5 @@
 ﻿using Realta.Domain.Entities;
+using Realta.Domain.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Realta.Domain.Repositories
     {
         IEnumerable<BookingOrders> FindAllBookingOrders();
         Task<IEnumerable<BookingOrders>> FindAllBookingOrdersAsync();
+        Task<IEnumerable<BookingOrders>> GetBookingOrdersPaging(BookingOrdersParameters bookingOrdersParameters);
         BookingOrders FindBookingOrdersById(int id);
         BookingOrdersNestedBookingOrderDetail GetBookingDetail(int id);
         void Insert(BookingOrders booking_Orders);

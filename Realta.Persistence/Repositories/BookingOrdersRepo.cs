@@ -1,5 +1,6 @@
 ﻿using Realta.Domain.Entities;
 using Realta.Domain.Repositories;
+using Realta.Domain.RequestFeatures;
 using Realta.Persistence.Base;
 using Realta.Persistence.Interface;
 using Realta.Persistence.RepositoryContext;
@@ -422,14 +423,7 @@ namespace Realta.Persistence.Repositories
                 "b.boor_hotel_id AS BoorHotelId," +
                 "d.borde_id AS BordeId, " +
                 "d.borde_boor_id AS BordeBoorId, " +
-                "d.borde_checkin AS BordeCheckin, " +
-                "d.borde_checkout AS BordeCheckout, " +
-                "d.borde_adults AS BordeAdults, " +
-                "d.borde_kids AS BordeKids, " +
-                "d.borde_price AS BordePrice, " +
-                "d.borde_extra AS BordeExtra, " +
-                "d.borde_discount AS BordeDiscount, " +
-                "d.borde_tax AS BordeTax, " +
+                "d.borde_checkin AS BordeCheckin, " + 
                 "d.borde_subtotal AS BordeSubtotal, " +
                 "d.borde_faci_id AS BordeFaciId " +
                 " FROM Booking.booking_orders b " +
@@ -514,6 +508,11 @@ namespace Realta.Persistence.Repositories
                 BookingOrderDetails = bookingOrderDetails.ToList()
             };
             return nestedJson;
+        }
+
+        public Task<IEnumerable<BookingOrders>> GetBookingOrdersPaging(BookingOrdersParameters bookingOrdersParameters)
+        {
+            throw new NotImplementedException();
         }
     }
 }

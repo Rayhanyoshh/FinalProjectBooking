@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Realta.Contract.Models
@@ -10,10 +11,10 @@ namespace Realta.Contract.Models
     public class SpecialOffersDto
     {
         [Required(ErrorMessage = "spof_id is Required")]
-
+        [JsonPropertyName("SpofId")]
         public int SpofId { get; set; }
         [Required(ErrorMessage = "spof_name is Required")]
-
+        [JsonPropertyName("SpofName")]
         public string SpofName { get; set; }
         [Required(ErrorMessage = "spof_description is Required")]
         public string SpofDescription { get; set; }
