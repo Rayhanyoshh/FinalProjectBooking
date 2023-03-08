@@ -157,16 +157,16 @@ namespace Realta.Persistence.Repositories
             SqlCommandModel model = new SqlCommandModel()
             {
                 CommandText = "SELECT " +
-                "spof_id AS SpofId " +
-                "spof_name AS SpofName " +
-                "spof_description AS SpofDescription " +
-                "spof_type AS SpofType " +
-                "spof_discount AS SpofDiscount " +
-                "spof_start_date AS SpofStartDate " +
-                "spof_end_date AS SpofEndDate " +
-                "spof_min_qty AS SpofMinQty " +
-                "spof_max_qty AS SpofMaxQty " +
-                "spof_modified_date AS SpofModifiedDate" +
+                "spof_id AS SpofId, " +
+                "spof_name AS SpofName, " +
+                "spof_description AS SpofDescription, " +
+                "spof_type AS SpofType, " +
+                "spof_discount AS SpofDiscount, " +
+                "spof_start_date AS SpofStartDate, " +
+                "spof_end_date AS SpofEndDate, " +
+                "spof_min_qty AS SpofMinQty, " +
+                "spof_max_qty AS SpofMaxQty, " +
+                "spof_modified_date AS SpofModifiedDate " +
                 " FROM Booking.Special_offers WHERE spof_id = @spofId",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
