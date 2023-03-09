@@ -398,7 +398,7 @@ namespace Realta.Persistence.Repositories
             }
         }
 
-        public BookingOrdersNestedBookingOrderDetail GetBookingDetail(int id)
+        public BookingOrdersNestedDetail GetBookingDetail(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -441,8 +441,8 @@ namespace Realta.Persistence.Repositories
 
                 }
             };
-            var dataset = FindByCondition<BookingOrderJoinBoor>(model);
-            var listdata = new List<BookingOrderJoinBoor>();
+            var dataset = FindByCondition<BookingOrderJoinDetailExtra>(model);
+            var listdata = new List<BookingOrderJoinDetailExtra>();
             while (dataset.MoveNext())
             {
                 listdata.Add(dataset.Current);
@@ -485,7 +485,7 @@ namespace Realta.Persistence.Repositories
                BordeFaciId = x.BordeFaciId
             });
 
-            var nestedJson = new BookingOrdersNestedBookingOrderDetail
+            var nestedJson = new BookingOrdersNestedDetail
             {
                 BoorId = bookingOrders.BoorId,
                 BoorOrderNumber = bookingOrders.BoorOrderNumber,

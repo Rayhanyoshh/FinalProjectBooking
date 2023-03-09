@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Realta.Domain.Entities
 {
-    public class BookingOrdersNestedBookingOrderDetail
+    public class BookingOrdersNestedDetail
     {
 
         public int BoorId { get; set; }
