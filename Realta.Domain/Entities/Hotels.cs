@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlTypes;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -15,19 +16,20 @@ namespace Realta.Domain.Entities
         [Key]
         public int HotelId { get; set; }
         public string? HotelName { get; set; }
+        public decimal HotelRoomPrice { get; set; }
         [AllowNull]
         public string? HotelDescription { get; set; } = string.Empty;
-        public bool HotelStatus { get; set; }
-        [AllowNull]
-        public string? HotelReasonStatus { get; set; } = string.Empty;
+        // public bool HotelStatus { get; set; }
+        // [AllowNull]
+        // public string? HotelReasonStatus { get; set; } = string.Empty;
         [AllowNull]
         public Int16 HotelRatingStar { get; set; }
-        [Phone]
-        public string? HotelPhonenumber { get; set; }
+        // [Phone]
+        // public string? HotelPhonenumber { get; set; }
+        // [AllowNull]
+        // public DateTime HotelModifiedDate { get; set; } = DateTime.Now;
         [AllowNull]
-        public DateTime HotelModifiedDate { get; set; } = DateTime.Now;
-        [AllowNull]
-        public int? HotelAddrId { get; set; }
+        public string? HotelAddress { get; set; }
         [AllowNull]
         public string HotelProvience { get; set; }
 
