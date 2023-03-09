@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Realta.Domain.Base;
 using Realta.Domain.Entities;
 using Realta.Services.Abstraction;
 using Realta.Contract.Models;
+using Realta.Domain.RequestFeatures;
+
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Realta.WebAPI.Controllers
@@ -47,7 +50,6 @@ namespace Realta.WebAPI.Controllers
                 BoorUserId = r.BoorUserId,
                 BoorHotelId = r.BoorHotelId
             });
-
 
             return Ok(BoorDto);
         }
@@ -215,6 +217,37 @@ namespace Realta.WebAPI.Controllers
             _repositoryManager.bookingOrdersRepository.Remove(boor);
             return Ok("Data has been remove.");
 
+        }
+        
+        [HttpGet("paging")]
+        public async Task<IActionResult> GetBookingOrdersPaging ([FromQuery] BookingOrdersParameters  bookingOrdersParameters)
+        {
+            var bookingOrders = await _repositoryManager.bookingOrdersRepository.GetBookingOrdersPaging(bookingOrdersParameters);
+            return Ok(bookingOrders);
+        }
+
+        [HttpGet("pageList")]
+        public async Task<IActionResult> GetBookingOrdersPageList([FromQuery] BookingOrdersParameters bookingOrdersParameters)
+        {
+
+            var bookingOrders =
+                await _repositoryManager.bookingOrdersRepository.GetBookingOrderPageList(bookingOrdersParameters);
+
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(bookingOrders.MetaData));
+
+            return Ok(bookingOrders);
+        }
+        
+        [HttpGet("hotelList")]
+        public async Task<IActionResult> GetHotelList([FromQuery] HotelParameters hotelParameters )
+        {
+            // if (!hotelParameters.ValidatePriceRange)
+            //     return BadRequest("MaxPrice must greater than MinPrice");
+            var hotel =
+                await _repositoryManager.bookingOrdersRepository.GetHotelPageList(hotelParameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(hotel.MetaData));
+            return Ok(hotel);
         }
     }
 }
