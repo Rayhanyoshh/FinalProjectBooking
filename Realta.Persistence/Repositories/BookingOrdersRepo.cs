@@ -14,8 +14,7 @@ using System.Threading.Tasks;
 namespace Realta.Persistence.Repositories
 {
     internal class BookingOrdersRepo : RepositoryBase<BookingOrders>, IBookingOrdersRepository
-
-
+    
     {
         public BookingOrdersRepo (AdoDbContext AdoContext) : base(AdoContext)
         {
@@ -43,6 +42,18 @@ namespace Realta.Persistence.Repositories
                 "boor_hotel_id AS BoorHotelId" +
                 " FROM Booking.booking_orders;");
 
+            while (dataSet.MoveNext())
+            {
+                var data = dataSet.Current;
+                yield return data;
+            }
+        }
+
+        public IEnumerable<Hotels> FindAllHotels()
+        {
+            IEnumerator<Hotels> dataSet = FindAll<Hotels>
+            ("Select hotel_id From Hotel.hotels");
+            
             while (dataSet.MoveNext())
             {
                 var data = dataSet.Current;
@@ -198,6 +209,8 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
+
+
         public BookingOrders FindBookingOrdersById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
@@ -249,8 +262,48 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = "INSERT INTO Booking.booking_orders (boor_order_number,boor_order_date, boor_arrival_date,boor_total_room , boor_total_guest,boor_discount,boor_total_tax,boor_total_ammount,boor_down_payment,boor_pay_type, boor_is_paid, boor_type, boor_cardnumber, boor_member_type, boor_status,boor_user_id, boor_hotel_id) " +
-                "VALUES(@boorOrderNumber, @boorOrderDate, @boorArrivalDate, @boorTotalRoom, @boorTotalGuest, @boorDiscount, @boorTotalTax, @boorTotalAmmount, @boorDownPayment, @boorPayType, @boorIsPaid, @boorType, @boorCardnumber, @boorMemberType, @boorStatus, @boorUserId, @boorHotelId)",
+                CommandText = 
+                "INSERT INTO " +
+                "Booking.booking_orders " +
+                "(" +
+                "boor_order_number," +
+                "boor_order_date," +
+                "boor_arrival_date," +
+                "boor_total_room," +
+                "boor_total_guest," +
+                "boor_discount," +
+                "boor_total_tax," +
+                "boor_total_ammount," +
+                "boor_down_payment," +
+                "boor_pay_type, " +
+                "boor_is_paid, " +
+                "boor_type, " +
+                "boor_cardnumber, " +
+                "boor_member_type, " +
+                "boor_status," +
+                "boor_user_id, " +
+                "boor_hotel_id" +
+                ")   " +
+                "VALUES" +
+                "(" +
+                "@boorOrderNumber," +
+                "@boorOrderDate," +
+                "@boorArrivalDate, " +
+                "@boorTotalRoom, " +
+                "@boorTotalGuest, " +
+                "@boorDiscount, " +
+                "@boorTotalTax, " +
+                "@boorTotalAmmount, " +
+                "@boorDownPayment, " +
+                "@boorPayType, " +
+                "@boorIsPaid, " +
+                "@boorType, " +
+                "@boorCardnumber, " +
+                "@boorMemberType, " +
+                "@boorStatus, " +
+                "@boorUserId, " +
+                "@boorHotelId" +
+                ")",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
@@ -510,9 +563,161 @@ namespace Realta.Persistence.Repositories
             return nestedJson;
         }
 
-        public Task<IEnumerable<BookingOrders>> GetBookingOrdersPaging(BookingOrdersParameters bookingOrdersParameters)
+        public async Task<IEnumerable<BookingOrders>> GetBookingOrdersPaging(BookingOrdersParameters bookingOrdersParameters)
         {
-            throw new NotImplementedException();
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = @"SELECT " +
+                              "boor_id AS BoorId, " +
+                              "boor_order_number AS BoorOrderNumber, " +
+                              "boor_order_date AS BoorOrderDate, " +
+                              "boor_arrival_date AS BoorArrivalDate, " +
+                              "boor_total_room AS BoorTotalRoom, " +
+                              "boor_total_guest AS BoorTotalGuest, " +
+                              "boor_discount AS BoorDiscount, " +
+                              "boor_total_tax AS BoorTotalTax, " +
+                              "boor_total_ammount AS BoorTotalAmmount, " +
+                              "boor_down_payment AS BoorDownPayment, " +
+                              "boor_pay_type AS BoorPayType, " +
+                              "boor_is_paid AS BoorIsPaid, " +
+                              "boor_type AS BoorType, " +
+                              "boor_cardnumber AS BoorCardnumber, " +
+                              "boor_member_type AS BoorMemberType, " +
+                              "boor_status AS BoorStatus, " +
+                              "boor_user_id AS BoorUserId, " +
+                              "boor_hotel_id AS BoorHotelId" +
+                              " FROM Booking.booking_orders order by boor_id "+
+                              " OFFSET @pageNo ROWS FETCH NEXT  @pageSize ROWS ONLY",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@pageNo",
+                        DataType = DbType.Int32,
+                        Value = bookingOrdersParameters.PageNumber
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@pageSize",
+                        DataType = DbType.Int32,
+                        Value = bookingOrdersParameters.PageSize
+                    }
+                }
+
+            };
+
+            IAsyncEnumerator<BookingOrders> dataSet = FindAllAsync<BookingOrders>(model);
+
+            var item = new List<BookingOrders>();
+
+            while (await dataSet.MoveNextAsync())
+            {
+                item.Add(dataSet.Current);
+            }
+
+            return item;
+        }
+        
+        public async Task<PageList<BookingOrders>> GetBookingOrderPageList(BookingOrdersParameters bookingOrdersParameters)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = @"SELECT " +
+                              "boor_id AS BoorId, " +
+                              "boor_order_number AS BoorOrderNumber, " +
+                              "boor_order_date AS BoorOrderDate, " +
+                              "boor_arrival_date AS BoorArrivalDate, " +
+                              "boor_total_room AS BoorTotalRoom, " +
+                              "boor_total_guest AS BoorTotalGuest, " +
+                              "boor_discount AS BoorDiscount, " +
+                              "boor_total_tax AS BoorTotalTax, " +
+                              "boor_total_ammount AS BoorTotalAmmount, " +
+                              "boor_down_payment AS BoorDownPayment, " +
+                              "boor_pay_type AS BoorPayType, " +
+                              "boor_is_paid AS BoorIsPaid, " +
+                              "boor_type AS BoorType, " +
+                              "boor_cardnumber AS BoorCardnumber, " +
+                              "boor_member_type AS BoorMemberType, " +
+                              "boor_status AS BoorStatus, " +
+                              "boor_user_id AS BoorUserId, " +
+                              "boor_hotel_id AS BoorHotelId " +
+                              " FROM Booking.booking_orders order by boor_id "+
+                              " OFFSET @pageNo ROWS FETCH NEXT  @pageSize ROWS ONLY",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@pageNo",
+                        DataType = DbType.Int32,
+                        Value = bookingOrdersParameters.PageNumber
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@pageSize",
+                        DataType = DbType.Int32,
+                        Value = bookingOrdersParameters.PageSize
+                    }
+                }
+            
+            };
+            var bookingOrders = await GetAllAsync<BookingOrders>(model);
+            var totalRow = FindAllBookingOrders().Count();
+            return new PageList<BookingOrders>(bookingOrders.ToList(), totalRow, bookingOrdersParameters.PageNumber,
+                bookingOrdersParameters.PageSize);
+
+        }
+        public async Task<PageList<Hotels>> GetHotelPageList(HotelParameters hotelParameters)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = @"booking.search_hotels",
+                CommandType = CommandType.StoredProcedure,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@location",
+                        DataType = DbType.String,
+                        Value = hotelParameters.Location ?? string.Empty
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@start_date",
+                        DataType = DbType.DateTime,
+                        Value = hotelParameters.StartDate
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@end_date",
+                        DataType = DbType.DateTime,
+                        Value = hotelParameters.EndDate
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@number",
+                        DataType = DbType.Int32,
+                        Value = hotelParameters.Number 
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@pageNo",
+                        DataType = DbType.Int32,
+                        Value = hotelParameters.PageNumber
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@pageSize",
+                        DataType = DbType.Int32,
+                        Value = hotelParameters.PageSize
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@minPrice",
+                        DataType = DbType.Int32,
+                        Value = hotelParameters.MinPrice
+                    },
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@maxPrice",
+                        DataType = DbType.Int32,
+                        Value = hotelParameters.MaxPrice
+                    }
+                    
+                }
+            
+            };
+            var hotels = await GetAllAsync<Hotels>(model);
+            var totalRow = FindAllHotels().Count();
+            return new PageList<Hotels>(hotels.ToList(), totalRow, hotelParameters.PageNumber,
+                hotelParameters.PageSize);
+
         }
     }
 }

@@ -18,5 +18,6 @@ namespace Realta.Domain.Base
         ISpecialOfferCouponsRepo socoRepository { get; }
         ISpecialOffersRepo spofRepository { get; }
         IUserBreakfastRepo usbrRepository { get; }
+        
     }
 }

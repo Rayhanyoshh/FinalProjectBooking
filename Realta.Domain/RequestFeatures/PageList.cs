@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Realta.Domain.RequestFeatures
 {
-    public class PagedList<T> : List<T>
+    public class PageList<T> : List<T>
     {
         public MetaData MetaData { get; set; }
-        public PagedList(List<T> items, int count, int pageNumber, int pageSize)
+        public PageList(List<T> items, int count, int pageNumber, int pageSize)
         {
             MetaData = new MetaData
             {
@@ -22,14 +22,14 @@ namespace Realta.Domain.RequestFeatures
             AddRange(items);
         }
 
-        public static PagedList<T> ToPagedList(IEnumerable<T> source, int pageNumber, int pageSize)
+        public static PageList<T> ToPagedList(IEnumerable<T> source, int pageNumber, int pageSize)
         {
             var count = source.Count();
             var items = source
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize).ToList();
 
-            return new PagedList<T>(items, count, pageNumber, pageSize);
+            return new PageList<T>(items, count, pageNumber, pageSize);
 
         }
     }
