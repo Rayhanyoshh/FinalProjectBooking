@@ -701,12 +701,12 @@ namespace Realta.Persistence.Repositories
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@minPrice",
-                        DataType = DbType.Int32,
+                        DataType = DbType.Decimal,
                         Value = hotelParameters.MinPrice
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@maxPrice",
-                        DataType = DbType.Int32,
+                        DataType = DbType.Decimal,
                         Value = hotelParameters.MaxPrice
                     }
                     

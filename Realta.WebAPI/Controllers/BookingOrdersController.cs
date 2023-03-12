@@ -233,7 +233,7 @@ namespace Realta.WebAPI.Controllers
             var bookingOrders =
                 await _repositoryManager.bookingOrdersRepository.GetBookingOrderPageList(bookingOrdersParameters);
 
-
+            var totalPage=await  _repositoryManager.bookingOrdersRepository.GetBookingOrderPageList(bookingOrdersParameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(bookingOrders.MetaData));
 
             return Ok(bookingOrders);
