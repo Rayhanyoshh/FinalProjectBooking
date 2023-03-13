@@ -14,8 +14,8 @@ namespace Realta.Domain.Repositories
         IEnumerable<Hotels> FindAllHotels();
         Task<IEnumerable<BookingOrders>> FindAllBookingOrdersAsync();
         Task<IEnumerable<BookingOrders>> GetBookingOrdersPaging(BookingOrdersParameters bookingOrdersParameters);
-        Task<PageList<BookingOrders>> GetBookingOrderPageList(BookingOrdersParameters bookingOrdersParameters);
-        Task<PageList<Hotels>> GetHotelPageList(HotelParameters hotelParameters);
+        Task<PagedList<BookingOrders>> GetBookingOrderPageList(BookingOrdersParameters bookingOrdersParameters);
+        Task<PagedList<Hotels>> GetHotelPageList(HotelParameters hotelParameters);
         BookingOrders FindBookingOrdersById(int id);
         BookingOrdersNestedBookingOrderDetail GetBookingDetail(int id);
         void Insert(BookingOrders booking_Orders);

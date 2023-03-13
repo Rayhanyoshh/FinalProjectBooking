@@ -616,7 +616,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
         
-        public async Task<PageList<BookingOrders>> GetBookingOrderPageList(BookingOrdersParameters bookingOrdersParameters)
+        public async Task<PagedList<BookingOrders>> GetBookingOrderPageList(BookingOrdersParameters bookingOrdersParameters)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -658,11 +658,11 @@ namespace Realta.Persistence.Repositories
             };
             var bookingOrders = await GetAllAsync<BookingOrders>(model);
             var totalRow = FindAllBookingOrders().Count();
-            return new PageList<BookingOrders>(bookingOrders.ToList(), totalRow, bookingOrdersParameters.PageNumber,
+            return new PagedList<BookingOrders>(bookingOrders.ToList(), totalRow, bookingOrdersParameters.PageNumber,
                 bookingOrdersParameters.PageSize);
 
         }
-        public async Task<PageList<Hotels>> GetHotelPageList(HotelParameters hotelParameters)
+        public async Task<PagedList<Hotels>> GetHotelPageList(HotelParameters hotelParameters)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -715,7 +715,7 @@ namespace Realta.Persistence.Repositories
             };
             var hotels = await GetAllAsync<Hotels>(model);
             var totalRow = FindAllHotels().Count();
-            return new PageList<Hotels>(hotels.ToList(), totalRow, hotelParameters.PageNumber,
+            return new PagedList<Hotels>(hotels.ToList(), totalRow, hotelParameters.PageNumber,
                 hotelParameters.PageSize);
 
         }

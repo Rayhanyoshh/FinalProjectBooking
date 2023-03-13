@@ -19,13 +19,28 @@ namespace Realta.Persistence.Base
         private ISpecialOfferCouponsRepo _socoRepository;
         private ISpecialOffersRepo _spofRepository;
         private IUserBreakfastRepo _usbrRepository;
+        private IBookingHotelRepo _bookingHotelRepo;
 
 
         public RepositoryManager(AdoDbContext adoContext)
         {
             _adoContext = adoContext;
         }
+        
 
+        public IBookingHotelRepo bookingHotelRepo { 
+            get
+            {
+                if (_bookingHotelRepo == null)
+                {
+                    _bookingHotelRepo = new BookingHotelRepo (_adoContext);
+                }
+                return _bookingHotelRepo;
+            } 
+        }
+
+
+        
 
         public IBookingOrdersRepository bookingOrdersRepository
         {

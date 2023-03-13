@@ -5,13 +5,23 @@
     <projectFile profileName="Realta.WebAPI">Realta.WebAPI/Realta.WebAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e944862f-49e5-4238-9c7b-dbe7648aefd0" name="Changes" comment="check">
+    <list default="true" id="e944862f-49e5-4238-9c7b-dbe7648aefd0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Realta.Domain/Repositories/IBookingHotelRepo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/SpecialOfferParameters.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingHotelRepo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingHotelController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Contract/Models/HotelDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Contract/Models/HotelDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/Entities/Hotels.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Entities/Hotels.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/HotelParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/HotelParameters.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelRealtaSolution.sln" beforeDir="false" afterPath="$PROJECT_DIR$/HotelRealtaSolution.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Domain/Base/IRepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Base/IRepositoryManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Domain/Repositories/IBookingOrdersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Repositories/IBookingOrdersRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Domain/Repositories/ISpecialOffersRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Repositories/ISpecialOffersRepo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/PageList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/PagedList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Base/RepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Base/RepositoryManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrdersRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrdersRepo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/SpecialOffersRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/SpecialOffersRepo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingOrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingOrdersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.WebAPI/Controllers/SpecialoffersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.WebAPI/Controllers/SpecialoffersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.WebAPI/Extensions/ServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.WebAPI/Extensions/ServiceExtensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +51,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Realta.Domain/RequestFeatures/MetaData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -120,7 +131,7 @@
       <workItem from="1678331735029" duration="67000" />
       <workItem from="1678332386638" duration="12650000" />
       <workItem from="1678384910840" duration="2122000" />
-      <workItem from="1678629537220" duration="4719000" />
+      <workItem from="1678629537220" duration="25611000" />
     </task>
     <servers />
   </component>
