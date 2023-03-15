@@ -9,7 +9,7 @@ namespace Realta.Domain.RequestFeatures
     public abstract class RequestParameters
     {
         const int maxPageSize = 50;
-        public int PageNumber { get; set; } = 1;
+        public int PageNumber { get; set; } = 0;
 
         // jumlah data yang akan di fetch
         private int _pageSize = 10;

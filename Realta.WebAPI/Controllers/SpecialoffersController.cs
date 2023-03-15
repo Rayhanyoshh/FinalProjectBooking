@@ -202,6 +202,9 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("pageList")]
         public async Task<IActionResult> GetSpofPageList([FromQuery] SpecialOfferParameters specialOfferParameters)
         {
+            if (!specialOfferParameters.ValidateStockRange)
+                return BadRequest("MaxQty must be greater than MinStock");
+            
             var specialOffer = await _repositoryManager.spofRepository.GetSpofPageList(specialOfferParameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(specialOffer.MetaData));
             return Ok(specialOffer);

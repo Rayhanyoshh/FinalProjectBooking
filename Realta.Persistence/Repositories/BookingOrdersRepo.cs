@@ -698,18 +698,7 @@ namespace Realta.Persistence.Repositories
                         ParameterName = "@pageSize",
                         DataType = DbType.Int32,
                         Value = hotelParameters.PageSize
-                    },
-                    new SqlCommandParameterModel() {
-                        ParameterName = "@minPrice",
-                        DataType = DbType.Decimal,
-                        Value = hotelParameters.MinPrice
-                    },
-                    new SqlCommandParameterModel() {
-                        ParameterName = "@maxPrice",
-                        DataType = DbType.Decimal,
-                        Value = hotelParameters.MaxPrice
                     }
-                    
                 }
             
             };

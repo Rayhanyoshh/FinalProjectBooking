@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Realta.Domain.RequestFeatures;
+using Realta.Persistence.Repositories.RepositoryExtensions;
 
 namespace Realta.Persistence.Repositories
 {
@@ -215,7 +216,7 @@ namespace Realta.Persistence.Repositories
                               "spof_min_qty AS SpofMinQty, " +
                               "spof_max_qty AS SpofMaxQty, " +
                               "spof_modified_date AS SpofModifiedDate" +
-                              " FROM Booking.Special_offers " +
+                              " FROM Booking.Special_offers WHERE spof_max_qty between @minQty and @maxQty " +
                               " ORDER BY SpofId offset @pageNo Rows fetch next @pageSize rows only",
                 CommandType = CommandType.Text,
                 CommandParameters = new SqlCommandParameterModel[]
@@ -232,13 +233,32 @@ namespace Realta.Persistence.Repositories
                         ParameterName = "@pageSize",
                         DataType = DbType.Int32,
                         Value = specialOfferparameters.PageSize
+                    },
+                    new SqlCommandParameterModel()
+                    {
+                        ParameterName = "@minQty",
+                        DataType = DbType.Int32,
+                        Value = specialOfferparameters.MinQty
+                    },
+                    new SqlCommandParameterModel()
+                    {
+                        ParameterName = "@maxQty",
+                        DataType = DbType.Int32,
+                        Value = specialOfferparameters.MaxQty
                     }
                 }
             };
             var spof = await GetAllAsync<SpecialOffers>(model);
             var totalRow = FindAllSpof().Count();
-            return new PagedList<SpecialOffers>(spof.ToList(), totalRow,specialOfferparameters.PageNumber,
-            specialOfferparameters.PageSize);
+
+            // var spofSearch = spof.Where(p =>
+            //     p.SpofName.ToLower().Contains(specialOfferparameters.SearchTerm.Trim().ToLower()));
+            var spofSearch = spof.AsQueryable()
+                .SearchSpof(specialOfferparameters.SearchTerm)
+                .Sort(specialOfferparameters.OrderBy);
+            
+            return new PagedList<SpecialOffers>(spofSearch.ToList(), totalRow,specialOfferparameters.PageNumber,
+                specialOfferparameters.PageSize);
         }
 
         public SpecialOffers FindSpofById(int id)
