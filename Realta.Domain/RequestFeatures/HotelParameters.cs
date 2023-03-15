@@ -10,6 +10,22 @@ namespace Realta.Domain.RequestFeatures
 {
     public class HotelParameters : RequestParameters
     {
+        [AllowNull]
+        public int? HotelId { get; set; }
+        public string? HotelName { get; set; }
+        public string? HotelCity { get; set; }
+        public string? HotelAddress { get; set; }
+        public int? FaciId { get; set; }
+        public string? FaciName { get; set; }
+        public DateTime? FaciStartdate { get; set; }
+        public DateTime? FaciEnddate { get; set; }
+        public int? FaciMaxNumber { get; set; }
+        public string? SearchTerm { get; set; }
+
+        
+
+        
+
         public string? Location { get; set; }
         [AllowNull]
         public DateTime? StartDate { get; set; }

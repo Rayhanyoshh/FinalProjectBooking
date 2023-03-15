@@ -6,13 +6,8 @@ using Realta.Services.Abstraction;
 using Realta.Contract.Models;
 using Realta.Domain.RequestFeatures;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Realta.WebAPI.Controllers
 {
-    
-    
-
     [Route("api/[controller]")]
     [ApiController]
     public class SpecialoffersController : ControllerBase

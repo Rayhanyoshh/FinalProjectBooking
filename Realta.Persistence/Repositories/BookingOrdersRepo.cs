@@ -48,20 +48,7 @@ namespace Realta.Persistence.Repositories
                 yield return data;
             }
         }
-
-        public IEnumerable<Hotels> FindAllHotels()
-        {
-            IEnumerator<Hotels> dataSet = FindAll<Hotels>
-            ("Select hotel_id From Hotel.hotels");
-            
-            while (dataSet.MoveNext())
-            {
-                var data = dataSet.Current;
-                yield return data;
-            }
-        }
-
-
+        
         public void Edit(BookingOrders booking_Orders)
         {
             SqlCommandModel model = new SqlCommandModel()
@@ -664,38 +651,28 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = @"booking.search_hotels",
+                CommandText = @"Booking.search_hotelsandfaci",
                 CommandType = CommandType.StoredProcedure,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {
-                        ParameterName = "@location",
+                        ParameterName = "@hotelNameAddress",
                         DataType = DbType.String,
-                        Value = hotelParameters.Location ?? string.Empty
+                        Value = hotelParameters.HotelAddress ?? string.Empty
                     },
                     new SqlCommandParameterModel() {
-                        ParameterName = "@start_date",
+                        ParameterName = "@startDate",
                         DataType = DbType.DateTime,
                         Value = hotelParameters.StartDate
                     },
                     new SqlCommandParameterModel() {
-                        ParameterName = "@end_date",
+                        ParameterName = "@endDate",
                         DataType = DbType.DateTime,
                         Value = hotelParameters.EndDate
                     },
                     new SqlCommandParameterModel() {
-                        ParameterName = "@number",
+                        ParameterName = "@maxNumber",
                         DataType = DbType.Int32,
                         Value = hotelParameters.Number 
-                    },
-                    new SqlCommandParameterModel() {
-                        ParameterName = "@pageNo",
-                        DataType = DbType.Int32,
-                        Value = hotelParameters.PageNumber
-                    },
-                    new SqlCommandParameterModel() {
-                        ParameterName = "@pageSize",
-                        DataType = DbType.Int32,
-                        Value = hotelParameters.PageSize
                     }
                 }
             
@@ -705,6 +682,30 @@ namespace Realta.Persistence.Repositories
             return new PagedList<Hotels>(hotels.ToList(), totalRow, hotelParameters.PageNumber,
                 hotelParameters.PageSize);
 
+        }
+        public IEnumerable<Hotels> FindAllHotels()
+        {
+            IEnumerator<Hotels> dataSet = FindAll<Hotels>
+            (@"SELECT 
+                h.hotel_id HotelId,
+                h.hotel_name HotelName,
+                a.addr_city HotelCity,
+                a.addr_line1 HotelAddress,
+                f.faci_id FaciId,
+                f.faci_name FaciName,
+                f.faci_startdate FaciStartdate, 
+                f.faci_enddate FaciEnddate,
+                f.faci_max_number FacimaxNumber
+                FROM Hotel.Hotels h
+                JOIN Hotel.Facilities f ON h.hotel_id= f.faci_hotel_id
+                JOIN Master.address a on h.hotel_addr_id=a.addr_id
+                WHERE f.faci_cagro_id=1 ");
+            
+            while (dataSet.MoveNext())
+            {
+                var data = dataSet.Current;
+                yield return data;
+            }
         }
     }
 }

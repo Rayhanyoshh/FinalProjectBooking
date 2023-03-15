@@ -11,32 +11,28 @@ namespace Realta.Contract.Models;
 public class HotelsDto
 {
     [Required(ErrorMessage = "hotel id is required")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int HotelId { get; set; }
     
     [Required(ErrorMessage = "Hotel name is required")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? HotelName { get; set; }
-    
-    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    // public string? HotelDescription { get; set; }
-    
-    // [Required(ErrorMessage = "Hotel status is required")]
-    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    // public string? HotelStatus { get; set; }
-    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    // public string? HotelReasonStatus { get; set; }
     [AllowNull]
     public decimal HotelRatingStar { get; set; }
-
-    // [Phone]
-    // [Required(ErrorMessage = "Hotel phone number is required")]
-    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    // public string? HotelPhonenumber { get; set; }
-
-    // [AllowNull]
-    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    // public DateTime HotelModifiedDate { get; set; }
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    
+    [AllowNull]
     public string? HotelAddress { get; set; }
+    
+   
+    [AllowNull]
+    public string? HotelCity { get; set; }
+    [AllowNull]
+    public string? FaciName { get; set; }
+    [AllowNull]
+    public DateTime FaciStartdate { get; set; }
+    [AllowNull]
+    public DateTime FaciEnddate { get; set; }
+    [AllowNull]
+    public int FaciMaxNumber { get; set; }
+    [AllowNull]
+    public string? FaciPhotoUrl { get; set; }
+    
 }
