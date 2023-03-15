@@ -17,7 +17,7 @@ namespace Realta.Domain.Repositories
         Task<PagedList<BookingOrders>> GetBookingOrderPageList(BookingOrdersParameters bookingOrdersParameters);
         Task<PagedList<Hotels>> GetHotelPageList(HotelParameters hotelParameters);
         BookingOrders FindBookingOrdersById(int id);
-        BookingOrdersNestedBookingOrderDetail GetBookingDetail(int id);
+        BookingOrdersNestedDetail GetBookingDetail(int id);
         void Insert(BookingOrders booking_Orders);
         void Edit(BookingOrders booking_Orders);
         void Remove(BookingOrders booking_Orders);

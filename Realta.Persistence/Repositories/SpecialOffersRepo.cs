@@ -26,14 +26,14 @@ namespace Realta.Persistence.Repositories
               CommandText= "Update Booking.Special_offers " +
                         " SET " +
                         " spof_name=@spofName, " +
-                        "spof_description=@spofDesc, " +
-                        "spof_type=@spofType, " +
-                        "spof_discount=@spofDiscount, " +
-                        "spof_start_date=@spofStartDate, " +
-                        "spof_end_date=@spofEndDate, " +
-                        "spof_min_qty=@spofMinQty, " +
-                        "spof_max_qty=@spofMaxQty, " +
-                        "spof_modified_date=@spofModDate " +
+                        " spof_description=@spofDesc, " +
+                        " spof_type=@spofType, " +
+                        " spof_discount=@spofDiscount, " +
+                        " spof_start_date=@spofStartDate, " +
+                        " spof_end_date=@spofEndDate, " +
+                        " spof_min_qty=@spofMinQty, " +
+                        " spof_max_qty=@spofMaxQty, " +
+                        " spof_modified_date=@spofModDate " +
                         " WHERE spof_id = @spofId; ",
               CommandType=CommandType.Text,
               CommandParameters=new SqlCommandParameterModel[]

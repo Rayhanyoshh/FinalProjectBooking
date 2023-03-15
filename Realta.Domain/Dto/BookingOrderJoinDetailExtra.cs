@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Realta.Domain.Entities
 {
-    public class BookingOrderJoinBoor
+    public class BookingOrderJoinDetailExtra
     {
 
         public int BoorId { get; set; }
@@ -41,6 +41,7 @@ namespace Realta.Domain.Entities
         public decimal? BordeTax { get; set; }
         public decimal? BordeSubtotal { get; set; }
         public int? BordeFaciId { get; set; }
+
 
     }
 }
