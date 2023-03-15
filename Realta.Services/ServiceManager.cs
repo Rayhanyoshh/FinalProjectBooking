@@ -13,21 +13,18 @@ namespace Realta.Services
 {
     public class ServiceManager : IServiceManager
     {
-
-
-        //private readonly Lazy<IProductPhotoServices> _lazyProductPhotoServices;
-        //private readonly Lazy<ISupplierServices> _lazySupplierServices;
-        //private readonly Lazy<IUtilityService> _lazyUtilityService;
+        private readonly Lazy<IBookingService> _bookingService;
+        public ServiceManager()
+        {
+        }
         public ServiceManager(IRepositoryManager repositoryManager)
         {
+            _bookingService=new Lazy<IBookingService>(()=>new BookingService(repositoryManager));
             //_lazyProductPhotoServices = new Lazy<IProductPhotoServices>(() => new ProductPhotoServices(repositoryManager, _lazyUtilityService));
             //_lazySupplierServices = new Lazy<ISupplierServices>(() => new SupplierServices(repositoryManager));
         }
 
-
-        //public IProductPhotoServices ProductPhotoService => _lazyProductPhotoServices.Value;
-
-        //public ISupplierServices SupplierService => _lazySupplierServices.Value;
+        public IBookingService BookingService => _bookingService.Value;
     }
 }
 

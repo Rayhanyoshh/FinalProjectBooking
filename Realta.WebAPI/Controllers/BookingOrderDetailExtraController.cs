@@ -25,7 +25,7 @@ namespace Realta.WebAPI.Controllers
         {
             var boex = _repositoryManager.boexRepository.FindAllBoex().ToList();
 
-            var boexDto = boex.Select(r => new BookingOrderDetailExtraDtoDto
+            var boexDto = boex.Select(r => new BookingOrderDetailExtraDto
             {
                 BoexId = r.BoexId,
                 BoexPrice = r.BoexPrice,
@@ -51,7 +51,7 @@ namespace Realta.WebAPI.Controllers
             }
 
 
-            var boexDto = new BookingOrderDetailExtraDtoDto
+            var boexDto = new BookingOrderDetailExtraDto
             {
                 BoexId = boex.BoexId,
                 BoexPrice = boex.BoexPrice,
@@ -67,7 +67,7 @@ namespace Realta.WebAPI.Controllers
 
         // POST api/<BoexController>
         [HttpPost]
-        public IActionResult CreateBoex([FromBody] BookingOrderDetailExtraDtoDto boexDto)
+        public IActionResult CreateBoex([FromBody] BookingOrderDetailExtraDto boexDto)
         {
 
             if (boexDto == null)
@@ -99,7 +99,7 @@ namespace Realta.WebAPI.Controllers
 
         // PUT api/<BoexController>/5
         [HttpPut("{id}")]
-        public IActionResult UpdateBoex(int id, [FromBody] BookingOrderDetailExtraDtoDto boexDto)
+        public IActionResult UpdateBoex(int id, [FromBody] BookingOrderDetailExtraDto boexDto)
         {
             //  Prevent regionDto from null
             if (boexDto == null)
@@ -121,7 +121,7 @@ namespace Realta.WebAPI.Controllers
             _repositoryManager.boexRepository.Edit(boex);
 
             // Forward to show result
-            return CreatedAtRoute("GetBoexID", new { id = boexDto.BoexId }, new BookingOrderDetailExtraDtoDto
+            return CreatedAtRoute("GetBoexID", new { id = boexDto.BoexId }, new BookingOrderDetailExtraDto
             {
                 BoexId = boex.BoexId,
                 BoexPrice = boex.BoexPrice,

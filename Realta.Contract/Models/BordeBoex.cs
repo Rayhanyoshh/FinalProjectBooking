@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Realta.Contract.Models
 {
-    public class BoorBordeDto
+    public class BordeBoex
     {
-        public BookingOrdersDto? BookingOrders { get; set; }
-        public virtual ICollection<BordeBoex> BookingDetailJoinExtra { get; set; }
+        public BookingOrderDetailDto? bookingOrderDetail { get; set; }
+        public virtual ICollection<BookingOrderDetailExtraDto> BookingOrderDetailExtraDtos { get; set; }
     }
 }

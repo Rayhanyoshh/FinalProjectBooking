@@ -13,6 +13,7 @@ namespace Realta.Persistence.Base
     public class RepositoryManager : IRepositoryManager
     {
         private AdoDbContext _adoContext;
+        private IBookingRepo _bookRepo;
         private IBookingOrdersRepository _bookingOrdersRepository;
         private IBookingOrderDetailRepo _bordeRepository;
         private IBookingOrderDetailExtraRepo _boexRepository;
@@ -113,6 +114,18 @@ namespace Realta.Persistence.Base
                 return _usbrRepository; 
             }
         
+        }
+
+        public IBookingRepo bookingRepo
+        {
+            get
+            {
+                if (_bookRepo == null)
+                {
+                    _bookRepo = new BookingRepo(_adoContext);
+                }
+                return _bookRepo;
+            }
         }
     }
 }

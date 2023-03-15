@@ -8,8 +8,6 @@ namespace Realta.Services.Abstraction
 {
     public interface IServiceManager
     {
-        //IProductPhotoServices ProductPhotoService { get; }
-
-        //ISupplierServices SupplierService { get; }
+        IBookingService BookingService { get; } 
     }
 }
