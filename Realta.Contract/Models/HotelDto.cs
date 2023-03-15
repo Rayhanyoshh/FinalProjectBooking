@@ -27,7 +27,7 @@ public class HotelsDto
     // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     // public string? HotelReasonStatus { get; set; }
     [AllowNull]
-    public short HotelRatingStar { get; set; }
+    public decimal HotelRatingStar { get; set; }
 
     // [Phone]
     // [Required(ErrorMessage = "Hotel phone number is required")]

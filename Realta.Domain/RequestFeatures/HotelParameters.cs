@@ -18,9 +18,9 @@ namespace Realta.Domain.RequestFeatures
         [AllowNull]
         public int? Number { get; set; }
         [AllowNull]
-        public uint? MaxPrice {get; set; }
+        public decimal? MaxPrice {get; set; }
         [AllowNull]
-        public uint? MinPrice { get; set; }
+        public decimal? MinPrice { get; set; }
         [AllowNull]
         public bool ValidatePriceRange => MaxPrice > MinPrice;
     }

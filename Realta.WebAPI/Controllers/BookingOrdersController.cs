@@ -233,7 +233,7 @@ namespace Realta.WebAPI.Controllers
             var bookingOrders =
                 await _repositoryManager.bookingOrdersRepository.GetBookingOrderPageList(bookingOrdersParameters);
 
-
+            var totalPage=await  _repositoryManager.bookingOrdersRepository.GetBookingOrderPageList(bookingOrdersParameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(bookingOrders.MetaData));
 
             return Ok(bookingOrders);
@@ -242,8 +242,8 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("hotelList")]
         public async Task<IActionResult> GetHotelList([FromQuery] HotelParameters hotelParameters )
         {
-            // if (!hotelParameters.ValidatePriceRange)
-            //     return BadRequest("MaxPrice must greater than MinPrice");
+             if (!hotelParameters.ValidatePriceRange)
+                 return BadRequest("MaxPrice must greater than MinPrice");
             var hotel =
                 await _repositoryManager.bookingOrdersRepository.GetHotelPageList(hotelParameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(hotel.MetaData));
@@ -251,3 +251,4 @@ namespace Realta.WebAPI.Controllers
         }
     }
 }
+ 

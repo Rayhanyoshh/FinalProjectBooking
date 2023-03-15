@@ -23,7 +23,7 @@ namespace Realta.Domain.Entities
         // [AllowNull]
         // public string? HotelReasonStatus { get; set; } = string.Empty;
         [AllowNull]
-        public Int16 HotelRatingStar { get; set; }
+        public decimal HotelRatingStar { get; set; }
         // [Phone]
         // public string? HotelPhonenumber { get; set; }
         // [AllowNull]

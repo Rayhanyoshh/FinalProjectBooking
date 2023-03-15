@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Realta.Domain.Base;
 using Realta.Domain.Entities;
 using Realta.Services.Abstraction;
 using Realta.Contract.Models;
+using Realta.Domain.RequestFeatures;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -189,5 +191,24 @@ namespace Realta.WebAPI.Controllers
             return Ok("Data has been remove.");
 
         }
+
+        [HttpGet("paging")]
+        public async Task<IActionResult> GetSpofPaging([FromQuery] SpecialOfferParameters specialOfferParameters)
+        {
+            var specialOffer = await _repositoryManager.spofRepository.GetSpofPaging(specialOfferParameters);
+            return Ok(specialOffer);
+        } 
+        
+        [HttpGet("pageList")]
+        public async Task<IActionResult> GetSpofPageList([FromQuery] SpecialOfferParameters specialOfferParameters)
+        {
+            if (!specialOfferParameters.ValidateStockRange)
+                return BadRequest("MaxQty must be greater than MinStock");
+            
+            var specialOffer = await _repositoryManager.spofRepository.GetSpofPageList(specialOfferParameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(specialOffer.MetaData));
+            return Ok(specialOffer);
+        } 
+        
     }
 }

@@ -6,25 +6,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e944862f-49e5-4238-9c7b-dbe7648aefd0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Realta.Contract/Models/HotelDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Contract/Models/HotelDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/Base/IRepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Base/IRepositoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/Entities/Hotels.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Entities/Hotels.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/Repositories/IBookingOrdersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Repositories/IBookingOrdersRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/HotelParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/HotelParameters.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/MetaData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/MetaData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/PageList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/PageList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Base/RepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Base/RepositoryBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Interface/IRepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Interface/IRepositoryBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrdersRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrdersRepo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/RepositoryExtensions/RepositorySpecialOffersExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelRealtaSolution.sln" beforeDir="false" afterPath="$PROJECT_DIR$/HotelRealtaSolution.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/RequestParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/RequestParameters.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/SpecialOfferParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/SpecialOfferParameters.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Realta.Persistence.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Realta.Persistence.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/SpecialOffersRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/SpecialOffersRepo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.WebAPI/Controllers/SpecialoffersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.WebAPI/Controllers/SpecialoffersController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="62f1cdd5-e4e2-45ac-8c27-412a50ff1cd4" />
+        <option name="url" value="https://github.com/Rayhanyoshh/FinalProjectBooking.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Realta.Domain/RequestFeatures/MetaData.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2Mjdl9fMsrddcmEAqmPw24Shtaq" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -39,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -98,13 +120,40 @@
       <workItem from="1678327001593" duration="4114000" />
       <workItem from="1678331735029" duration="67000" />
       <workItem from="1678332386638" duration="12650000" />
+      <workItem from="1678384910840" duration="2122000" />
+      <workItem from="1678629537220" duration="25765000" />
+      <workItem from="1678770083010" duration="8987000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
