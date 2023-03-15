@@ -209,8 +209,6 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-
-
         public BookingOrders FindBookingOrdersById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()

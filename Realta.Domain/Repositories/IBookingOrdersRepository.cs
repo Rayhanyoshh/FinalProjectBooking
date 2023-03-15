@@ -11,7 +11,7 @@ namespace Realta.Domain.Repositories
     public interface IBookingOrdersRepository
     {
         IEnumerable<BookingOrders> FindAllBookingOrders();
-        IEnumerable<Hotels> FindAllHotels();
+        
         Task<IEnumerable<BookingOrders>> FindAllBookingOrdersAsync();
         Task<IEnumerable<BookingOrders>> GetBookingOrdersPaging(BookingOrdersParameters bookingOrdersParameters);
         Task<PageList<BookingOrders>> GetBookingOrderPageList(BookingOrdersParameters bookingOrdersParameters);

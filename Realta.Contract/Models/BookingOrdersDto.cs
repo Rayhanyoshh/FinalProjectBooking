@@ -9,16 +9,12 @@ namespace Realta.Contract.Models
 {
     public class BookingOrdersDto
     {
-        [Required(ErrorMessage = "Boor ID is Required")]
-        public int BoorId { get; set; }
+        public int? BoorId { get; set; }
 
+        public string? BoorOrderNumber { get; set; }
 
-        [Required(ErrorMessage = "Boor Order Date is Required")]
-        public string BoorOrderNumber { get; set; }
-
-        [Required(ErrorMessage = "Boor Order Number is Required")]
-        public DateTime BoorOrderDate { get; set; }
-        public DateTime BoorArrivalDate { get; set; }
+        public DateTime? BoorOrderDate { get; set; }
+        public DateTime? BoorArrivalDate { get; set; }
         public short? BoorTotalRoom { get; set; }
         public short? BoorTotalGuest { get; set; }
         public decimal? BoorDiscount { get; set; }
@@ -31,15 +27,13 @@ namespace Realta.Contract.Models
 
         [Required(ErrorMessage = "Boor Is Paid is Required")]
         public string BoorIsPaid { get; set; }
-
-        [Required(ErrorMessage = "Boor Type is Required")]
-        public string BoorType { get; set; }
-
-        [CreditCard(ErrorMessage = "Type your creditcard number correctly")]
+        public string? BoorType { get; set; }
         public string? BoorCardnumber { get; set; }
         public string? BoorMemberType { get; set; }
         public string? BoorStatus { get; set; }
+        [Required(ErrorMessage = "BoorUserId is Required")]
         public int BoorUserId { get; set; }
+        [Required(ErrorMessage = "BoorHotelId is Required")]
         public int BoorHotelId { get; set; }
     }
 }
