@@ -23,11 +23,6 @@ namespace Realta.Domain.RequestFeatures
         public decimal? FaciPrice { get; set; }
         
         public string OrderBy { get; set; } = "hotelName";
-
-        
-
-        
-
         public string? Location { get; set; }
         [AllowNull]
         public DateTime? StartDate { get; set; }

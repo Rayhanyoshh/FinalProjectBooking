@@ -48,6 +48,7 @@ namespace Realta.WebAPI.Controllers
                 HotelRatingStar=v.HotelRatingStar,
                 HotelDescription = v.HotelDescription,
                 HotelCity=v.HotelCity,
+                FaciId=v.FaciId,
                 FaciName=v.FaciName,
                 FaciStartdate=v.FaciStartdate,
                 FaciEnddate=v.FaciEnddate,
