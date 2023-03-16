@@ -31,9 +31,32 @@ namespace Realta.WebAPI.Controllers
 
         // GET api/<BookingController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> GetFaciByHotelId(int id)
         {
-            return "value";
+            var hotel = await _repositoryManager.bookingRepo.FindFaciByHotelIdAsync(id);
+            if (hotel==null)
+            {
+                _logger.LogError($"Hotel with id {id} not found");
+                return NotFound();
+            }
+
+            var hotelDto = hotel.Select(v => new HotelsDto
+            {
+                HotelId=v.HotelId,
+                HotelName=v.HotelName,
+                HotelAddress=v.HotelAddress,
+                HotelRatingStar=v.HotelRatingStar,
+                HotelCity=v.HotelCity,
+                FaciName=v.FaciName,
+                FaciStartdate=v.FaciStartdate,
+                FaciEnddate=v.FaciEnddate,
+                FaciPrice=v.FaciPrice,
+                FaciDiscount=v.FaciDiscount,
+                FaciTaxRate=v.FaciTaxRate,
+                FaciMaxNumber=v.FaciMaxNumber,
+                FaciPhotoUrl=v.FaciPhotoUrl
+            });
+            return Ok(hotelDto);
         }
 
         // POST api/<BookingController>

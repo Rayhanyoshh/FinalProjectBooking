@@ -9,7 +9,7 @@ namespace Realta.Contract.Models
 {
     public class BordeBoex
     {
-        public BookingOrderDetailDto? bookingOrderDetail { get; set; }
-        public virtual ICollection<BookingOrderDetailExtraDto> BookingOrderDetailExtraDtos { get; set; }
+        public BookingOrderDetailDto? BookingOrderDetail { get; set; }
+        public virtual ICollection<BookingOrderDetailExtraDto> BookingOrderDetailExtra { get; set; }
     }
 }

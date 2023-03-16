@@ -1,5 +1,6 @@
 ﻿using Realta.Domain.Entities;
 using Realta.Domain.Repositories;
+using Realta.Domain.RequestFeatures;
 using Realta.Persistence.Base;
 using Realta.Persistence.RepositoryContext;
 using System;
@@ -130,6 +131,29 @@ namespace Realta.Persistence.Repositories
             var id = _adoContext.ExecuteScalar<decimal>(model);
             _adoContext.Dispose();
             return (int)id;
+        }
+
+        public async Task<IEnumerable<Hotels>> FindFaciByHotelIdAsync(int id)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = @"Booking.sp_search_hotelsandfaci",
+                CommandType = CommandType.StoredProcedure,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@hotel_id",
+                        DataType = DbType.Int32,
+                        Value = id
+                    }
+                }
+            };
+            IAsyncEnumerator<Hotels> dataset = FindAllAsync<Hotels>(model);
+            var item = new List<Hotels>();
+            while (await dataset.MoveNextAsync())
+            {
+                item.Add(dataset.Current);
+            }
+            return item;
         }
     }
 }

@@ -10,6 +10,6 @@ namespace Realta.Contract.Models
     public class BoorBordeDto
     {
         public BookingOrdersDto? BookingOrders { get; set; }
-        public virtual ICollection<BordeBoex> BookingDetailJoinExtra { get; set; }
+        public virtual ICollection<BordeBoex> BookingDetailExtra { get; set; }
     }
 }

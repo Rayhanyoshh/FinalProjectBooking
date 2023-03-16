@@ -29,26 +29,26 @@ namespace Realta.Services
                 BoorPayType = bordeDto.BookingOrders.BoorPayType,
                 BoorIsPaid = bordeDto.BookingOrders.BoorIsPaid
             };
-
+            var arrBorderDto = bordeDto.BookingDetailExtra.ToArray();
             //2. insert to booking_orders
-            var boorId = _repositoryManager.bookingRepo.insertBookingBySP(bookingOrder);
+            int boorId = _repositoryManager.bookingRepo.insertBookingBySP(bookingOrder);
 
             //3. hold data bookingOrderDetail using foreach
-            var bordes = bordeDto.BookingDetailJoinExtra;
+            var bordes = bordeDto.BookingDetailExtra.ToList();
             foreach (var item in bordes)
             {
                 var borde = new BookingOrderDetail
                 {
                     BordeBoorId = boorId,
-                    BordeFaciId = item.bookingOrderDetail.BordeFaciId,
-                    BordeCheckin = item.bookingOrderDetail.BordeCheckin,
-                    BordeCheckout = item.bookingOrderDetail.BordeCheckout
+                    BordeFaciId = item.BookingOrderDetail.BordeFaciId,
+                    BordeCheckin = item.BookingOrderDetail.BordeCheckin,
+                    BordeCheckout = item.BookingOrderDetail.BordeCheckout
                 };
                 //retrive borde_id
                 var bordeId = _repositoryManager.bookingRepo.insertBookDetailBySP(borde);
 
                 //retrive boex data, check if not null do insert
-                var boexs = item.BookingOrderDetailExtraDtos;
+                var boexs = item.BookingOrderDetailExtra.ToList();
                 if (boexs != null)
                 {
                     foreach (var itemExtra in boexs)

@@ -24,12 +24,22 @@ namespace Realta.Domain.Entities
         public string? HotelAddress { get; set; }
         [AllowNull]
         public string? HotelCity { get; set; }
+
+        [AllowNull]
+        public int? FaciId { get; set; }
+
         [AllowNull]
         public string? FaciName { get; set; }
         [AllowNull]
         public DateTime FaciStartdate { get; set; }
         [AllowNull]
         public DateTime FaciEnddate { get; set; }
+        [AllowNull]
+        public decimal? FaciPrice { get; set; }
+        [AllowNull]
+        public decimal? FaciDiscount { get; set; }
+        [AllowNull]
+        public decimal? FaciTaxRate { get; set; }
         [AllowNull]
         public int FaciMaxNumber { get; set; }
         [AllowNull]
