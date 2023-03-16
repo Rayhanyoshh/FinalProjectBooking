@@ -6,18 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e944862f-49e5-4238-9c7b-dbe7648aefd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/RepositoryExtensions/RepositoryHotelExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Contract/Models/HotelDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Contract/Models/HotelDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/Entities/Hotels.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Entities/Hotels.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/Repositories/IBookingOrdersRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Repositories/IBookingOrdersRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Contract/Realta.Contract.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Contract/Realta.Contract.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Domain/Realta.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/Realta.Domain.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/HotelParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/HotelParameters.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/RequestParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/RequestParameters.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/SpecialOfferParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/SpecialOfferParameters.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrdersRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrdersRepo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingRepo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingOrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingOrdersController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +120,7 @@
       <workItem from="1678384910840" duration="2122000" />
       <workItem from="1678629537220" duration="25765000" />
       <workItem from="1678770083010" duration="8987000" />
+      <workItem from="1678947703380" duration="3172000" />
     </task>
     <servers />
   </component>
