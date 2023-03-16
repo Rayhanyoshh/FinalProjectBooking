@@ -30,6 +30,8 @@ namespace Realta.Domain.Entities
         public string? BoorStatus { get; set; }
         public int BoorUserId { get; set; }
         public int BoorHotelId { get; set; }
+        public string? TrxNumber { get; set; }
+
 
 
     }

@@ -30,6 +30,8 @@ namespace Realta.Contract.Models
         public decimal? BordeSubtotal { get; set; }
         [Required(ErrorMessage = "BordeFaciId is Required")]
         public int? BordeFaciId { get; set; }
+        public string? FaciName { get; set; }
+
 
     }
 }

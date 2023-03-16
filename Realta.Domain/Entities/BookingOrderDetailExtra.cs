@@ -19,7 +19,7 @@ namespace Realta.Domain.Entities
         public string? BoexMeasureUnit { get; set; }
         public int? BoexBordeId { get; set; }
         public int? BoexPritId { get; set; }
-
+        public string PritName { get; set; }
 
     }
 }

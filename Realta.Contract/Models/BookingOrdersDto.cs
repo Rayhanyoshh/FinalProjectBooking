@@ -35,6 +35,8 @@ namespace Realta.Contract.Models
         public int BoorUserId { get; set; }
         [Required(ErrorMessage = "BoorHotelId is Required")]
         public int BoorHotelId { get; set; }
+        public string? TrxNumber { get; set; }
+
     }
 }
 

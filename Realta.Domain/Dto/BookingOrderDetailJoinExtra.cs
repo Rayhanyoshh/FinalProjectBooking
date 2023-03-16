@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace Realta.Domain.Entities
 {
-    [Table("Booking_order_detail")] 
-    public class BookingOrderDetail
+    public class BookingOrderDetailJoinExtra
     {
-        [Key]
-        public int BordeId { get; set; } 
+        public int BordeId { get; set; }
         public int BordeBoorId { get; set; }
         public DateTime BordeCheckin { get; set; }
         public DateTime BordeCheckout { get; set; }
@@ -24,8 +22,15 @@ namespace Realta.Domain.Entities
         public decimal? BordeTax { get; set; }
         public decimal? BordeSubtotal { get; set; }
         public int? BordeFaciId { get; set; }
-
         public string? FaciName { get; set; }
+        public int BoexId { get; set; }
+        public decimal? BoexPrice { get; set; }
+        public Int16? BoexQty { get; set; }
+        public decimal? BoexSubtotal { get; set; }
+        public string? BoexMeasureUnit { get; set; }
+        public int? BoexBordeId { get; set; }
+        public int? BoexPritId { get; set; }
+        public int PritName { get; set; }
 
     }
 }

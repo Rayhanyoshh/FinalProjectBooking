@@ -25,7 +25,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var spof = _repositoryManager.spofRepository.FindAllSpof().ToList();
+            var spof = _repositoryManager.specialOffersRepository.FindAllSpof().ToList();
 
             var spofDto = spof.Select(r => new SpecialOffersDto
             {
@@ -48,7 +48,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("{id}", Name = "GetSpofID")]
         public IActionResult FindSpofById(int id)
         {
-            var spof = _repositoryManager.spofRepository.FindSpofById(id);
+            var spof = _repositoryManager.specialOffersRepository.FindSpofById(id);
             if (spof == null)
             {
                 _loggerManager.LogError("spof object sent from client is null");
@@ -97,11 +97,11 @@ namespace Realta.WebAPI.Controllers
             };
 
             // post to db
-            _repositoryManager.spofRepository.Insert(spof);
+            _repositoryManager.specialOffersRepository.Insert(spof);
 
 
             //forward to show result
-            var res = _repositoryManager.spofRepository.FindSpofById(spof.SpofId);
+            var res = _repositoryManager.specialOffersRepository.FindSpofById(spof.SpofId);
 
             return CreatedAtRoute("GetSpofID", new { id = spof.SpofId }, res);
 
@@ -121,7 +121,7 @@ namespace Realta.WebAPI.Controllers
             }
 
             // find id first
-            var spofcheck = _repositoryManager.spofRepository.FindSpofById(id);
+            var spofcheck = _repositoryManager.specialOffersRepository.FindSpofById(id);
 
             if (spofcheck == null)
             {
@@ -144,7 +144,7 @@ namespace Realta.WebAPI.Controllers
                 SpofModifiedDate = spofDto.SpofModifiedDate
             };
 
-            _repositoryManager.spofRepository.Edit(spof);
+            _repositoryManager.specialOffersRepository.Edit(spof);
 
             // Forward to show result
             return CreatedAtRoute("GetSpofID", new { id = spof.SpofId}, new SpecialOffersDto
@@ -173,7 +173,7 @@ namespace Realta.WebAPI.Controllers
             }
 
             // find id first
-            var spof = _repositoryManager.spofRepository.FindSpofById(id.Value);
+            var spof = _repositoryManager.specialOffersRepository.FindSpofById(id.Value);
 
             if (spof == null)
             {
@@ -182,7 +182,7 @@ namespace Realta.WebAPI.Controllers
             }
 
 
-            _repositoryManager.spofRepository.Remove(spof);
+            _repositoryManager.specialOffersRepository.Remove(spof);
             return Ok("Data has been remove.");
 
         }
@@ -190,7 +190,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("paging")]
         public async Task<IActionResult> GetSpofPaging([FromQuery] SpecialOfferParameters specialOfferParameters)
         {
-            var specialOffer = await _repositoryManager.spofRepository.GetSpofPaging(specialOfferParameters);
+            var specialOffer = await _repositoryManager.specialOffersRepository.GetSpofPaging(specialOfferParameters);
             return Ok(specialOffer);
         } 
         
@@ -200,7 +200,7 @@ namespace Realta.WebAPI.Controllers
             if (!specialOfferParameters.ValidateStockRange)
                 return BadRequest("MaxQty must be greater than MinStock");
             
-            var specialOffer = await _repositoryManager.spofRepository.GetSpofPageList(specialOfferParameters);
+            var specialOffer = await _repositoryManager.specialOffersRepository.GetSpofPageList(specialOfferParameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(specialOffer.MetaData));
             return Ok(specialOffer);
         } 

@@ -23,7 +23,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var boex = _repositoryManager.boexRepository.FindAllBoex().ToList();
+            var boex = _repositoryManager.bookingOrderDetailExtraRepository.FindAllBoex().ToList();
 
             var boexDto = boex.Select(r => new BookingOrderDetailExtraDto
             {
@@ -43,7 +43,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("{id}", Name = "GetBoexID")]
         public IActionResult FindBoexById(int id)
         {
-            var boex = _repositoryManager.boexRepository.FindBoexById(id);
+            var boex = _repositoryManager.bookingOrderDetailExtraRepository.FindBoexById(id);
             if (boex == null)
             {
                 _loggerManager.LogError("Boex object sent from client is null");
@@ -87,11 +87,11 @@ namespace Realta.WebAPI.Controllers
             };
 
             // post to db
-            _repositoryManager.boexRepository.Insert(boex);
+            _repositoryManager.bookingOrderDetailExtraRepository.Insert(boex);
 
 
             //forward to show result
-            var res = _repositoryManager.boexRepository.FindBoexById(boex.BoexId);
+            var res = _repositoryManager.bookingOrderDetailExtraRepository.FindBoexById(boex.BoexId);
             
             return CreatedAtRoute("GetBoexID", new { id = boex.BoexId }, res);
 
@@ -118,7 +118,7 @@ namespace Realta.WebAPI.Controllers
                 BoexPritId = boexDto.BoexPritId
             };
 
-            _repositoryManager.boexRepository.Edit(boex);
+            _repositoryManager.bookingOrderDetailExtraRepository.Edit(boex);
 
             // Forward to show result
             return CreatedAtRoute("GetBoexID", new { id = boexDto.BoexId }, new BookingOrderDetailExtraDto
@@ -144,7 +144,7 @@ namespace Realta.WebAPI.Controllers
             }
 
             // find id first
-            var boex = _repositoryManager.boexRepository.FindBoexById(id.Value);
+            var boex = _repositoryManager.bookingOrderDetailExtraRepository.FindBoexById(id.Value);
 
             if (boex == null)
             {
@@ -153,7 +153,7 @@ namespace Realta.WebAPI.Controllers
             }
 
 
-            _repositoryManager.boexRepository.Remove(boex);
+            _repositoryManager.bookingOrderDetailExtraRepository.Remove(boex);
             return Ok("Data has been remove.");
 
         }

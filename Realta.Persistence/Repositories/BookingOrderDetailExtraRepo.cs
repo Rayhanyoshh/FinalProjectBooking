@@ -118,6 +118,47 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
+        public async Task<IEnumerable<BookingOrderDetailExtra>> FindAllBoexByBoorId(int id)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText =
+                @"
+                    SELECT 
+	                    e.boex_borde_id BoexBordeId,
+	                    e.boex_id BoexId,
+	                    p.prit_name PritName,
+	                    e.boex_price BoexPrice,
+	                    e.boex_qty BoexQty,
+	                    e.boex_subtotal BoexSubtotal,
+	                    e.boex_measure_unit BoexMeasureUnit,
+	                    e.boex_prit_id BoexPritId
+                    FROM 
+	                    Booking.booking_order_detail d
+	                    JOIN Booking.booking_order_detail_extra e ON d.borde_id=e.boex_borde_id
+	                    JOIN Master.price_items p ON e.boex_prit_id=p.prit_id
+                    WHERE 
+	                    d.borde_boor_id=@boorId
+                ", 
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@boorId",
+                        DataType = DbType.Int32,
+                        Value = id
+                    }
+                }
+
+            };
+            IAsyncEnumerator<BookingOrderDetailExtra> dataSet = FindAllAsync<BookingOrderDetailExtra>(model);
+            var item = new List<BookingOrderDetailExtra>();
+            while (await dataSet.MoveNextAsync())
+            {
+                item.Add(dataSet.Current);
+            }
+            return item;
+        }
+
         public BookingOrderDetailExtra FindBoexById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()

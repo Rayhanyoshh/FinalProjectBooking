@@ -13,13 +13,13 @@ namespace Realta.Domain.Base
 
         IBookingOrdersRepository bookingOrdersRepository { get; }
 
-        IBookingOrderDetailRepo bordeRepository { get; }
+        IBookingOrderDetailRepo bookingOrderDetailRepository { get; }
 
-        IBookingOrderDetailExtraRepo boexRepository { get; }
+        IBookingOrderDetailExtraRepo bookingOrderDetailExtraRepository { get; }
 
-        ISpecialOfferCouponsRepo socoRepository { get; }
-        ISpecialOffersRepo spofRepository { get; }
-        IUserBreakfastRepo usbrRepository { get; }
+        ISpecialOfferCouponsRepo specialOfferCouponsRepository { get; }
+        ISpecialOffersRepo specialOffersRepository { get; }
+        IUserBreakfastRepo userBreakfastRepository { get; }
         
     }
 }

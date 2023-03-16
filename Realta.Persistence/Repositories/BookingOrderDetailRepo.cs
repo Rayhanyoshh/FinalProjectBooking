@@ -299,5 +299,51 @@ namespace Realta.Persistence.Repositories
 
             return (int)id;
         }
+
+        public async Task<IEnumerable<BookingOrderDetail>> FindAllBordeByBoorId(int id)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = 
+                @"
+                    SELECT
+	                    d.borde_boor_id BordeBoorId,
+	                    d.borde_id BordeId,
+	                    f.faci_name FaciName,
+	                    d.borde_checkin BordeCheckin,
+	                    d.borde_checkout BordeCheckout,
+	                    d.borde_adults BordeAdults,
+	                    d.borde_kids BordeKids,
+	                    d.borde_price BordePrice,
+	                    d.borde_extra BordeExtra,
+	                    d.borde_discount BordeDiscount,
+	                    d.borde_tax BordeTax,
+	                    d.borde_subtotal BordeSubtotal,
+	                    d.borde_faci_id BordeFaciId
+                    FROM 
+	                    Booking.booking_order_detail d
+	                    join Booking.booking_order_detail_extra e ON d.borde_id=e.boex_borde_id 
+	                    join Hotel.Facilities f ON f.faci_id=d.borde_faci_id
+	                    join Master.price_items p ON e.boex_prit_id=p.prit_id
+                    WHERE 
+	                    d.borde_boor_id=@boorId;
+                ",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@boorId",
+                        DataType = DbType.Int32,
+                        Value = id
+                    }
+                }
+            };
+            IAsyncEnumerator<BookingOrderDetail> dataSet = FindAllAsync<BookingOrderDetail>(model);
+            var item = new List<BookingOrderDetail>();
+            while (await dataSet.MoveNextAsync())
+            {
+                item.Add(dataSet.Current);
+            }
+            return item;
+        }
     }
 }

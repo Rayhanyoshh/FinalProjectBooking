@@ -43,7 +43,7 @@ namespace Realta.Persistence.Base
             }
         }
 
-        public IBookingOrderDetailRepo bordeRepository
+        public IBookingOrderDetailRepo bookingOrderDetailRepository
         {
             get
             {
@@ -55,7 +55,7 @@ namespace Realta.Persistence.Base
             }
         }
 
-        public IBookingOrderDetailExtraRepo boexRepository
+        public IBookingOrderDetailExtraRepo bookingOrderDetailExtraRepository
         {
             get
             {
@@ -67,7 +67,7 @@ namespace Realta.Persistence.Base
             }
         }
 
-        public ISpecialOfferCouponsRepo socoRepository
+        public ISpecialOfferCouponsRepo specialOfferCouponsRepository
         {
             get
             {
@@ -79,7 +79,7 @@ namespace Realta.Persistence.Base
             }
         }
 
-        public ISpecialOffersRepo spofRepository
+        public ISpecialOffersRepo specialOffersRepository
         {
             get
             {
@@ -91,7 +91,7 @@ namespace Realta.Persistence.Base
             }
         }
 
-        public IUserBreakfastRepo usbrRepository 
+        public IUserBreakfastRepo userBreakfastRepository 
         {
             get
             {

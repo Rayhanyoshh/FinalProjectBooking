@@ -23,7 +23,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var borde = _repositoryManager.bordeRepository.FindAllBorde().ToList();
+            var borde = _repositoryManager.bookingOrderDetailRepository.FindAllBorde().ToList();
 
             var bordeDto = borde.Select(r => new BookingOrderDetailDto
             {
@@ -48,7 +48,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("{id}", Name = "GetBordeByID")]
         public IActionResult FindBoorById(int id)
         {
-            var borde = _repositoryManager.bordeRepository.FindBordeById(id);
+            var borde = _repositoryManager.bookingOrderDetailRepository.FindBordeById(id);
             if (borde == null)
             {
                 _logger.LogError("Borde object sent from client is null");
@@ -103,9 +103,9 @@ namespace Realta.WebAPI.Controllers
                 };
 
                 // post to db
-                _repositoryManager.bordeRepository.Insert(borde);
+                _repositoryManager.bookingOrderDetailRepository.Insert(borde);
             // getin latest inserted id
-                bordeDto.BordeId = _repositoryManager.bordeRepository.GetBordeDetailSequenceId();
+                bordeDto.BordeId = _repositoryManager.bookingOrderDetailRepository.GetBordeDetailSequenceId();
                 return CreatedAtRoute("GetBordeByID", new { id = bordeDto.BordeId }, bordeDto);
 
             }
@@ -136,7 +136,7 @@ namespace Realta.WebAPI.Controllers
                 BordeFaciId = bordeDto.BordeFaciId
             };
 
-            _repositoryManager.bordeRepository.Edit(borde);
+            _repositoryManager.bookingOrderDetailRepository.Edit(borde);
 
             // Forward to show result
             return CreatedAtRoute("GetBoorByID", new { id = bordeDto.BordeId }, new BookingOrderDetailDto
@@ -167,7 +167,7 @@ namespace Realta.WebAPI.Controllers
             }
 
             // find id first
-            var borde = _repositoryManager.bordeRepository.FindBordeById(id.Value);
+            var borde = _repositoryManager.bookingOrderDetailRepository.FindBordeById(id.Value);
 
             if (borde == null)
             {
@@ -176,7 +176,7 @@ namespace Realta.WebAPI.Controllers
             }
 
 
-            _repositoryManager.bordeRepository.Remove(borde);
+            _repositoryManager.bookingOrderDetailRepository.Remove(borde);
             return Ok("Data has been remove.");
 
         }

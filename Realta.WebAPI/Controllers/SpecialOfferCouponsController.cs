@@ -24,7 +24,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var soco = _repositoryManager.socoRepository.FindAllSoco().ToList();
+            var soco = _repositoryManager.specialOfferCouponsRepository.FindAllSoco().ToList();
 
             var socoDto = soco.Select(r => new SpecialOfferCoupons
             {                                       
@@ -41,7 +41,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("{id}", Name = "GetSocoID")]
         public IActionResult FindSocoById(int id)
         {
-            var soco = _repositoryManager.socoRepository.FindSocoById(id);
+            var soco = _repositoryManager.specialOfferCouponsRepository.FindSocoById(id);
             if (soco == null)
             {
                 _loggerManager.LogError("Soco object sent from client is null");
@@ -76,11 +76,11 @@ namespace Realta.WebAPI.Controllers
             };
 
             // post to db
-            _repositoryManager.socoRepository.Insert(soco);
+            _repositoryManager.specialOfferCouponsRepository.Insert(soco);
 
 
             //forward to show result
-            var res = _repositoryManager.socoRepository.FindSocoById(soco.SocoId);
+            var res = _repositoryManager.specialOfferCouponsRepository.FindSocoById(soco.SocoId);
 
             return CreatedAtRoute("GetSocoID", new { id = soco.SocoId }, res);
 
@@ -103,7 +103,7 @@ namespace Realta.WebAPI.Controllers
                 SocoSpofId = socoDto.SocoSpofId
             };
 
-            _repositoryManager.socoRepository.Edit(soco);
+            _repositoryManager.specialOfferCouponsRepository.Edit(soco);
 
             // Forward to show result
             return base.CreatedAtRoute("GetSocoID", new { id = soco.SocoId }, new Contract.Models.SpecialOfferCouponsDto
@@ -125,7 +125,7 @@ namespace Realta.WebAPI.Controllers
             }
 
             // find id first
-            var soco = _repositoryManager.socoRepository.FindSocoById(id.Value);
+            var soco = _repositoryManager.specialOfferCouponsRepository.FindSocoById(id.Value);
 
             if (soco == null)
             {
@@ -134,7 +134,7 @@ namespace Realta.WebAPI.Controllers
             }
 
 
-            _repositoryManager.socoRepository.Remove(soco);
+            _repositoryManager.specialOfferCouponsRepository.Remove(soco);
             return Ok("Data has been remove.");
 
         }

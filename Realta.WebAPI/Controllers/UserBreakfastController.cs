@@ -26,7 +26,7 @@ namespace Realta.WebAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var usbr = _repositoryManager.usbrRepository.FindAllUsbr();
+            var usbr = _repositoryManager.userBreakfastRepository.FindAllUsbr();
             var usbrDto = usbr.Select(x => new UserBreakfastDto
             {
                 UsbrBordeId =x.UsbrBordeId,
@@ -41,7 +41,7 @@ namespace Realta.WebAPI.Controllers
         public IActionResult Get(int id, int yyyy, int mm, int dd)
         {
             var date = new DateTime(yyyy, mm, dd);
-            var usbr = _repositoryManager.usbrRepository.FindUsbrByIdDate(id,date);
+            var usbr = _repositoryManager.userBreakfastRepository.FindUsbrByIdDate(id,date);
             if (usbr ==null)
             {
                 _loggerManager.LogError("User Breakfast object cannot found ");
@@ -72,7 +72,7 @@ namespace Realta.WebAPI.Controllers
                 UsbrTotalVacant = usbrDto.UsbrTotalVacant
             };
 
-            _repositoryManager.usbrRepository.Insert(usbr);
+            _repositoryManager.userBreakfastRepository.Insert(usbr);
             return Ok(usbr);
         }
 
@@ -95,7 +95,7 @@ namespace Realta.WebAPI.Controllers
                 UsbrTotalVacant = UsbrDto.UsbrTotalVacant
             };
 
-            _repositoryManager.usbrRepository.Edit(usbr);
+            _repositoryManager.userBreakfastRepository.Edit(usbr);
 
             //forward 
             return CreatedAtRoute("GetUserBreakfast", new { id = UsbrDto.UsbrBordeId,yyyy=date.Year,mm=date.Month,dd=date.Date}, new UserBreakfast { UsbrBordeId=id,UsbrModifiedDate=date,UsbrTotalVacant=usbr.UsbrTotalVacant});
@@ -111,18 +111,14 @@ namespace Realta.WebAPI.Controllers
                 _loggerManager.LogError($"{nameof(id)} or {nameof(date)} object from client is null"); 
                 return BadRequest("Object is null");
             }
-            var userbreakfast = _repositoryManager.usbrRepository.FindUsbrByIdDate(id, date);
+            var userbreakfast = _repositoryManager.userBreakfastRepository.FindUsbrByIdDate(id, date);
             if (userbreakfast==null)
             {
                 _loggerManager.LogError($"UserBreakfast not found");
                 return NotFound();
             }
-            _repositoryManager.usbrRepository.Remove(userbreakfast);
+            _repositoryManager.userBreakfastRepository.Remove(userbreakfast);
             return Ok("Data has been removed");
-
-
-
-            return Ok("data has been remove");
         }
     }
 }

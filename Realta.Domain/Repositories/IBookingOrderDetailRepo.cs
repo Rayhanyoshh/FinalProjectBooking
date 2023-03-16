@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 namespace Realta.Domain.Repositories
 {
     public interface IBookingOrderDetailRepo
-    {
+    { 
         IEnumerable<BookingOrderDetail> FindAllBorde();
+        Task<IEnumerable<BookingOrderDetail>> FindAllBordeByBoorId(int id);
         Task<IEnumerable<BookingOrderDetail>> FindAllBordeAsync();
         BookingOrderDetail FindBordeById(int id);
         int GetBordeDetailSequenceId();

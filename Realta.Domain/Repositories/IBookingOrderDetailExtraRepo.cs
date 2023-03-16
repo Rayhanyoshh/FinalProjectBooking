@@ -11,6 +11,7 @@ namespace Realta.Domain.Repositories
     {
         IEnumerable<BookingOrderDetailExtra> FindAllBoex();
         Task<IEnumerable<BookingOrderDetailExtra>> FindAllBoexAsync();
+        Task<IEnumerable<BookingOrderDetailExtra>> FindAllBoexByBoorId(int id);
         BookingOrderDetailExtra FindBoexById(int id);
         void Insert(BookingOrderDetailExtra boex);
         void Edit(BookingOrderDetailExtra boex);

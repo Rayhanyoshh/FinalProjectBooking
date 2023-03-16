@@ -26,6 +26,7 @@ namespace Realta.Domain.Entities
         public decimal? BordeTax { get; set; }
         public decimal? BordeSubtotal { get; set; }
         public int? BordeFaciId { get; set; }
+        public string FaciName { get; set; }
 
         public virtual ICollection<BookingOrderDetailExtra>? BookingOrderDetailExtras { get; set; }
 

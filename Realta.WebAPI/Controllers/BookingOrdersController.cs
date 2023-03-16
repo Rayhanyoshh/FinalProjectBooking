@@ -58,12 +58,12 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("{id}", Name = "GetBoorByID")]
         public IActionResult FindBoorById(int id)
         {
-            var boorBorde = _repositoryManager.bookingOrdersRepository.GetBookingDetail(id);
-            //var boor = _repositoryManager.bookingOrdersRepository.FindBookingOrdersById(id);
+            //var boorBorde = _repositoryManager.bookingOrdersRepository.GetBookingDetail(id);
+            var boor = _repositoryManager.bookingOrdersRepository.FindBookingOrdersById(id);
 
-            if (boorBorde != null)
+            if (boor != null)
             {
-                return Ok(boorBorde);
+                return Ok(boor);
             }
             _logger.LogError("Boor object sent from client is null");
             return BadRequest("Boor object is null");
