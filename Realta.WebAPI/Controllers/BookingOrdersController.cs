@@ -247,6 +247,21 @@ namespace Realta.WebAPI.Controllers
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(hotel.MetaData));
             return Ok(hotel);
         }
+        [HttpGet("hotelList/hotelId")]
+        public async Task<ActionResult<Hotels>> GetHotelListById (HotelParameters hotelId)
+        {
+            var hotel =
+                await _repositoryManager.bookingOrdersRepository.GetHotelById(hotelId);
+
+            if (hotel == null)
+            {
+                return Ok(hotel);
+            }
+
+            _logger.LogError("Hotel object sent from client is null");
+            return BadRequest("Hotel object is null");
+        }
+        
     }
 }
  

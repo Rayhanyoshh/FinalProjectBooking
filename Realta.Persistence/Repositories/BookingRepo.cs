@@ -137,7 +137,7 @@ namespace Realta.Persistence.Repositories
         {
             SqlCommandModel model = new SqlCommandModel()
             {
-                CommandText = @"Booking.sp_search_hotelsandfaci",
+                CommandText = @"Booking.sp_get_faci",
                 CommandType = CommandType.StoredProcedure,
                 CommandParameters = new SqlCommandParameterModel[] {
                     new SqlCommandParameterModel() {

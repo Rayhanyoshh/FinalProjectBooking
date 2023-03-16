@@ -10,6 +10,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Realta.Persistence.Repositories.RepositoryExtensions;
 
 namespace Realta.Persistence.Repositories
 {
@@ -657,32 +658,67 @@ namespace Realta.Persistence.Repositories
                     new SqlCommandParameterModel() {
                         ParameterName = "@hotelNameAddress",
                         DataType = DbType.String,
-                        Value = hotelParameters.HotelAddress ?? string.Empty
+                        Value = hotelParameters.HotelAddress
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@startDate",
                         DataType = DbType.DateTime,
-                        Value = hotelParameters.StartDate
+                        Value = hotelParameters.FaciStartdate
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@endDate",
                         DataType = DbType.DateTime,
-                        Value = hotelParameters.EndDate
+                        Value = hotelParameters.FaciEnddate
                     },
                     new SqlCommandParameterModel() {
                         ParameterName = "@maxNumber",
                         DataType = DbType.Int32,
-                        Value = hotelParameters.Number 
+                        Value = hotelParameters.FaciMaxNumber
                     }
                 }
             
             };
             var hotels = await GetAllAsync<Hotels>(model);
             var totalRow = FindAllHotels().Count();
+            var hotelSearch = hotels.AsQueryable()
+                .SearchHotel(hotelParameters.SearchTerm)
+                .Sort(hotelParameters.OrderBy);
+            
             return new PagedList<Hotels>(hotels.ToList(), totalRow, hotelParameters.PageNumber,
                 hotelParameters.PageSize);
 
         }
+
+
+
+        public async Task<Hotels> GetHotelById(HotelParameters hotelId)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = @"booking.get_hotel_by_id",
+                CommandType = CommandType.StoredProcedure,
+                CommandParameters = new SqlCommandParameterModel[] {
+                    new SqlCommandParameterModel() {
+                        ParameterName = "@hotel_id",
+                        DataType = DbType.String,
+                        Value = hotelId.HotelId
+                    }
+                }
+            };
+            var dataSet = FindByCondition<Hotels>(model);
+
+            Hotels? item = dataSet.Current;
+
+            while (dataSet.MoveNext())
+            {
+                item = dataSet.Current;
+            }
+
+
+            return item;
+        }
+        
+
         public IEnumerable<Hotels> FindAllHotels()
         {
             IEnumerator<Hotels> dataSet = FindAll<Hotels>

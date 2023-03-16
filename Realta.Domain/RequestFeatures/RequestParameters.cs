@@ -8,6 +8,8 @@ namespace Realta.Domain.RequestFeatures
 {
     public abstract class RequestParameters
     {
+        public string? SearchTerm { get; set; }
+        
         const int maxPageSize = 50;
         public int PageNumber { get; set; } = 0;
 

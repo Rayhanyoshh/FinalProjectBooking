@@ -19,8 +19,11 @@ public class HotelsDto
     public decimal HotelRatingStar { get; set; }
     
     [AllowNull]
+    public string? HotelDescription { get; set; }
+    
+    [AllowNull]
     public string? HotelAddress { get; set; }
-   
+
     [AllowNull]
     public string? HotelCity { get; set; }
 

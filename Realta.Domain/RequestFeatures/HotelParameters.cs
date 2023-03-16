@@ -20,7 +20,9 @@ namespace Realta.Domain.RequestFeatures
         public DateTime? FaciStartdate { get; set; }
         public DateTime? FaciEnddate { get; set; }
         public int? FaciMaxNumber { get; set; }
-        public string? SearchTerm { get; set; }
+        public decimal? FaciPrice { get; set; }
+        
+        public string OrderBy { get; set; } = "hotelName";
 
         
 

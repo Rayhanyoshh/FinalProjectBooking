@@ -46,13 +46,14 @@ namespace Realta.WebAPI.Controllers
                 HotelName=v.HotelName,
                 HotelAddress=v.HotelAddress,
                 HotelRatingStar=v.HotelRatingStar,
+                HotelDescription = v.HotelDescription,
                 HotelCity=v.HotelCity,
                 FaciName=v.FaciName,
                 FaciStartdate=v.FaciStartdate,
                 FaciEnddate=v.FaciEnddate,
                 FaciPrice=v.FaciPrice,
                 FaciDiscount=v.FaciDiscount,
-                FaciTaxRate=v.FaciTaxRate,
+                FaciTaxRate=v.FaciTax,
                 FaciMaxNumber=v.FaciMaxNumber,
                 FaciPhotoUrl=v.FaciPhotoUrl
             });

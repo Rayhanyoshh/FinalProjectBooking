@@ -15,12 +15,13 @@ namespace Realta.Domain.Repositories
         Task<IEnumerable<BookingOrders>> FindAllBookingOrdersAsync();
         Task<IEnumerable<BookingOrders>> GetBookingOrdersPaging(BookingOrdersParameters bookingOrdersParameters);
         Task<PagedList<BookingOrders>> GetBookingOrderPageList(BookingOrdersParameters bookingOrdersParameters);
-        Task<PagedList<Hotels>> GetHotelPageList(HotelParameters hotelParameters);
         BookingOrders FindBookingOrdersById(int id);
         BookingOrdersNestedDetail GetBookingDetail(int id);
         void Insert(BookingOrders booking_Orders);
         void Edit(BookingOrders booking_Orders);
         void Remove(BookingOrders booking_Orders);
         IEnumerable<BookingOrders> FindLastBoorID();
+        Task<PagedList<Hotels>> GetHotelPageList(HotelParameters hotelParameters);
+        Task<Hotels> GetHotelById(HotelParameters hotelId);
     }
 }

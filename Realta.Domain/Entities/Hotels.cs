@@ -21,6 +21,9 @@ namespace Realta.Domain.Entities
         [AllowNull]
         public decimal HotelRatingStar { get; set; }
         [AllowNull]
+        
+        public string HotelDescription { get; set; }
+        [AllowNull]
         public string? HotelAddress { get; set; }
         [AllowNull]
         public string? HotelCity { get; set; }
@@ -39,7 +42,7 @@ namespace Realta.Domain.Entities
         [AllowNull]
         public decimal? FaciDiscount { get; set; }
         [AllowNull]
-        public decimal? FaciTaxRate { get; set; }
+        public decimal? FaciTax { get; set; }
         [AllowNull]
         public int FaciMaxNumber { get; set; }
         [AllowNull]
