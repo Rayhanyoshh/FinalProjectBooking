@@ -36,6 +36,24 @@ namespace Realta.Contract.Models
         [Required(ErrorMessage = "BoorHotelId is Required")]
         public int BoorHotelId { get; set; }
         public string? TrxNumber { get; set; }
+        
+        public int? FaciId { get; set; }
+
+        public string? FaciName { get; set; }
+
+        public DateTime FaciStartdate { get; set; }
+
+        public DateTime FaciEnddate { get; set; }
+
+        public decimal? FaciPrice { get; set; }
+
+        public decimal? FaciDiscount { get; set; }
+
+        public decimal? FaciTaxRate { get; set; }
+
+        public int FaciMaxNumber { get; set; }
+
+        public string? FaciPhotoUrl { get; set; }
 
     }
 }

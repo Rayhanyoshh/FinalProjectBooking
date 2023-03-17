@@ -74,7 +74,7 @@ namespace Realta.WebAPI.Controllers
         //    //return BadRequest();
         //}
 
-        [HttpGet("{id}/invoice")]
+        [HttpGet("invoice/{id}")]
         public async Task<IActionResult> GetInvoiceByBoorIdAsync(int id)
         {
             var bookingOrders = _repositoryManager.bookingOrdersRepository.FindBookingOrdersById(id);
