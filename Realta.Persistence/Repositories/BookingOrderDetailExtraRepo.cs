@@ -134,8 +134,8 @@ namespace Realta.Persistence.Repositories
 	                    e.boex_measure_unit BoexMeasureUnit,
 	                    e.boex_prit_id BoexPritId
                     FROM 
-	                    Booking.booking_order_detail d
-	                    JOIN Booking.booking_order_detail_extra e ON d.borde_id=e.boex_borde_id
+	                    Booking.booking_order_detail_extra e 
+	                    JOIN Booking.booking_order_detail d ON e.boex_borde_id=d.borde_id
 	                    JOIN Master.price_items p ON e.boex_prit_id=p.prit_id
                     WHERE 
 	                    d.borde_boor_id=@boorId

@@ -322,9 +322,7 @@ namespace Realta.Persistence.Repositories
 	                    d.borde_faci_id BordeFaciId
                     FROM 
 	                    Booking.booking_order_detail d
-	                    join Booking.booking_order_detail_extra e ON d.borde_id=e.boex_borde_id 
 	                    join Hotel.Facilities f ON f.faci_id=d.borde_faci_id
-	                    join Master.price_items p ON e.boex_prit_id=p.prit_id
                     WHERE 
 	                    d.borde_boor_id=@boorId;
                 ",

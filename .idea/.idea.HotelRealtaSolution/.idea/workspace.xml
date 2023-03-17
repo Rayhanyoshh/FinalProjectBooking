@@ -7,9 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e944862f-49e5-4238-9c7b-dbe7648aefd0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Contract/Models/BookingOrdersDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Contract/Models/BookingOrdersDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/BookingOrdersParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Domain/RequestFeatures/BookingOrdersParameters.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.WebAPI/Controllers/BookingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrderDetailExtraRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrderDetailExtraRepo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrderDetailRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrderDetailRepo.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +119,7 @@
       <workItem from="1678629537220" duration="25765000" />
       <workItem from="1678770083010" duration="8987000" />
       <workItem from="1678947703380" duration="6216000" />
-      <workItem from="1679028316786" duration="6469000" />
+      <workItem from="1679028316786" duration="8745000" />
     </task>
     <servers />
   </component>
