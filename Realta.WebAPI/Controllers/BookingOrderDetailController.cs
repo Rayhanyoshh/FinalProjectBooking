@@ -75,9 +75,23 @@ namespace Realta.WebAPI.Controllers
             return Ok(bordeDto);
         }
 
+        [HttpGet("boor/{id}", Name = "GetBordeByBoorId")]
+
+        public async Task<IActionResult> GetBordeByBoorIdAsync(int id)
+        {
+            //get and pass to DTO
+
+            var bookingOrderDetails = await _repositoryManager.bookingOrderDetailRepository.FindAllBordeByBoorId(id);
+            if (bookingOrderDetails!=null)
+            {
+                return Ok(bookingOrderDetails);
+            }
+            return BadRequest(null);
+        }
+
         // POST api/<BordeController>
         [HttpPost]
-            public IActionResult CreateBorde([FromBody] BookingOrderDetailDto bordeDto)
+        public IActionResult CreateBorde([FromBody] BookingOrderDetailDto bordeDto)
             {
                 // Prevent RegionDto from null
                 if (bordeDto == null)
