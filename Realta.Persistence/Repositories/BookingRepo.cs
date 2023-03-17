@@ -155,5 +155,43 @@ namespace Realta.Persistence.Repositories
             }
             return item;
         }
+
+        public UserMembers findUserById(int id)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText =
+                @"
+                    SELECT
+                        u.user_id UserId,
+	                    u.user_full_name UserFullName,
+	                    u.user_phone_number UserPhoneNumber,
+	                    um.usme_memb_name UsmeMembName,
+	                    um.usme_promote_date UsmePromoteDate,
+	                    um.usme_points UsmePoints
+                    FROM
+	                    Users.users u 
+	                    join Users.user_members um on u.user_id=um.usme_user_id
+	                    join Booking.booking_orders b on u.user_id=b.boor_user_id
+                    WHERE b.boor_id=@id
+
+                ",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] {
+                new SqlCommandParameterModel()
+                  {
+                      ParameterName="@id",
+                      DataType=DbType.Int32,
+                      Value=id
+                  }}
+            };
+            var dataSet = FindByCondition<UserMembers>(model);
+            UserMembers item = dataSet.Current;
+            while (dataSet.MoveNext())
+            {
+                item = dataSet.Current;
+            }
+            return item;
+        }
     }
 }

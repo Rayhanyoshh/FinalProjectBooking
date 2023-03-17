@@ -238,6 +238,17 @@ namespace Realta.WebAPI.Controllers
             _logger.LogError("Hotel object sent from client is null");
             return BadRequest("Hotel object is null");
         }
+
+        [HttpGet("user/{id}")]
+        public IActionResult GetUserByBoorId(int id)
+        {
+            var userdata = _repositoryManager.bookingRepo.findUserById(id);
+            if (userdata != null)
+            {
+                return Ok(userdata);
+            }
+            return BadRequest();
+        }
         
     }
 }
