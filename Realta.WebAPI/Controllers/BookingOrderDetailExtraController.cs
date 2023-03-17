@@ -65,6 +65,30 @@ namespace Realta.WebAPI.Controllers
             return Ok(boexDto);
         }
 
+        [HttpGet("boor/{id}", Name = "GetBoexByBoorId")]
+        public async Task<IActionResult> FindExtraByBoorIdAsync(int id)
+        {
+            //get and pass to DTO
+            var bookingOrderDetailExtras = await _repositoryManager.bookingOrderDetailExtraRepository.FindAllBoexByBoorId(id);
+            if (bookingOrderDetailExtras != null)
+            {
+                var bookingOrderDetailExtrasDto = bookingOrderDetailExtras.Select(boex => new BookingOrderDetailExtraDto
+                {
+                    BoexId = boex.BoexId,
+                    BoexPrice = boex.BoexPrice,
+                    BoexQty = boex.BoexQty,
+                    BoexSubtotal = boex.BoexSubtotal,
+                    BoexMeasureUnit = boex.BoexMeasureUnit,
+                    BoexBordeId = boex.BoexBordeId,
+                    BoexPritId = boex.BoexPritId,
+                    PritName = boex.PritName
+                });
+            
+                return Ok(bookingOrderDetailExtrasDto);
+            }
+            return BadRequest();
+        }
+
         // POST api/<BoexController>
         [HttpPost]
         public IActionResult CreateBoex([FromBody] BookingOrderDetailExtraDto boexDto)

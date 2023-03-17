@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Realta.Contract.Models;
 using Realta.Domain.Base;
 using Realta.Domain.Entities;
@@ -21,13 +22,6 @@ namespace Realta.WebAPI.Controllers
             this._logger = logger;
             _repositoryManager = repositoryManager;
             this._serviceManager = serviceManager;
-        }
-
-        // GET: api/<BookingController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
         }
 
         // GET api/<BookingController>/5
@@ -62,17 +56,18 @@ namespace Realta.WebAPI.Controllers
             return Ok(hotelDto);
         }
 
-        // POST api/<BookingController>
-        //[HttpPost]
-        //public IActionResult CreateBooking ([FromBody] BookingListOrderDetailExtraDto boorBordeDto)
-        //{
-        //    //if (boorBordeDto != null)
-        //    //{
-        //    //    _serviceManager.BookingService.CreateBooking(boorBordeDto,out var boor_id);
-        //    //    return Ok(boor_id);
-        //    //}
-        //    //return BadRequest();
-        //}
+        //POST api/booking
+        [HttpPost]
+        public IActionResult CreateBooking([FromBody] BookingListOrderDetailExtraDto boorBordeDto)
+        {
+            if (boorBordeDto != null)
+            {
+                //_serviceManager.BookingService.CreateBooking(boorBordeDto, out var boor_id);
+                //return Ok(boor_id);
+                return Ok(null);
+            }
+            return BadRequest();
+        }
 
         [HttpGet("{id}/invoice")]
         public async Task<IActionResult> GetInvoiceByBoorIdAsync(int id)
@@ -106,6 +101,7 @@ namespace Realta.WebAPI.Controllers
               TrxNumber=bookingOrders.TrxNumber
             };
 
+            //get and pass to DTO
             var bookingOrderDetails = await _repositoryManager.bookingOrderDetailRepository.FindAllBordeByBoorId(id);
             var bookingOrderDetailsDto = bookingOrderDetails.Select(borde => new BookingOrderDetailDto
             {
@@ -124,6 +120,7 @@ namespace Realta.WebAPI.Controllers
                 FaciName=borde.FaciName
             });
 
+            //get and pass to DTO
             var bookingOrderDetailExtras = await _repositoryManager.bookingOrderDetailExtraRepository.FindAllBoexByBoorId(id);
             var bookingOrderDetailExtrasDto = bookingOrderDetailExtras.Select(boex => new BookingOrderDetailExtraDto
             {
@@ -146,6 +143,17 @@ namespace Realta.WebAPI.Controllers
             return Ok(result);    
         }
 
-
+        [HttpGet("{faciId}/user/{userId}")]
+        public async Task<IActionResult> GetModifyBooking(int faciId, int userId)
+        {
+            var prititems = _repositoryManager.price_itemsRepository.FindAllPrice_Items();
+            var result = new
+            {
+                prititem = prititems,
+                faci = faciId,
+                user = userId
+            };
+            return Ok(result);
+        }
     }
 }
