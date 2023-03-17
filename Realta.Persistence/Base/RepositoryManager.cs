@@ -20,16 +20,12 @@ namespace Realta.Persistence.Base
         private ISpecialOfferCouponsRepo _socoRepository;
         private ISpecialOffersRepo _spofRepository;
         private IUserBreakfastRepo _usbrRepository;
-
+        private IPrice_ItemsRepository _price_itemsRepository;
 
         public RepositoryManager(AdoDbContext adoContext)
         {
             _adoContext = adoContext;
         }
-        
-        
-
-        
 
         public IBookingOrdersRepository bookingOrdersRepository
         {
@@ -113,6 +109,18 @@ namespace Realta.Persistence.Base
                     _bookRepo = new BookingRepo(_adoContext);
                 }
                 return _bookRepo;
+            }
+        }
+
+        public IPrice_ItemsRepository price_itemsRepository
+        {
+            get
+            {
+                if (_price_itemsRepository == null)
+                {
+                    _price_itemsRepository = new Price_ItemsRepository(_adoContext);
+                }
+                return _price_itemsRepository;
             }
         }
     }

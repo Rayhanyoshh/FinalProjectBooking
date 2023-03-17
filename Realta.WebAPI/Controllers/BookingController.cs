@@ -137,7 +137,7 @@ namespace Realta.WebAPI.Controllers
                 PritName = boex.PritName
             });
 
-            var result = new BookingListOrderDetailExtraDto()
+            var result = new
             {
                 bookingOrders = bookingOrderDtos,
                 bookingOrderDetail = bookingOrderDetailsDto,

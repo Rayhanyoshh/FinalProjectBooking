@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Realta.Persistence.Base
 {
-    internal abstract class RepositoryBase <T> : IRepositoryBase <T> where T : class
+    public abstract class RepositoryBase <T> : IRepositoryBase <T> where T : class
     {
 
         protected AdoDbContext _adoContext;

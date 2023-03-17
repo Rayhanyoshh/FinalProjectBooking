@@ -10,16 +10,12 @@ namespace Realta.Domain.Base
     public interface IRepositoryManager
     {
         IBookingRepo bookingRepo { get; }
-
         IBookingOrdersRepository bookingOrdersRepository { get; }
-
         IBookingOrderDetailRepo bookingOrderDetailRepository { get; }
-
         IBookingOrderDetailExtraRepo bookingOrderDetailExtraRepository { get; }
-
         ISpecialOfferCouponsRepo specialOfferCouponsRepository { get; }
         ISpecialOffersRepo specialOffersRepository { get; }
         IUserBreakfastRepo userBreakfastRepository { get; }
-        
+        IPrice_ItemsRepository price_itemsRepository { get; }
     }
 }
