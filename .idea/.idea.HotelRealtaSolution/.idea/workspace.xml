@@ -6,9 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e944862f-49e5-4238-9c7b-dbe7648aefd0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Realta.Contract/Models/UserDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Realta.Contract/Models/UserMemberDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelRealtaSolution/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrderDetailExtraRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrderDetailExtraRepo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrderDetailRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingOrderDetailRepo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingRepo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Realta.Persistence/Repositories/BookingRepo.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +120,8 @@
       <workItem from="1678629537220" duration="25765000" />
       <workItem from="1678770083010" duration="8987000" />
       <workItem from="1678947703380" duration="6216000" />
-      <workItem from="1679028316786" duration="8745000" />
+      <workItem from="1679028316786" duration="10066000" />
+      <workItem from="1679073412802" duration="925000" />
     </task>
     <servers />
   </component>

@@ -96,7 +96,6 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
             return (int)id;
         }
-
         public int insertBookExtraBySP(BookingOrderDetailExtra bookingOrderDetailExtra)
         {
             SqlCommandModel model = new SqlCommandModel()
