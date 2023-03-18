@@ -1,4 +1,5 @@
-﻿using Realta.Domain.Entities;
+﻿using HotelRealtaPayment.Domain.Dto;
+using Realta.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Realta.Domain.Repositories
 
         UserMembers findUserByBoorId(int id);
         Users findUserById(int id);
+        IEnumerable<AccountUser> FindAccountByUserId(int id);
 
     }
 }

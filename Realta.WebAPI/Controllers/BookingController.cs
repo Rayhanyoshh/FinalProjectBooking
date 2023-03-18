@@ -100,16 +100,23 @@ namespace Realta.WebAPI.Controllers
         [HttpGet("user/boor/{boorId}")]
         public IActionResult GetUserByBoorId(int boorId)
         {
-            try
+            var user = _repositoryManager.bookingRepo.findUserByBoorId(boorId);
+            if (user!=null)
             {
-                var user = _repositoryManager.bookingRepo.findUserByBoorId(boorId);
                 return Ok(user);
+            }
+            return BadRequest("Data Not Found");
+        }
 
-            }
-            catch (Exception)
+        [HttpGet("account/user/{userId}")]
+        public IActionResult GetAccountByUserId(int userId)
+        {
+            var accountuser = _repositoryManager.bookingRepo.FindAccountByUserId(userId);
+            if (accountuser!=null)
             {
-                return BadRequest("Data Not Found");
+                return Ok(accountuser);
             }
+            return BadRequest("Data Not Found");
         }
     }
 }

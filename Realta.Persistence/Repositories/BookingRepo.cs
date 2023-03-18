@@ -1,4 +1,5 @@
-﻿using Realta.Domain.Entities;
+﻿using HotelRealtaPayment.Domain.Dto;
+using Realta.Domain.Entities;
 using Realta.Domain.Repositories;
 using Realta.Domain.RequestFeatures;
 using Realta.Persistence.Base;
@@ -131,7 +132,6 @@ namespace Realta.Persistence.Repositories
             _adoContext.Dispose();
             return (int)id;
         }
-
         public async Task<IEnumerable<Hotels>> FindFaciByHotelIdAsync(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
@@ -154,7 +154,8 @@ namespace Realta.Persistence.Repositories
             }
             return item;
         }
-
+        
+        //FindUserByBoorId for Invoice
         public UserMembers findUserByBoorId(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
@@ -192,7 +193,8 @@ namespace Realta.Persistence.Repositories
             }
             return item;
         }
-
+        
+        //FindUserByUserId
         public Users findUserById(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
@@ -225,6 +227,33 @@ namespace Realta.Persistence.Repositories
                 item = dataSet.Current;
             }
             return item;
+        }
+        public IEnumerable<AccountUser> FindAccountByUserId(int id)
+        {
+            var model = new SqlCommandModel()
+            {
+                CommandText = @"SELECT usac_account_number AccountNumber,
+                                       user_id UserId,
+                                       usac_saldo Saldo,
+                                       usac_type Type,
+                                       payment_name PaymentName
+                                  FROM Payment.fnGetUserBalance(@userId)",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[]
+                {
+                    new()
+                    {
+                        ParameterName = "@userId",
+                        DataType = DbType.Int32,
+                        Value = id
+                    }
+                }
+            };
+
+            var listOfAccount = FindByCondition<AccountUser>(model);
+
+            while (listOfAccount.MoveNext())
+                yield return listOfAccount.Current;
         }
     }
 }
