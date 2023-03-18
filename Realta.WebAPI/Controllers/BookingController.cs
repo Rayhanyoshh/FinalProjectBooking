@@ -143,17 +143,27 @@ namespace Realta.WebAPI.Controllers
             return Ok(result);    
         }
 
-        [HttpGet("{faciId}/user/{userId}")]
+        [HttpGet("priceitems")]
         public async Task<IActionResult> GetModifyBooking(int faciId, int userId)
         {
             var prititems = _repositoryManager.price_itemsRepository.FindAllPrice_Items();
-            var result = new
+            if (prititems!=null)
             {
-                prititem = prititems,
-                faci = faciId,
-                user = userId
-            };
-            return Ok(result);
+                return Ok(prititems);
+            }
+            return BadRequest("Data not found");
         }
+
+        [HttpGet("user/{userId}")]
+        public IActionResult GetUserId(int userId)
+        {
+            var user = _repositoryManager.bookingRepo.findUserById(userId);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return BadRequest("Data not found");
+        }
+
     }
 }
