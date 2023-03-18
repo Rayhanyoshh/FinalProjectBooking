@@ -155,7 +155,7 @@ namespace Realta.Persistence.Repositories
             return item;
         }
 
-        public UserMembers findUserById(int id)
+        public UserMembers findUserByBoorId(int id)
         {
             SqlCommandModel model = new SqlCommandModel()
             {
@@ -186,6 +186,40 @@ namespace Realta.Persistence.Repositories
             };
             var dataSet = FindByCondition<UserMembers>(model);
             UserMembers item = dataSet.Current;
+            while (dataSet.MoveNext())
+            {
+                item = dataSet.Current;
+            }
+            return item;
+        }
+
+        public Users findUserById(int id)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText =
+                @"
+                    SELECT
+                        u.user_id UserId,
+	                    u.user_full_name UserFullName,
+	                    u.user_phone_number UserPhoneNumber,
+	                    u.user_email UserEmail
+                    FROM
+	                    Users.users u 
+                    WHERE u.user_id=@id
+
+                ",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[] {
+                new SqlCommandParameterModel()
+                  {
+                      ParameterName="@id",
+                      DataType=DbType.Int32,
+                      Value=id
+                  }}
+            };
+            var dataSet = FindByCondition<Users>(model);
+            Users item = dataSet.Current;
             while (dataSet.MoveNext())
             {
                 item = dataSet.Current;

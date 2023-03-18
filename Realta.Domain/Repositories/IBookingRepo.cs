@@ -15,7 +15,8 @@ namespace Realta.Domain.Repositories
         int insertBookExtraBySP(BookingOrderDetailExtra bookingOrderDetailExtra);
         Task<IEnumerable<Hotels>> FindFaciByHotelIdAsync(int id);
 
-        UserMembers findUserById(int id);
+        UserMembers findUserByBoorId(int id);
+        Users findUserById(int id);
 
     }
 }
