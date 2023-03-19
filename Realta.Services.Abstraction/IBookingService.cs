@@ -9,6 +9,6 @@ namespace Realta.Services.Abstraction
 {
     public interface IBookingService
     {
-        //public void CreateBooking(BookingListOrderDetailExtraDto bordeDto, out int boor_id);
+        public void CreateBooking(BookingOrdersDto bordeDto, out int boor_id);
     }
 }

@@ -10,15 +10,14 @@ namespace Realta.Domain.Repositories
 {
     public interface IBookingRepo
     {
-        //IEnumerable<Hotels> FindAllHotels();
         int insertBookingBySP(BookingOrders bookingOrders);
         int insertBookDetailBySP(BookingOrderDetail bookingOrderDetail);
         int insertBookExtraBySP(BookingOrderDetailExtra bookingOrderDetailExtra);
         Task<IEnumerable<Hotels>> FindFaciByHotelIdAsync(int id);
+        IEnumerable<AccountUser> FindAccountByUserId(int id);
 
         UserMembers findUserByBoorId(int id);
         Users findUserById(int id);
-        IEnumerable<AccountUser> FindAccountByUserId(int id);
-
+        Hotels FindFacilitiesByFacId(int facilitiesId);
     }
 }

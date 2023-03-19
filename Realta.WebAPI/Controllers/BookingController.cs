@@ -58,15 +58,15 @@ namespace Realta.WebAPI.Controllers
 
         //POST api/booking
         [HttpPost]
-        public IActionResult CreateBooking([FromBody] BookingListOrderDetailExtraDto boorBordeDto)
+        public IActionResult CreateBooking([FromBody] BookingOrdersDto boorBordeDto)
         {
-            if (boorBordeDto != null)
+            if (boorBordeDto == null)
             {
-                //_serviceManager.BookingService.CreateBooking(boorBordeDto, out var boor_id);
-                //return Ok(boor_id);
-                return Ok(null);
+                return BadRequest();
             }
-            return BadRequest();
+            _serviceManager.BookingService.CreateBooking(boorBordeDto, out var boor_id);
+            var bookingOrder = _repositoryManager.bookingOrdersRepository.FindBookingOrdersById(boor_id);
+            return Ok(boor_id);
         }
 
         [HttpGet("priceitems")]
@@ -115,6 +115,17 @@ namespace Realta.WebAPI.Controllers
             if (accountuser!=null)
             {
                 return Ok(accountuser);
+            }
+            return BadRequest("Data Not Found");
+        }
+
+        [HttpGet("faci/{faciId}")]
+        public IActionResult GetFaciByFaciId(int faciId)
+        {
+            var faci = _repositoryManager.bookingRepo.FindFacilitiesByFacId(faciId);
+            if (faci!=null)
+            {
+                return Ok(faci);
             }
             return BadRequest("Data Not Found");
         }

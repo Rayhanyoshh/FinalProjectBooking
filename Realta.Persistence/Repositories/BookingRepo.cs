@@ -121,7 +121,7 @@ namespace Realta.Persistence.Repositories
                         Value = bookingOrderDetailExtra.BoexQty
                     },
                     new SqlCommandParameterModel() {
-                        ParameterName = "@borde_checkout",
+                        ParameterName = "@boex_measure_unit",
                         DataType = DbType.String,
                         Value = bookingOrderDetailExtra.BoexMeasureUnit
                     }
@@ -254,6 +254,51 @@ namespace Realta.Persistence.Repositories
 
             while (listOfAccount.MoveNext())
                 yield return listOfAccount.Current;
+        }
+
+        public Hotels FindFacilitiesByFacId(int facilitiesId)
+        {
+            SqlCommandModel model = new SqlCommandModel()
+            {
+                CommandText = @"SELECT " +
+                              "     faci_id AS FaciId " +
+                              ",    faci_name AS FaciName " +
+                              ",    faci_startdate AS FaciStartdate " +
+                              ",    faci_enddate AS FaciEnddate " +
+                              ",    faci_max_number AS FaciMaxNumber " +
+                              ",    faci_room_number AS FaciRoomNumber " +
+                              ",     CASE faci_expose_price" +
+                              "         WHEN 1 THEN faci_low_price " +
+                              "         WHEN 2 THEN faci_rate_price " +
+                              "         WHEN 3 THEN faci_high_price " +
+                              "     END AS FaciPrice" +
+                              ",    faci_discount AS FaciDiscount " +
+                              ",    faci_tax_rate AS FaciTax" +
+                              ",    faci_modified_date AS FaciModifiedDate " +
+                              ",    faci_hotel_id AS HotelId " +
+                              " FROM" +
+                              "     Hotel.Facilities " +
+                              " WHERE " +
+                              "     faci_id = @faci_id;",
+                CommandType = CommandType.Text,
+                CommandParameters = new SqlCommandParameterModel[]
+                {
+                    new SqlCommandParameterModel()
+                    {
+                        ParameterName = "@faci_id",
+                        DataType = DbType.Int32,
+                        Value = facilitiesId
+                    },
+                }
+            };
+
+            var dataSet = FindByCondition<Hotels>(model);
+            Hotels item = dataSet.Current;
+            while (dataSet.MoveNext())
+            {
+                item = dataSet.Current;
+            }
+            return item;
         }
     }
 }

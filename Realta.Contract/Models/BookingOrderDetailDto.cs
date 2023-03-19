@@ -31,6 +31,7 @@ namespace Realta.Contract.Models
         [Required(ErrorMessage = "BordeFaciId is Required")]
         public int? BordeFaciId { get; set; }
         public string? FaciName { get; set; }
+        public List<BookingOrderDetailExtraDto> BookingOrderDetailExtra { get; set; }
 
 
     }

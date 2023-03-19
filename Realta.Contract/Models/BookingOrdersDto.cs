@@ -37,23 +37,7 @@ namespace Realta.Contract.Models
         public int BoorHotelId { get; set; }
         public string? TrxNumber { get; set; }
         
-        public int? FaciId { get; set; }
-
-        public string? FaciName { get; set; }
-
-        public DateTime FaciStartdate { get; set; }
-
-        public DateTime FaciEnddate { get; set; }
-
-        public decimal? FaciPrice { get; set; }
-
-        public decimal? FaciDiscount { get; set; }
-
-        public decimal? FaciTaxRate { get; set; }
-
-        public int FaciMaxNumber { get; set; }
-
-        public string? FaciPhotoUrl { get; set; }
+        public List<BookingOrderDetailDto>? BookingOrderDetail { get; set; }
 
     }
 }

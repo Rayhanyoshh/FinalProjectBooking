@@ -18,7 +18,7 @@ namespace Realta.Contract.Models
         [AllowNull] public string? BoexMeasureUnit { get; set; }
         [AllowNull] public int? BoexBordeId { get; set; }
         [AllowNull] public int? BoexPritId { get; set; }
-        [AllowNull] public string PritName { get; set; }
+        [AllowNull] public string? PritName { get; set; }
 
     }
 }
