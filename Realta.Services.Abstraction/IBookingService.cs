@@ -10,5 +10,7 @@ namespace Realta.Services.Abstraction
     public interface IBookingService
     {
         public void CreateBooking(BookingOrdersDto bordeDto, out int boor_id);
+        Task<BookingOrdersDto>GetBookingAsync(int boorId);
+
     }
 }

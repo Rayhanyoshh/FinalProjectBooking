@@ -67,5 +67,42 @@ namespace Realta.Services
             }
             boor_id = boorId;
         }
+
+        public async Task<BookingOrdersDto> GetBookingAsync(int boorId)
+        {
+            // Retrieve booking order data
+            BookingOrders bookingOrder = _repositoryManager.bookingOrdersRepository.FindBookingOrdersById(boorId);
+
+            // Retrieve booking order details data
+            IEnumerable<BookingOrderDetail> bookingOrderDetails = await _repositoryManager.bookingOrderDetailRepository.FindAllBordeByBoorId(boorId);
+            IEnumerable<BookingOrderDetailExtra> bookingOrderDetailExtras = await _repositoryManager.bookingOrderDetailExtraRepository.FindAllBoexByBoorId(boorId);
+            // Map retrieved data to DTO
+            BookingOrdersDto bookingOrdersDto = new BookingOrdersDto
+            {
+                BoorId = bookingOrder.BoorId,
+                BoorHotelId = bookingOrder.BoorHotelId,
+                BoorUserId = bookingOrder.BoorUserId,
+                BoorPayType = bookingOrder.BoorPayType,
+                BoorIsPaid = bookingOrder.BoorIsPaid,
+                BookingOrderDetail = bookingOrderDetails.Select(x => new BookingOrderDetailDto
+                {
+                    BordeId = x.BordeId,
+                    BordeBoorId = x.BordeBoorId,
+                    BordeFaciId = x.BordeFaciId,
+                    BordeCheckin = x.BordeCheckin,
+                    BordeCheckout = x.BordeCheckout,
+                    BookingOrderDetailExtra = bookingOrderDetailExtras.Where(y => y.BoexBordeId == x.BordeId).Select(y => new BookingOrderDetailExtraDto
+                    {
+                        BoexId = y.BoexId,
+                        BoexPritId = y.BoexPritId,
+                        BoexQty = y.BoexQty,
+                        BoexMeasureUnit = y.BoexMeasureUnit
+                    }).ToList()
+                }).ToList()
+            };
+
+            var result = bookingOrdersDto;
+            return result;
+        }
     }
 }

@@ -65,8 +65,12 @@ namespace Realta.WebAPI.Controllers
                 return BadRequest();
             }
             _serviceManager.BookingService.CreateBooking(boorBordeDto, out var boor_id);
-            var bookingOrder = _repositoryManager.bookingOrdersRepository.FindBookingOrdersById(boor_id);
-            return Ok(boor_id);
+            var bookingOrder = _serviceManager.BookingService.GetBookingAsync(boor_id);
+            if (bookingOrder == null)
+            {
+                return BadRequest();
+            }
+            return Ok(bookingOrder);
         }
 
         [HttpGet("priceitems")]
@@ -129,5 +133,17 @@ namespace Realta.WebAPI.Controllers
             }
             return BadRequest("Data Not Found");
         }
+
+        [HttpGet("nested/{boorId}")]
+        public async Task<IActionResult> GetBokingNestedAsync(int boorId)
+        {
+            var bookingdata = await _serviceManager.BookingService.GetBookingAsync2(boorId);
+            if (bookingdata==null)
+            {
+                return BadRequest();
+            }
+            return Ok(bookingdata);
+        }
+
     }
 }
